@@ -25,10 +25,7 @@ function App() {
       { degree: "M.Sc in Mathematics", institution: "V.B.S. Purvanchal University, UP", years: "2020-2022", percentage: "73%" },
       { degree: "B.Sc in Mathematics", institution: "V.B.S. Purvanchal University, UP", years: "2017-2020", percentage: "65.38%" },
     ],
-    experience: [
-      { title: "Web Developer", company: "Company A", years: "2024-Present", description: "Developed and maintained web applications using React and Go. Implemented RESTful APIs and integrated with various databases." },
-      { title: "Software Intern", company: "Company B", years: "2023 Summer", description: "Contributed to backend services development, focusing on performance optimization and new feature implementation." },
-    ],
+    
     codingSkills: [
       { name: "Go", level: 90 },
       { name: "React", level: 85 },
