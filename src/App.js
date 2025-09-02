@@ -27,18 +27,19 @@ function App() {
     ],
     
     codingSkills: [
-      { name: "Go", level: 90 },
-      { name: "React", level: 85 },
-      { name: "JavaScript", level: 80 },
-      { name: "HTML/CSS", level: 95 },
+      { name: "Go", level: 75 },
+      { name: "React", level: 60 },
+      { name: "JavaScript", level: 70 },
+      { name: "HTML/CSS", level: 80 },
       { name: "MySQL", level: 75 },
+      { name: "C++", level: 85 },
     ],
     professionalSkills: [
-      { name: "Problem Solving", level: 90 },
+      { name: "Problem Solving", level: 85 },
       { name: "Team Collaboration", level: 85 },
-      { name: "Code Optimization", level: 88 },
+      { name: "Code Optimization", level: 75 },
       { name: "Debugging", level: 92 },
-      { name: "Communication", level: 80 },
+      { name: "Communication", level: 70 },
     ],
     projects: [
       {
