@@ -376,24 +376,7 @@ const handleSubmit = async (e) => {
               </div>
             </div>
 
-            {/* Experience */}{/*
-            <div className="scroll-animate">
-              <h3 className="text-3xl font-bold text-purple-400 mb-10 text-center lg:text-left">Experience</h3>
-              <div className="space-y-8">
-                {portfolioData.experience.map((exp, index) => (
-                  <div
-                    key={index}
-                    className="group relative bg-white/5 backdrop-blur-xl p-8 rounded-2xl border border-white/10 hover:border-purple-400/50 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-purple-400/20"
-                  >
-                    <div className="absolute top-0 right-0 w-1 h-full bg-gradient-to-b from-purple-400 to-pink-400 rounded-r-2xl transform scale-y-0 group-hover:scale-y-100 transition-transform duration-500"></div>
-                    <h4 className="text-xl font-bold text-white mb-2">{exp.title}</h4>
-                    <p className="text-purple-400 font-medium">{exp.company}</p>
-                    <p className="text-white/60 text-sm">{exp.years}</p>
-                    <p className="text-white/80 mt-3">{exp.description}</p>
-                  </div>
-                ))}
-              </div>
-            </div>*/}
+           
           </div>
         </div>
       </section>
