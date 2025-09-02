@@ -376,7 +376,7 @@ const handleSubmit = async (e) => {
               </div>
             </div>
 
-            {/* Experience */}
+            {/* Experience */}{/*
             <div className="scroll-animate">
               <h3 className="text-3xl font-bold text-purple-400 mb-10 text-center lg:text-left">Experience</h3>
               <div className="space-y-8">
@@ -393,7 +393,7 @@ const handleSubmit = async (e) => {
                   </div>
                 ))}
               </div>
-            </div>
+            </div>*/}
           </div>
         </div>
       </section>
