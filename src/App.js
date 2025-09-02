@@ -163,8 +163,13 @@ function App() {
     setIsSubmitting(true);
     setSubmitStatus({ type: '', message: '' });
 
+    const API_URL = process.env.NODE_ENV === "production"
+    ? "https://your-backend.onrender.com"
+    : "http://localhost:8080";
+
+
     try {
-      const response = await fetch('http://localhost:8080/api/contact', {
+      const response = await fetch(`${API_URL}/api/contact`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
