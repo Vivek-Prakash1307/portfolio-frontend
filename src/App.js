@@ -53,7 +53,7 @@ function App() {
       {
         title: "Go-Stock-scrapper",
         description: "A web scraping tool built with Go (Golang) and Colly to fetch live stock market data from Yahoo Finance. The program collects information such as company name, current stock price, and percentage change, then stores the results in a CSV file for further analysis or record-keeping.",
-        github: "https://github.com/Vivek-Prakash1307/amazon-clone",
+        github: "https://github.com/Vivek-Prakash1307/Stock-Scrapper",
         technologies: ["HTML", "CSS", "JavaScript"],
       },
       {
@@ -65,7 +65,7 @@ function App() {
       {
         title: "Weather Tracker ",
         description: "Combined two microservices: a weather dashboard using OpenWeatherMap API and a secure URL shortener with JWT authentication. Implemented MongoDB integration for persistent shortlink storage.",
-        github: "https://github.com/Vivek-Prakash1307/URL_SHORTENER",
+        github: "https://github.com/Vivek-Prakash1307/Weather-app",
         technologies: ["Go", "MongoDB"],
       },
       {
