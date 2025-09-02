@@ -158,53 +158,51 @@ function App() {
   };
 
   // Handle form submission
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    setSubmitStatus({ type: '', message: '' });
+  
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  setIsSubmitting(true);
+  setSubmitStatus({ type: '', message: '' });
 
-    const API_URL = process.env.NODE_ENV === "production"
-    ? "https://your-backend.onrender.com"
-    : "http://localhost:8080";
+  const API_URL = process.env.REACT_APP_API_URL || "http://localhost:8080";
 
+  try {
+    const response = await fetch(`${API_URL}/api/contact`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(formData),
+    });
 
-    try {
-      const response = await fetch(`${API_URL}/api/contact`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
+    const data = await response.json();
+
+    if (response.ok) {
+      setSubmitStatus({
+        type: 'success',
+        message: 'Message sent successfully! I\'ll get back to you soon. 🚀'
       });
-
-      const data = await response.json();
-
-      if (response.ok) {
-        setSubmitStatus({
-          type: 'success',
-          message: 'Message sent successfully! I\'ll get back to you soon. 🚀'
-        });
-        setFormData({ name: '', email: '', message: '' }); // Reset form
-      } else {
-        setSubmitStatus({
-          type: 'error',
-          message: data.error || 'Something went wrong. Please try again.'
-        });
-      }
-    } catch (error) {
-      console.error('Error sending message:', error);
+      setFormData({ name: '', email: '', message: '' }); // Reset form
+    } else {
       setSubmitStatus({
         type: 'error',
-        message: 'Failed to send message. Please check your connection or try emailing me directly.'
+        message: data.error || 'Something went wrong. Please try again.'
       });
-    } finally {
-      setIsSubmitting(false);
-      // Clear status after 5 seconds
-      setTimeout(() => {
-        setSubmitStatus({ type: '', message: '' });
-      }, 5000);
     }
-  };
+  } catch (error) {
+    console.error('Error sending message:', error);
+    setSubmitStatus({
+      type: 'error',
+      message: 'Failed to send message. Please check your connection or try emailing me directly.'
+    });
+  } finally {
+    setIsSubmitting(false);
+    setTimeout(() => {
+      setSubmitStatus({ type: '', message: '' });
+    }, 5000);
+  }
+};
+
 
   const FloatingParticles = () => {
     return (
