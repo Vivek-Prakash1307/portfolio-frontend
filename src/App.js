@@ -270,6 +270,16 @@ const handleSubmit = async (e) => {
         </div>
       </nav>
 
+      <div className="absolute top-4 right-4 z-50">
+      <a
+        href="/resume.pdf"
+        download="Vivek_Prakash_Resume.pdf"
+        className="flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg shadow hover:bg-blue-700 transition"
+      >
+        Download Resume
+      </a>
+    </div>
+
       {/* Hero Section */}
       <section id="home" ref={homeRef} className="relative min-h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-slate-900/50 via-purple-900/50 to-emerald-900/50"></div>
