@@ -352,7 +352,9 @@ const handleSubmit = async (e) => {
 
       {/* About Section */}
       <section id="about" ref={aboutRef} className="py-24 px-6 relative">
+        
       <div className="bg-white/5 backdrop-blur-xl p-10 rounded-3xl border border-white/10 shadow-2xl scroll-animate hover:shadow-emerald-400/20 transition-all duration-500">
+        <h2 className="text-4xl font-bold text-center text-white mb-8">About</h2>
           {portfolioData.about && portfolioData.about.length > 0 ? (
             portfolioData.about.map((para, index) => (
               <p key={index} className="text-base leading-relaxed text-white/90 mb-6">
@@ -360,12 +362,12 @@ const handleSubmit = async (e) => {
               </p>
             ))
           ) : (
-            <p className="text-base text-white/70">No content available.</p>
+            <p className="text-base text-white/70">About.</p>
           )}
           <p className="text-base leading-relaxed text-white/90">
             My goal is to leverage my expertise to build impactful solutions that make a difference.
           </p>
-</div>
+    </div>
       </section>
 
       {/* Journey Section */}
