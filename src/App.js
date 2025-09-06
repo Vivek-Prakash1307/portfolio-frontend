@@ -19,7 +19,15 @@ function App() {
     name: "Vivek Prakash",
     tagline: "Full Stack Developer with Golang",
     intro: "Passionate about building innovative and efficient web solutions. Eager to learn, adapt, and contribute by building real-world projects that combine strong fundamentals with practical implementation.",
-    about: "I’m Vivek Prakash, a final-year engineering student with a strong focus on backend development and scalable systems. Over the past few years, I’ve gained hands-on experience building REST APIs, microservices, and performance-optimized applications using Go, Gin, Docker, and AWS. I have a solid foundation in Data Structures, Algorithms, and System Design, which I’ve applied in both academic projects and personal initiatives. I’ve also explored frontend with React to build full-stack solutions, which has helped me understand end-to-end product development. My problem-solving skills have been strengthened through consistent DSA practice, and I’m actively preparing for placements at top companies like Microsoft. Beyond technical skills, I’m driven by a long-term goal to build impactful, reliable, and scalable products, and I’m always looking for opportunities where I can contribute meaningfully and keep growing as an engineer.",
+    about: [
+            "Hello there! I'm Vivek Prakash, an engineering student with a strong focus on backend development and scalable systems. Over the past few years, I've gained hands-on experience building REST APIs, microservices, and performance-optimized applications using Go, Gin, Docker, and AWS. I also have a solid foundation in Data Structures, Algorithms, and System Design, which I’ve applied in both academic projects and personal initiatives.",
+            "Every person has their own journey filled with ups and downs, and I am no different. From the very beginning, I carried the dream of becoming an engineer. Life, however, took me through several unexpected turns. After completing my 12th, I prepared for IIT-JEE but couldn’t achieve the result I hoped for. I went on to pursue a B.Sc. and then an M.Sc. in Mathematics, performing well academically but still feeling a gap between what I was doing and what I truly wanted.",
+            "Even though I succeeded in exams, I often questioned the practical application of what I was learning. I realized that I was hungry for something more hands-on — something that challenged me to solve real-world problems. That’s when I decided to restart my journey with B.Tech, even after already completing B.Sc. and M.Sc. Many thought it was unusual, but I knew this was the right choice.",
+            "Life has tested me with failures, doubts, and delays, but each time I stood up and chose not to stop. I learned that success is not about avoiding setbacks, but about staying loyal to your dream and continuing the journey no matter how hard it gets. Today, I am in the final year of my B.Tech, proud that I never gave up on my aspiration of becoming an engineer.",
+            "Along the way, I discovered my passion for building software solutions — creating systems that are efficient, meaningful, and impactful. I am working with technologies like Golang, React, JavaScript, and AWS, while also strengthening my problem-solving foundations through DSA. I enjoy learning by building, which is why I focus on projects that prepare me for real-world challenges.",
+            "What defines me is my loyalty to my goals and my determination to always pursue what I truly want. I believe in consistency, hard work, and patience — qualities that have helped me rebuild my path more than once. My vision is to grow into a professional who is not only technically strong but also resilient, adaptive, and capable of inspiring others. I see engineering not just as a career, but as a responsibility: to create, to solve, and to keep moving forward — no matter what."
+          ],
+    
     education: [
       { degree: "B.Tech in Computer Science", institution: "Dayananda Sagar University, Bengaluru", years: "2022-2026", cgpa: "8.59/10" },
       { degree: "M.Sc in Mathematics", institution: "V.B.S. Purvanchal University, UP", years: "2020-2022", percentage: "73%" },
@@ -334,18 +342,20 @@ const handleSubmit = async (e) => {
 
       {/* About Section */}
       <section id="about" ref={aboutRef} className="py-24 px-6 relative">
-        <div className="absolute inset-0 bg-gradient-to-b from-slate-800/50 to-slate-900/50"></div>
-        <div className="container mx-auto max-w-4xl relative z-10">
-          <h2 className="text-5xl font-black text-center mb-16 scroll-animate">
-            <span className="bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">About Me</span>
-          </h2>
-          <div className="bg-white/5 backdrop-blur-xl p-10 rounded-3xl border border-white/10 shadow-2xl scroll-animate hover:shadow-emerald-400/20 transition-all duration-500">
-            <p className="text-lg leading-relaxed text-white/90 mb-6">{portfolioData.about}</p>
-            <p className="text-lg leading-relaxed text-white/90">
-              My goal is to leverage my expertise to build impactful solutions that make a difference.
-            </p>
-          </div>
-        </div>
+      <div className="bg-white/5 backdrop-blur-xl p-10 rounded-3xl border border-white/10 shadow-2xl scroll-animate hover:shadow-emerald-400/20 transition-all duration-500">
+          {portfolioData.about && portfolioData.about.length > 0 ? (
+            portfolioData.about.map((para, index) => (
+              <p key={index} className="text-base leading-relaxed text-white/90 mb-6">
+                {para}
+              </p>
+            ))
+          ) : (
+            <p className="text-base text-white/70">No content available.</p>
+          )}
+          <p className="text-base leading-relaxed text-white/90">
+            My goal is to leverage my expertise to build impactful solutions that make a difference.
+          </p>
+</div>
       </section>
 
       {/* Journey Section */}
