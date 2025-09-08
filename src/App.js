@@ -51,31 +51,31 @@ function App() {
     ],
     projects: [
       {
-        title: "Email Checker Tool (Go)",
+        title: "Email Checker Tool",
         description: "Built a Go-based utility that validates email syntax and domain existence using modular design and efficient error handling. Improved input reliability by integrating domain lookup APIs.",
         github: "https://github.com/Vivek-Prakash1307/email-domain-checker",
-        technologies: ["Go"],
+        technologies: ["Go","React","Tailwind CSS"],
       },
       {
         title: "Go-Stock-scrapper",
         description: "A web scraping tool built with Go (Golang) and Colly to fetch live stock market data from Yahoo Finance. The program collects information such as company name, current stock price, and percentage change, then stores the results in a CSV file for further analysis or record-keeping.",
         github: "https://github.com/Vivek-Prakash1307/Stock-Scrapper",
-        technologies: ["HTML", "CSS", "JavaScript"],
+        technologies: ["Go"],
       },
       {
-        title: "Web Server API (Go, MySQL)",
+        title: "Web Server API",
         description: "Developed RESTful API endpoints using Gin and GORM for user authentication and product management. Integrated MySQL database with complete CRUD operations.",
         github: "https://github.com/Vivek-Prakash1307/Web-Server-API",
         technologies: ["Go", "MySQL", "Gin", "GORM"],
       },
       {
-        title: "Weather Tracker ",
+        title: "Weather Tracker",
         description: "Combined two microservices: a weather dashboard using OpenWeatherMap API and a secure URL shortener with JWT authentication. Implemented MongoDB integration for persistent shortlink storage.",
         github: "https://github.com/Vivek-Prakash1307/Weather-app",
-        technologies: ["Go", "MongoDB"],
+        technologies: ["Go","React","Tailwind CSS"],
       },
       {
-        title: "Load Balancer (Go)",
+        title: "Load Balancer",
         description: "Built a lightweight HTTP load balancer using round-robin algorithm with custom server health checks. Improved request distribution and fault tolerance for backend microservices.",
         github: "https://github.com/Vivek-Prakash1307/Load_Balancer",
         technologies: ["Go"],
@@ -217,7 +217,7 @@ const handleSubmit = async (e) => {
         {[...Array(50)].map((_, i) => (
           <div
             key={i}
-            className="absolute w-1 h-1 bg-gradient-to-r from-emerald-400 to-cyan-400 rounded-full opacity-30"
+            className="absolute w-1 h-1 bg-gradient-to-r from-yellow-400 to-amber-400 rounded-full opacity-30"
             style={{
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
@@ -232,7 +232,7 @@ const handleSubmit = async (e) => {
 
   const MouseTracker = () => (
     <div
-      className="fixed w-8 h-8 bg-gradient-to-r from-emerald-400 to-cyan-400 rounded-full pointer-events-none opacity-20 blur-sm transition-all duration-300 ease-out z-50"
+      className="fixed w-8 h-8 bg-gradient-to-r from-amber-400 to-yellow-400 rounded-full pointer-events-none opacity-20 blur-sm transition-all duration-300 ease-out z-50"
       style={{
         left: mousePosition.x - 16,
         top: mousePosition.y - 16,
@@ -241,17 +241,18 @@ const handleSubmit = async (e) => {
     />
   );
 
-  return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white relative">
+  return (// here need to color change-------------------------------------------------------/
+    <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-black text-white relative">
       <FloatingParticles />
       <MouseTracker />
       
       {/* Navigation */}
       <nav className="fixed w-full z-40 backdrop-blur-xl bg-slate-900/80 border-b border-white/10">
         <div className="container mx-auto px-6 py-4 flex justify-between items-center">
-          <div className="text-2xl font-bold bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">
+          <div className="text-2xl font-bold bg-gradient-to-r from-yellow-400 to-amber-400 bg-clip-text text-transparent">
             {portfolioData.name.split(' ')[0]}
           </div>
+          <div className="flex items-center gap-8">
           <div className="hidden md:flex space-x-1">
             {['home', 'about', 'journey', 'skills', 'projects', 'contact'].map((section) => (
               <button
@@ -259,30 +260,36 @@ const handleSubmit = async (e) => {
                 onClick={() => scrollToSection(section)}
                 className={`px-6 py-2 rounded-full text-sm font-medium capitalize transition-all duration-300 ${
                   activeSection === section
-                    ? 'bg-gradient-to-r from-emerald-400 to-cyan-400 text-slate-900 shadow-lg shadow-emerald-400/25'
+                    ? 'bg-gradient-to-r from-yellow-400 to-amber-400 text-slate-900 shadow-lg shadow-emerald-400/25'
                     : 'text-white/70 hover:text-white hover:bg-white/10'
                 }`}
               >
                 {section}
               </button>
             ))}
+            
           </div>
+          <a
+              href="/resume.pdf"
+              download="Vivek_Prakash_Resume.pdf"
+              className="group relative px-6 py-3 bg-gradient-to-r from-purple-500 to-pink-500 text-white font-bold rounded-full overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-purple-500/50"
+            >
+              <span className="relative z-10 flex items-center gap-2">
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+                Resume
+              </span>
+              <div className="absolute inset-0 bg-gradient-to-r from-pink-500 to-purple-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            </a>
+            </div>
         </div>
       </nav>
 
-      <div className="absolute top-4 right-4 z-50">
-      <a
-        href="/resume.pdf"
-        download="Vivek_Prakash_Resume.pdf"
-        className="flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg shadow hover:bg-blue-700 transition"
-      >
-        Download Resume
-      </a>
-    </div>
 
       {/* Hero Section */}
       <section id="home" ref={homeRef} className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-900/50 via-purple-900/50 to-emerald-900/50"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-black/50 via-gray-900/50 to-yellow-900/30"></div>
         
         {/* Animated Background Elements */}
         <div className="absolute inset-0">
@@ -293,7 +300,7 @@ const handleSubmit = async (e) => {
         <div className="relative z-10 text-center max-w-6xl mx-auto px-6">
           <div className={`transition-all duration-1000 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}>
             <div className="mb-8">
-              <div className="w-48 h-48 mx-auto rounded-full bg-gradient-to-r from-emerald-400 to-cyan-400 p-1 mb-8 shadow-2xl shadow-emerald-400/25">
+              <div className="w-48 h-48 mx-auto rounded-full bg-gradient-to-r from-yellow-400 to-amber-400 p-1 mb-8 shadow-2xl shadow-emerald-400/25">
                 <div className="w-full h-full rounded-full bg-slate-800 flex items-center justify-center text-6xl font-bold text-white">
                   VP
                 </div>
@@ -312,10 +319,10 @@ const handleSubmit = async (e) => {
             <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
               <button
                 onClick={() => scrollToSection('projects')}
-                className="group relative px-8 py-4 bg-gradient-to-r from-emerald-400 to-cyan-400 text-slate-900 font-bold rounded-full overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-emerald-400/50"
+                className="group relative px-8 py-4 bg-gradient-to-r from-yellow-400 to-amber-400 text-slate-900 font-bold rounded-full overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-emerald-400/50"
               >
                 <span className="relative z-10">View My Work</span>
-                <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-emerald-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-amber-400 to-yellow-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </button>
               
               <button
@@ -324,6 +331,19 @@ const handleSubmit = async (e) => {
               >
                 <span className="relative z-10">Let's Connect</span>
               </button>
+              <a
+                href="/resume.pdf"
+                download="Vivek_Prakash_Resume.pdf"
+                className="group relative px-8 py-4 bg-gradient-to-r from-purple-500 to-pink-500 text-white font-bold rounded-full overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/50"
+              >
+                <span className="relative z-10 flex items-center gap-2">
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                  </svg>
+                  Download Resume
+                </span>
+                <div className="absolute inset-0 bg-gradient-to-r from-pink-500 to-purple-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              </a>
             </div>
 
             <div className="flex justify-center space-x-8 mt-12">
@@ -351,10 +371,12 @@ const handleSubmit = async (e) => {
       </section>
 
       {/* About Section */}
-      <section id="about" ref={aboutRef} className="py-24 px-6 relative">
+      <section id="about" ref={aboutRef} className="py-24 px-6 bg-gradient-to-r from-purple-500 via-black to-gray-900 relative">
         
       <div className="bg-white/5 backdrop-blur-xl p-10 rounded-3xl border border-white/10 shadow-2xl scroll-animate hover:shadow-emerald-400/20 transition-all duration-500">
-        <h2 className="text-4xl font-bold text-center text-white mb-8">About</h2>
+        <h2 className="text-5xl font-black text-center mb-16 scroll-animate">
+            <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">About</span>
+          </h2>
           {portfolioData.about && portfolioData.about.length > 0 ? (
             portfolioData.about.map((para, index) => (
               <p key={index} className="text-base leading-relaxed text-white/90 mb-6">
@@ -362,7 +384,7 @@ const handleSubmit = async (e) => {
               </p>
             ))
           ) : (
-            <p className="text-base text-white/70">About.</p>
+            <p className="text-base text-white/100">About.</p>
           )}
           <p className="text-base leading-relaxed text-white/90">
             My goal is to leverage my expertise to build impactful solutions that make a difference.
@@ -371,7 +393,8 @@ const handleSubmit = async (e) => {
       </section>
 
       {/* Journey Section */}
-      <section id="journey" ref={journeyRef} className="py-24 px-6 bg-gradient-to-r from-slate-900 to-purple-900 relative">
+      {/* <section id="projects" ref={projectsRef} className="py-24 px-6 bg-gradient-to-br from-amber-400 via-gray-900 to-black relative">*/}
+      <section id="journey" ref={journeyRef} className="py-24 px-6 bg-gradient-to-r from-sky-500 via-black to-gray-900 relative">
         <div className="container mx-auto max-w-7xl">
           <h2 className="text-5xl font-black text-center mb-16 scroll-animate">
             <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">My Journey</span>
@@ -387,7 +410,7 @@ const handleSubmit = async (e) => {
                     key={index}
                     className="group relative bg-white/5 backdrop-blur-xl p-8 rounded-2xl border border-white/10 hover:border-emerald-400/50 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-emerald-400/20"
                   >
-                    <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-emerald-400 to-cyan-400 rounded-l-2xl transform scale-y-0 group-hover:scale-y-100 transition-transform duration-500"></div>
+                    <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-amber-400 to-yellow-400 rounded-l-2xl transform scale-y-0 group-hover:scale-y-100 transition-transform duration-500"></div>
                     <h4 className="text-xl font-bold text-white mb-2">{edu.degree}</h4>
                     <p className="text-emerald-400 font-medium">{edu.institution}</p>
                     <p className="text-white/60 text-sm">{edu.years}</p>
@@ -404,7 +427,9 @@ const handleSubmit = async (e) => {
       </section>
 
       {/* Skills Section */}
-      <section id="skills" ref={skillsRef} className="py-24 px-6 bg-gradient-to-r from-purple-900 to-slate-900 relative">
+      {/* <section id="projects" ref={projectsRef} className="py-24 px-6 bg-gradient-to-br from-amber-400 via-gray-900 to-black relative">*/}
+      <section id="skills" ref={skillsRef} className="py-24 px-6 bg-gradient-to-r from-green-500 via-black to-gray-900 relative">
+
         <div className="container mx-auto max-w-6xl">
           <h2 className="text-5xl font-black text-center mb-16 scroll-animate">
             <span className="bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">My Skills</span>
@@ -463,7 +488,7 @@ const handleSubmit = async (e) => {
       </section>
 
       {/* Projects Section */}
-      <section id="projects" ref={projectsRef} className="py-24 px-6 bg-gradient-to-br from-slate-900 via-emerald-900 to-slate-900 relative">
+      <section id="projects" ref={projectsRef} className="py-24 px-6 bg-gradient-to-br from-amber-500 via-black to-gray-900 relative">
         <div className="absolute inset-0 opacity-30">
           <div className="absolute top-20 left-20 w-40 h-40 bg-emerald-400/20 rounded-full blur-2xl animate-pulse"></div>
           <div className="absolute bottom-20 right-20 w-60 h-60 bg-cyan-400/20 rounded-full blur-2xl animate-pulse delay-1000"></div>
@@ -471,7 +496,7 @@ const handleSubmit = async (e) => {
         
         <div className="container mx-auto max-w-7xl relative z-10">
           <h2 className="text-5xl font-black text-center mb-16 scroll-animate">
-            <span className="bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">My Projects</span>
+            <span className="bg-gradient-to-r from-amber-200 to-yellow-500 bg-clip-text text-transparent">My Projects</span>
           </h2>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -485,7 +510,7 @@ const handleSubmit = async (e) => {
                 
                 <div className="relative p-8">
                   <div className="flex items-center justify-between mb-4">
-                    <div className="w-12 h-12 bg-gradient-to-r from-emerald-400 to-cyan-400 rounded-xl flex items-center justify-center">
+                    <div className="w-12 h-12 bg-gradient-to-r from-yellow-400 to-amber-400 rounded-xl flex items-center justify-center">
                       <svg className="w-6 h-6 text-slate-900" fill="currentColor" viewBox="0 0 20 20">
                         <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z" />
                       </svg>
@@ -526,7 +551,7 @@ const handleSubmit = async (e) => {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" ref={contactRef} className="py-24 px-6 bg-gradient-to-br from-purple-900 via-slate-900 to-emerald-900 relative">
+      <section id="contact" ref={contactRef} className="py-24 px-6 bg-gradient-to-br from-yellow-500 via-black to-yellow-900/30 relative">
         <div className="absolute inset-0">
           <div className="absolute top-1/3 left-1/3 w-80 h-80 bg-gradient-to-r from-emerald-400/20 to-cyan-400/20 rounded-full blur-3xl animate-pulse"></div>
           <div className="absolute bottom-1/3 right-1/3 w-96 h-96 bg-gradient-to-r from-purple-400/20 to-pink-400/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
@@ -611,7 +636,7 @@ const handleSubmit = async (e) => {
                 className={`group relative w-full px-8 py-4 font-bold rounded-xl overflow-hidden transition-all duration-300 hover:scale-105 ${
                   isSubmitting 
                     ? 'bg-gray-600 cursor-not-allowed' 
-                    : 'bg-gradient-to-r from-emerald-400 to-cyan-400 hover:shadow-2xl hover:shadow-emerald-400/50'
+                    : 'bg-gradient-to-r from-amber-400 to-yellow-400 hover:shadow-2xl hover:shadow-emerald-400/50'
                 } text-slate-900`}
               >
                 <span className="relative z-10 flex items-center justify-center">
@@ -633,7 +658,7 @@ const handleSubmit = async (e) => {
                   )}
                 </span>
                 {!isSubmitting && (
-                  <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-emerald-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <div className="absolute inset-0 bg-gradient-to-r from-amber-400 to-yellow-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 )}
               </button>
             </form>
@@ -641,7 +666,7 @@ const handleSubmit = async (e) => {
             <div className="mt-12 pt-8 border-t border-white/10">
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 text-center">
                 <div className="group">
-                  <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-r from-emerald-400 to-cyan-400 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                  <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-r from-yellow-400 to-amber-400 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                     <svg className="w-8 h-8 text-slate-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                     </svg>
@@ -693,7 +718,7 @@ const handleSubmit = async (e) => {
       <footer className="bg-slate-900/50 backdrop-blur-xl py-12 text-center border-t border-white/10">
         <div className="container mx-auto px-6">
           <div className="mb-6">
-            <div className="text-3xl font-bold bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent mb-2">
+            <div className="text-3xl font-bold bg-gradient-to-r from-yellow-400 to-amber-400 bg-clip-text text-transparent mb-2">
               {portfolioData.name}
             </div>
             <p className="text-white/60">Full Stack Developer</p>
