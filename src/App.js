@@ -65,7 +65,7 @@ function App() {
       {
         title: "Web Server API (Go, MySQL)",
         description: "Developed RESTful API endpoints using Gin and GORM for user authentication and product management. Integrated MySQL database with complete CRUD operations.",
-        github: "https://github.com/Vivek-Prakash1307/web-server-api",
+        github: "https://github.com/Vivek-Prakash1307/Web-Server-API",
         technologies: ["Go", "MySQL", "Gin", "GORM"],
       },
       {
@@ -77,13 +77,13 @@ function App() {
       {
         title: "Load Balancer (Go)",
         description: "Built a lightweight HTTP load balancer using round-robin algorithm with custom server health checks. Improved request distribution and fault tolerance for backend microservices.",
-        github: "https://github.com/Vivek-Prakash1307/load-balancer",
+        github: "https://github.com/Vivek-Prakash1307/Load_Balancer",
         technologies: ["Go"],
       },
       {
         title: "Go URL Shortener",
         description: "A lightweight URL shortening service built with Go (Golang). This application allows users to enter a long URL and generate a shortened link that redirects to the original address. It uses an in-memory map for storing short-to-original URL mappings, making it simple and fast for local testing or small-scale deployments.",
-        github: "https://github.com/Vivek-Prakash1307/load-balancer",
+        github: "https://github.com/Vivek-Prakash1307/URL_SHORTENER",
         technologies: ["Go"],
       },
     ],
