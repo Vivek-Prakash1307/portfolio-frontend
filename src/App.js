@@ -18,7 +18,7 @@ function App() {
   const portfolioData = {
     name: "Vivek Prakash",
     tagline: "Full Stack Developer with Golang",
-    intro: "Passionate about building innovative and efficient web solutions. Eager to learn, adapt, and contribute by building real-world projects that combine strong fundamentals with practical implementation.",
+    intro: "Passionate about building innovative and efficient web solutions. Eager to learn, adapt, loyal to work and contribute by building real-world projects that combine strong fundamentals with practical implementation.",
     about: [
             "Hello there! I'm Vivek Prakash, an engineering student with a strong focus on backend development and scalable systems. Over the past few years, I've gained hands-on experience building REST APIs, microservices, and performance-optimized applications using Go, Gin, Docker, and AWS. I also have a solid foundation in Data Structures, Algorithms, and System Design, which I’ve applied in both academic projects and personal initiatives.",
             "Every person has their own journey filled with ups and downs, and I am no different. From the very beginning, I carried the dream of becoming an engineer. Life, however, took me through several unexpected turns. After completing my 12th, I prepared for IIT-JEE but couldn’t achieve the result I hoped for. I went on to pursue a B.Sc. and then an M.Sc. in Mathematics, performing well academically but still feeling a gap between what I was doing and what I truly wanted.",
