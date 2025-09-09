@@ -271,7 +271,7 @@ const handleSubmit = async (e) => {
           </div>
           <a
               href="/resume.pdf"
-              download="Vivek_Prakash_Resume.pdf"
+              download="resume.pdf"
               className="group relative px-6 py-3 bg-gradient-to-r from-purple-500 to-pink-500 text-white font-bold rounded-full overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-purple-500/50"
             >
               <span className="relative z-10 flex items-center gap-2">
