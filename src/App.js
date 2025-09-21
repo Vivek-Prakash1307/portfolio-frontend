@@ -51,7 +51,7 @@ function App() {
     ],
     projects: [
       {
-        title: "Email Checker Tool",
+        title: "Email Domain Checker",
         description: "Built a Go-based utility that validates email syntax and domain existence using modular design and efficient error handling. Improved input reliability by integrating domain lookup APIs.",
         github: "https://github.com/Vivek-Prakash1307/email-domain-checker",
         technologies: ["Go","React","Tailwind CSS"],
@@ -69,13 +69,13 @@ function App() {
         technologies: ["Go", "MySQL", "Gin", "GORM"],
       },
       {
-        title: "Weather Tracker",
+        title: "Weather-app",
         description: "Combined two microservices: a weather dashboard using OpenWeatherMap API and a secure URL shortener with JWT authentication. Implemented MongoDB integration for persistent shortlink storage.",
         github: "https://github.com/Vivek-Prakash1307/Weather-app",
         technologies: ["Go","React","Tailwind CSS"],
       },
       {
-        title: "Load Balancer",
+        title: "HTTP Load Balancer",
         description: "Built a lightweight HTTP load balancer using round-robin algorithm with custom server health checks. Improved request distribution and fault tolerance for backend microservices.",
         github: "https://github.com/Vivek-Prakash1307/Load_Balancer",
         technologies: ["Go"],
