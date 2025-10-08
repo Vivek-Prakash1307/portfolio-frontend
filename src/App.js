@@ -51,9 +51,9 @@ function App() {
     ],
     projects: [
       {
-        title: "Email Domain Checker",
+        title: "Email-Intelligence-Platform",
         description: "Built a Go-based utility that validates email syntax and domain existence using modular design and efficient error handling. Improved input reliability by integrating domain lookup APIs.",
-        github: "https://github.com/Vivek-Prakash1307/email-domain-checker",
+        github: "https://github.com/Vivek-Prakash1307/email-intelligence-platform",
         technologies: ["Go","React","Tailwind CSS"],
       },
       {
