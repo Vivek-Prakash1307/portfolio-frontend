@@ -71,7 +71,7 @@ function App() {
       {
         title: "WeatherStack",
         description: "Combined two microservices: a weather dashboard using OpenWeatherMap API and a secure URL shortener with JWT authentication. Implemented MongoDB integration for persistent shortlink storage.",
-        github: "https://github.com/Vivek-Prakash1307/Weather-app",
+        github: "https://github.com/Vivek-Prakash1307/weatherstack-go",
         technologies: ["Go","React","Tailwind CSS"],
       },
       {
