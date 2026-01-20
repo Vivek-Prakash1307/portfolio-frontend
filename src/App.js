@@ -52,40 +52,176 @@ function App() {
     projects: [
       {
         title: "Email-Intelligence-Platform",
-        description: "Built a Go-based utility that validates email syntax and domain existence using modular design and efficient error handling. Improved input reliability by integrating domain lookup APIs.",
+        description:
+          "Built a production-ready full-stack email verification system with concurrent domain checks, DNS MX record lookups, REST APIs, and cloud deployment. Focused on reliability, performance optimization, and clean backend architecture.",
         github: "https://github.com/Vivek-Prakash1307/email-intelligence-platform",
-        technologies: ["Go","React","Tailwind CSS"],
+        technologies: [
+          "Go (Golang)",
+          "Gin",
+          "Goroutines",
+          "REST APIs",
+          "DNS MX Lookup",
+          "SMTP Validation",
+          "React",
+          "HTML",
+          "CSS",
+          "Tailwind CSS",
+          "PostgreSQL",
+          "Docker",
+          "Linux",
+          "Render",
+          "Vercel",
+        ],
       },
       {
-        title: "Go-Stock-scrapper",
-        description: "A web scraping tool built with Go (Golang) and Colly to fetch live stock market data from Yahoo Finance. The program collects information such as company name, current stock price, and percentage change, then stores the results in a CSV file for further analysis or record-keeping.",
+        title: "Go-Stock-Scrapper",
+        description:
+          "A web scraping tool built with Go and Colly to fetch live stock market data from Yahoo Finance. Extracts company name, stock price, and percentage change, and stores results in CSV format for analysis.",
         github: "https://github.com/Vivek-Prakash1307/Stock-Scrapper",
-        technologies: ["Go"],
+        technologies: [
+          "Go (Golang)",
+          "Colly",
+          "HTTP Requests",
+          "HTML Parsing",
+          "CSV File Handling",
+          "Git",
+        ],
       },
       {
         title: "Web Server API",
-        description: "Developed RESTful API endpoints using Gin and GORM for user authentication and product management. Integrated MySQL database with complete CRUD operations.",
+        description:
+          "Developed RESTful API endpoints using Gin and GORM for user authentication and product management. Integrated MySQL database with complete CRUD operations and clean API design.",
         github: "https://github.com/Vivek-Prakash1307/Web-Server-API",
-        technologies: ["Go", "MySQL", "Gin", "GORM"],
+        technologies: [
+          "Go (Golang)",
+          "Gin",
+          "GORM",
+          "MySQL",
+          "REST APIs",
+          "Authentication",
+        ],
       },
       {
         title: "WeatherStack",
-        description: "Combined two microservices: a weather dashboard using OpenWeatherMap API and a secure URL shortener with JWT authentication. Implemented MongoDB integration for persistent shortlink storage.",
+        description:
+          "Built a high-performance Go-based weather microservice using an external weather API with caching, health checks, and RESTful endpoints. Focused on scalability, error handling, and microservice architecture.",
         github: "https://github.com/Vivek-Prakash1307/weatherstack-go",
-        technologies: ["Go","React","Tailwind CSS"],
+        technologies: [
+          "Go (Golang)",
+          "Gin",
+          "REST APIs",
+          "External API Integration",
+          "Caching",
+          "Docker",
+          "Linux",
+          "Postman",
+        ],
       },
       {
         title: "HTTP Load Balancer",
-        description: "Built a lightweight HTTP load balancer using round-robin algorithm with custom server health checks. Improved request distribution and fault tolerance for backend microservices.",
+        description:
+          "Implemented a custom HTTP load balancer using a round-robin algorithm with health checks and reverse proxying. Improved fault tolerance and request distribution for backend services.",
         github: "https://github.com/Vivek-Prakash1307/Load_Balancer",
-        technologies: ["Go"],
+        technologies: [
+          "Go (Golang)",
+          "net/http",
+          "Reverse Proxy",
+          "Round-Robin Algorithm",
+          "Goroutines",
+          "Concurrency",
+        ],
       },
       {
         title: "Go URL Shortener",
-        description: "A lightweight URL shortening service built with Go (Golang). This application allows users to enter a long URL and generate a shortened link that redirects to the original address. It uses an in-memory map for storing short-to-original URL mappings, making it simple and fast for local testing or small-scale deployments.",
+        description:
+          "A lightweight URL shortening service built in Go that generates short links and redirects users to the original URLs. Designed for simplicity, fast lookup, and small-scale deployments.",
         github: "https://github.com/Vivek-Prakash1307/URL_SHORTENER",
-        technologies: ["Go"],
+        technologies: [
+          "Go (Golang)",
+          "REST APIs",
+          "In-Memory Storage",
+          "HTTP Redirects",
+        ],
       },
+      {
+        title: "Slack Bot",
+        description:
+          "Built a Go-based Slack bot that listens to user commands, parses parameters, and calculates age from the provided year of birth. Includes secure environment configuration, concurrency, and graceful error handling.",
+        github: "https://github.com/Vivek-Prakash1307/Slack-bot",
+        technologies: [
+          "Go (Golang)",
+          "Slack API",
+          "Slacker Framework",
+          "dotenv",
+          "Goroutines",
+          "Context API",
+        ],
+      },
+      {
+        title: "PPT-to-PDF Converter",
+        description:
+          "Built a production-grade Go web application to convert multiple document formats to PDF using LibreOffice. Supports concurrent processing, large file uploads, real-time progress tracking, and Docker-based cloud deployment.",
+        github: "https://github.com/Vivek-Prakash1307/PPT-TO-PDF-CONVERTER",
+        technologies: [
+          "Go (Golang)",
+          "Gin",
+          "LibreOffice",
+          "Docker",
+          "Railway",
+          "Linux",
+          "REST APIs",
+          "Concurrent Processing",
+          "File Handling",
+        ],
+      },
+      {
+        title: "Chunked File Uploader",
+        description:
+          "A production-ready React + TypeScript application implementing chunked file uploads with retry mechanisms, resumable uploads, IndexedDB persistence, accessibility support, and comprehensive testing.",
+        github: "https://github.com/Vivek-Prakash1307/chunked-file-uploader",
+        technologies: [
+          "React",
+          "TypeScript",
+          "Vite",
+          "IndexedDB",
+          "Web Crypto API",
+          "Chunked Uploads",
+          "State Machine",
+          "Storybook",
+          "Vitest",
+          "Playwright",
+        ],
+      },
+      {
+        title: "TaskFlow – Task Management App",
+        description:
+          "A full-stack task management application with JWT authentication and kanban-style workflow. Includes responsive UI, real-time CRUD operations, and secure backend APIs.",
+        github: "https://github.com/Vivek-Prakash1307/PrimeTrade",
+        technologies: [
+          "React",
+          "Node.js",
+          "Express",
+          "MongoDB",
+          "JWT",
+          "Tailwind CSS",
+          "REST APIs",
+          "Vite",
+        ],
+      },
+      {
+        title: "CLI Task Manager",
+        description:
+          "A command-line task management application built in Go with interactive commands for adding, listing, and completing tasks. Focused on simplicity, speed, and clean terminal-based workflows.",
+        github: "https://github.com/Vivek-Prakash1307/ToDo-List",
+        technologies: [
+          "Go (Golang)",
+          "CLI",
+          "Terminal I/O",
+          "bufio",
+          "Go Modules",
+        ],
+}
+
     ],
     contact: {
       email: "alivevivek8@gmail.com",
