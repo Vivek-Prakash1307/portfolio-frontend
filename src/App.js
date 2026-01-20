@@ -36,8 +36,7 @@ function App() {
     
     education: [
       { degree: "B.Tech in Computer Science", institution: "Dayananda Sagar University, Bengaluru", years: "2022-2026", cgpa: "8.59/10" },
-      
-    ``],
+      ],
     
     codingSkills: [
       { name: "Go", level: 75 },
