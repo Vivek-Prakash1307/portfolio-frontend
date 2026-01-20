@@ -17,22 +17,27 @@ function App() {
 
   const portfolioData = {
     name: "Vivek Prakash",
-    tagline: "Full Stack Developer with Golang",
+    tagline: "Golang Full Stack Developer",
     intro: "Passionate about building innovative and efficient web solutions. Eager to learn, adapt, loyal to work and contribute by building real-world projects that combine strong fundamentals with practical implementation.",
     about: [
-            "Hello there! I'm Vivek Prakash, an engineering student with a strong focus on backend development and scalable systems. Over the past few years, I've gained hands-on experience building REST APIs, microservices, and performance-optimized applications using Go, Gin, Docker, and AWS. I also have a solid foundation in Data Structures, Algorithms, and System Design, which I’ve applied in both academic projects and personal initiatives.",
-            "Every person has their own journey filled with ups and downs, and I am no different. From the very beginning, I carried the dream of becoming an engineer. Life, however, took me through several unexpected turns. After completing my 12th, I prepared for IIT-JEE but couldn’t achieve the result I hoped for. I went on to pursue a B.Sc. and then an M.Sc. in Mathematics, performing well academically but still feeling a gap between what I was doing and what I truly wanted.",
-            "Even though I succeeded in exams, I often questioned the practical application of what I was learning. I realized that I was hungry for something more hands-on — something that challenged me to solve real-world problems. That’s when I decided to restart my journey with B.Tech, even after already completing B.Sc. and M.Sc. Many thought it was unusual, but I knew this was the right choice.",
-            "Life has tested me with failures, doubts, and delays, but each time I stood up and chose not to stop. I learned that success is not about avoiding setbacks, but about staying loyal to your dream and continuing the journey no matter how hard it gets. Today, I am in the final year of my B.Tech, proud that I never gave up on my aspiration of becoming an engineer.",
-            "Along the way, I discovered my passion for building software solutions — creating systems that are efficient, meaningful, and impactful. I am working with technologies like Golang, React, JavaScript, and AWS, while also strengthening my problem-solving foundations through DSA. I enjoy learning by building, which is why I focus on projects that prepare me for real-world challenges.",
-            "What defines me is my loyalty to my goals and my determination to always pursue what I truly want. I believe in consistency, hard work, and patience — qualities that have helped me rebuild my path more than once. My vision is to grow into a professional who is not only technically strong but also resilient, adaptive, and capable of inspiring others. I see engineering not just as a career, but as a responsibility: to create, to solve, and to keep moving forward — no matter what."
+            [
+              "I'm a backend-focused full-stack engineer who enjoys building real, production-grade systems rather than just demos. My work spans backend services, system-level components, frontend applications, and deployment pipelines, with a strong emphasis on performance, reliability, and clean architecture.",
+
+              "On the backend, I primarily work with Go (Golang) and have built systems such as an Email Intelligence Platform, Weather microservices, HTTP Load Balancer, URL shorteners, Slack bots, CLI tools, and a document conversion platform (PPT-to-PDF). These projects involved concurrency with goroutines, networking concepts like DNS, HTTP, and reverse proxies, REST API design, authentication, caching, file processing, and fault tolerance, along with real cloud deployments using Docker, Linux, Render, Railway, and Vercel.",
+
+              "On the frontend, I work with React, TypeScript, JavaScript, HTML, CSS, and Tailwind CSS to build responsive, accessible, and user-focused interfaces. I’ve developed advanced frontend systems such as a chunked file uploader with resumable uploads, state-machine-driven logic, IndexedDB persistence, and comprehensive testing using Vitest, React Testing Library, Storybook, and Playwright, along with a full-stack task management (MERN) application featuring authentication and real-time CRUD workflows.",
+
+              "Across my projects, I've worked with databases including MySQL, PostgreSQL, and MongoDB, as well as testing and debugging tools, CI/CD concepts, and core system design principles. I care deeply about writing clean, explainable code, understanding how systems behave under load, and building software that remains maintainable beyond the first version.",
+
+              "I'm currently looking for opportunities where I can contribute as a backend or full-stack engineer, work on real-world systems, learn from strong engineering teams, and help build scalable, high-impact products."
+            ]
+
           ],
     
     education: [
       { degree: "B.Tech in Computer Science", institution: "Dayananda Sagar University, Bengaluru", years: "2022-2026", cgpa: "8.59/10" },
-      { degree: "M.Sc in Mathematics", institution: "V.B.S. Purvanchal University, UP", years: "2020-2022", percentage: "73%" },
-      { degree: "B.Sc in Mathematics", institution: "V.B.S. Purvanchal University, UP", years: "2017-2020", percentage: "65.38%" },
-    ],
+      
+    ``],
     
     codingSkills: [
       { name: "Go", level: 75 },
