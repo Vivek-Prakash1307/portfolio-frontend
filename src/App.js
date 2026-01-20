@@ -68,10 +68,15 @@ function App() {
     ],
     professionalSkills: [
       { name: "Problem Solving", level: 85 },
-      { name: "Team Collaboration", level: 85 },
-      { name: "Code Optimization", level: 75 },
-      { name: "Debugging", level: 92 },
-      { name: "Communication", level: 70 },
+      { name: "Debugging", level: 90 },
+      { name: "Code Optimization", level: 78 },
+      { name: "System Thinking", level: 75 },
+      { name: "Clean Code Practices", level: 80 },
+      { name: "Team Collaboration", level: 82 },
+      { name: "Communication", level: 72 },
+      { name: "Time Management", level: 75 },
+      { name: "Adaptability & Learning", level: 88 },
+      { name: "Ownership & Responsibility", level: 85 }
     ],
     projects: [
       {
