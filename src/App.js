@@ -80,6 +80,46 @@ function App() {
     ],
     projects: [
       {
+        title: "Automated-Financial-Data-Extraction-and-Analysis-System",
+        description:
+        "A scalable financial data extraction and analysis platform built with Go to process stock market data for 500+ companies from multiple web sources. Features concurrent scraping workflows, checkpoint recovery, retry handling, structured parsing pipelines, and high-volume HTML-to-structured-data transformation for reliable large-scale data processing.",
+        github:
+        "https://github.com/Vivek-Prakash1307/Automated-Financial-Data-Extraction-and-Analysis-System-",
+        technologies: [
+        "Go (Golang)",
+        "Goroutines",
+        "Concurrent Processing",
+        "Web Scraping",
+        "HTML Parsing",
+        "Data Pipelines",
+        "Checkpoint Recovery",
+        "Structured Logging",
+        "CSV/Data Processing",
+        "Git",
+        ],
+        },
+
+        {
+        title: "Repository-Centric-Kubernetes-Security-Analysis-Framework",
+        description:
+        "A Kubernetes security analysis framework designed to detect infrastructure misconfigurations through repository-centric scanning and Helm chart analysis. Includes DevSecOps workflows, RBAC and network policy validation, remediation pipelines, WebSocket-based operations, and posture scoring for real-time Kubernetes security assessment.",
+        github:
+        "https://github.com/Aegios-k8s/major-project",
+        technologies: [
+        "Go (Golang)",
+        "Kubernetes",
+        "Helm Charts",
+        "DevSecOps",
+        "GitHub APIs",
+        "WebSockets",
+        "RBAC Analysis",
+        "Security Validation",
+        "Container Security",
+        "Docker",
+        "Git",
+        ],
+      },
+      {
         title: "Email-Intelligence-Platform",
         description:
           "Built a production-ready full-stack email verification system with concurrent domain checks, DNS MX record lookups, REST APIs, and cloud deployment. Focused on reliability, performance optimization, and clean backend architecture.",
