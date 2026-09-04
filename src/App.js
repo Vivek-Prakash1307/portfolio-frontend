@@ -125,6 +125,21 @@ const skillGroups = [
   },
 ];
 
+const techStack = [
+  { name: 'Go', tone: 'cyan', mark: 'Go' },
+  { name: 'Gin', tone: 'green', mark: 'Gi' },
+  { name: 'Fiber', tone: 'lime', mark: 'Fi' },
+  { name: 'React', tone: 'sky', mark: 'Re' },
+  { name: 'TypeScript', tone: 'blue', mark: 'TS' },
+  { name: 'PostgreSQL', tone: 'indigo', mark: 'PG' },
+  { name: 'MongoDB', tone: 'green', mark: 'Mo' },
+  { name: 'Docker', tone: 'blue', mark: 'Do' },
+  { name: 'Linux', tone: 'amber', mark: 'Li' },
+  { name: 'Kubernetes', tone: 'violet', mark: 'K8s' },
+  { name: 'Tailwind', tone: 'teal', mark: 'Tw' },
+  { name: 'Playwright', tone: 'red', mark: 'Pw' },
+];
+
 const journey = [
   {
     year: 'Now',
@@ -169,11 +184,14 @@ function App() {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState('');
+  const [scrollMotion, setScrollMotion] = useState(0);
 
   const sections = useMemo(
-    () => ['home', 'about', 'work', 'skills', 'journey', 'contact'],
+    () => ['home', 'flow', 'about', 'work', 'skills', 'journey', 'contact'],
     []
   );
+
+  const projectFlow = useMemo(() => [...featuredProjects, ...moreProjects], []);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -206,6 +224,25 @@ function App() {
       animatedObserver.disconnect();
     };
   }, [sections]);
+
+  useEffect(() => {
+    let frame = 0;
+    const handleScroll = () => {
+      if (frame) return;
+      frame = window.requestAnimationFrame(() => {
+        setScrollMotion(window.scrollY);
+        frame = 0;
+      });
+    };
+
+    handleScroll();
+    window.addEventListener('scroll', handleScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      if (frame) window.cancelAnimationFrame(frame);
+    };
+  }, []);
 
   const scrollToSection = (id) => {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
@@ -318,6 +355,68 @@ function App() {
                 <span>{stat.label}</span>
               </div>
             ))}
+          </div>
+        </section>
+
+        <section id="flow" className="flow-section" aria-label="Project and technology motion gallery">
+          <div className="flow-copy reveal">
+            <p className="eyebrow">Flow Wall</p>
+            <h2>Projects and stack moving like a product story.</h2>
+            <p>
+              A visual pass through the systems I build and the tools I use, designed to feel alive
+              while you scroll.
+            </p>
+          </div>
+
+          <div className="motion-stage" style={{ '--scrollShift': `${scrollMotion * -0.08}px` }}>
+            <div className="project-strip strip-left">
+              {[...projectFlow, ...projectFlow].map((project, index) => (
+                <article className="project-shot" key={`${project.title}-left-${index}`}>
+                  <div className="shot-toolbar">
+                    <span />
+                    <span />
+                    <span />
+                  </div>
+                  <div className="shot-visual">
+                    <div className="shot-chart" />
+                    <div className="shot-lines">
+                      <span />
+                      <span />
+                      <span />
+                    </div>
+                  </div>
+                  <p>{project.title}</p>
+                </article>
+              ))}
+            </div>
+
+            <div className="tech-strip strip-right">
+              {[...techStack, ...techStack, ...techStack].map((tech, index) => (
+                <div className={`tech-tile tone-${tech.tone}`} key={`${tech.name}-${index}`}>
+                  <strong>{tech.mark}</strong>
+                  <span>{tech.name}</span>
+                </div>
+              ))}
+            </div>
+
+            <div className="project-strip strip-left slow">
+              {[...projectFlow].reverse().concat(projectFlow).map((project, index) => (
+                <article className="project-shot wide" key={`${project.title}-wide-${index}`}>
+                  <div className="shot-toolbar">
+                    <span />
+                    <span />
+                    <span />
+                  </div>
+                  <div className="terminal-lines">
+                    <span />
+                    <span />
+                    <span />
+                    <span />
+                  </div>
+                  <p>{project.tech.slice(0, 3).join(' / ')}</p>
+                </article>
+              ))}
+            </div>
           </div>
         </section>
 

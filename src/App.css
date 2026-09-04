@@ -347,6 +347,256 @@ a {
   padding: 108px max(24px, calc((100vw - 1180px) / 2));
 }
 
+.flow-section {
+  position: relative;
+  display: grid;
+  min-height: 118vh;
+  align-content: center;
+  gap: 42px;
+  overflow: hidden;
+  padding: 118px 0;
+  background:
+    linear-gradient(180deg, var(--bg), rgba(7, 17, 15, 0.98) 22%, rgba(4, 9, 8, 0.98)),
+    radial-gradient(circle at 50% 50%, rgba(68, 224, 174, 0.16), transparent 36rem);
+}
+
+.flow-section::before,
+.flow-section::after {
+  position: absolute;
+  z-index: 3;
+  top: 0;
+  bottom: 0;
+  width: min(18vw, 220px);
+  pointer-events: none;
+  content: '';
+}
+
+.flow-section::before {
+  left: 0;
+  background: linear-gradient(90deg, var(--bg), transparent);
+}
+
+.flow-section::after {
+  right: 0;
+  background: linear-gradient(270deg, var(--bg), transparent);
+}
+
+.flow-copy {
+  position: relative;
+  z-index: 4;
+  width: min(920px, calc(100% - 48px));
+  margin: 0 auto;
+  text-align: center;
+}
+
+.flow-copy h2 {
+  margin: 0;
+  font-size: clamp(2.8rem, 7vw, 6.4rem);
+  line-height: 0.92;
+}
+
+.flow-copy p:not(.eyebrow) {
+  max-width: 680px;
+  margin: 20px auto 0;
+  color: var(--soft);
+  font-size: 1.1rem;
+}
+
+.motion-stage {
+  --scrollShift: 0px;
+  position: relative;
+  z-index: 2;
+  display: grid;
+  gap: 18px;
+  width: 100%;
+  transform: translateY(calc(var(--scrollShift) * -0.12));
+}
+
+.project-strip,
+.tech-strip {
+  display: flex;
+  width: max-content;
+  gap: 18px;
+  will-change: transform;
+}
+
+.strip-left {
+  animation: drift-left 42s linear infinite;
+  transform: translateX(var(--scrollShift));
+}
+
+.strip-right {
+  animation: drift-right 34s linear infinite;
+  transform: translateX(calc(var(--scrollShift) * -1));
+}
+
+.strip-left.slow {
+  animation-duration: 56s;
+}
+
+.project-shot {
+  position: relative;
+  width: clamp(260px, 26vw, 420px);
+  min-height: 250px;
+  overflow: hidden;
+  border: 1px solid rgba(179, 255, 230, 0.18);
+  border-radius: 18px;
+  background:
+    linear-gradient(135deg, rgba(68, 224, 174, 0.16), transparent 42%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.025));
+  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.32);
+  backdrop-filter: blur(18px);
+}
+
+.project-shot.wide {
+  width: clamp(310px, 31vw, 500px);
+  min-height: 210px;
+}
+
+.shot-toolbar {
+  display: flex;
+  gap: 7px;
+  padding: 14px;
+  border-bottom: 1px solid rgba(179, 255, 230, 0.12);
+}
+
+.shot-toolbar span {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.shot-toolbar span:nth-child(2) {
+  background: var(--amber);
+}
+
+.shot-toolbar span:nth-child(3) {
+  background: var(--accent-2);
+}
+
+.shot-visual {
+  display: grid;
+  grid-template-columns: 0.9fr 1fr;
+  gap: 18px;
+  padding: 20px;
+}
+
+.shot-chart {
+  min-height: 130px;
+  border-radius: 14px;
+  background:
+    linear-gradient(135deg, transparent 10%, rgba(68, 224, 174, 0.45) 11%, transparent 12%),
+    linear-gradient(45deg, transparent 28%, rgba(125, 211, 252, 0.48) 29%, transparent 31%),
+    radial-gradient(circle at 62% 38%, rgba(244, 201, 107, 0.9) 0 8px, transparent 9px),
+    linear-gradient(180deg, rgba(238, 252, 247, 0.12), rgba(238, 252, 247, 0.03));
+}
+
+.shot-lines,
+.terminal-lines {
+  display: grid;
+  align-content: center;
+  gap: 12px;
+}
+
+.shot-lines span,
+.terminal-lines span {
+  display: block;
+  height: 12px;
+  border-radius: 999px;
+  background: rgba(238, 252, 247, 0.18);
+}
+
+.shot-lines span:nth-child(2),
+.terminal-lines span:nth-child(2) {
+  width: 74%;
+  background: rgba(68, 224, 174, 0.36);
+}
+
+.shot-lines span:nth-child(3),
+.terminal-lines span:nth-child(4) {
+  width: 52%;
+}
+
+.terminal-lines {
+  padding: 28px 22px 8px;
+}
+
+.terminal-lines span {
+  height: 10px;
+}
+
+.terminal-lines span:nth-child(1) {
+  width: 84%;
+}
+
+.terminal-lines span:nth-child(3) {
+  width: 66%;
+  background: rgba(125, 211, 252, 0.32);
+}
+
+.project-shot p {
+  position: absolute;
+  right: 18px;
+  bottom: 18px;
+  left: 18px;
+  margin: 0;
+  color: var(--text);
+  font-weight: 850;
+  line-height: 1.1;
+}
+
+.tech-tile {
+  display: grid;
+  width: 132px;
+  height: 132px;
+  flex: 0 0 auto;
+  place-items: center;
+  align-content: center;
+  gap: 9px;
+  border-radius: 24px;
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.28);
+  color: #05100d;
+}
+
+.tech-tile strong {
+  font-size: 2.35rem;
+  line-height: 1;
+}
+
+.tech-tile span {
+  font-size: 0.82rem;
+  font-weight: 850;
+}
+
+.tone-cyan,
+.tone-sky,
+.tone-teal {
+  background: linear-gradient(135deg, #7dd3fc, #44e0ae);
+}
+
+.tone-green,
+.tone-lime {
+  background: linear-gradient(135deg, #86efac, #44e0ae);
+}
+
+.tone-blue,
+.tone-indigo {
+  background: linear-gradient(135deg, #93c5fd, #60a5fa);
+}
+
+.tone-amber {
+  background: linear-gradient(135deg, #fde68a, #f4c96b);
+}
+
+.tone-violet {
+  background: linear-gradient(135deg, #c4b5fd, #7dd3fc);
+}
+
+.tone-red {
+  background: linear-gradient(135deg, #fca5a5, #f4c96b);
+}
+
 .section-heading {
   max-width: 780px;
   margin-bottom: 42px;
@@ -659,6 +909,24 @@ a {
   transform: translateY(0);
 }
 
+@keyframes drift-left {
+  from {
+    translate: 0 0;
+  }
+  to {
+    translate: -50% 0;
+  }
+}
+
+@keyframes drift-right {
+  from {
+    translate: -50% 0;
+  }
+  to {
+    translate: 0 0;
+  }
+}
+
 @media (max-width: 1024px) {
   .featured-grid,
   .project-grid,
@@ -673,6 +941,10 @@ a {
 
   .hero-panel {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .flow-section {
+    min-height: 100vh;
   }
 }
 
@@ -740,6 +1012,25 @@ a {
     min-height: auto;
   }
 
+  .tech-tile {
+    width: 104px;
+    height: 104px;
+    border-radius: 20px;
+  }
+
+  .tech-tile strong {
+    font-size: 1.8rem;
+  }
+
+  .project-shot {
+    width: 280px;
+    min-height: 220px;
+  }
+
+  .project-shot.wide {
+    width: 320px;
+  }
+
   .timeline-item {
     grid-template-columns: 1fr;
     gap: 10px;
@@ -774,6 +1065,19 @@ a {
     font-size: clamp(3rem, 18vw, 4.2rem);
   }
 
+  .flow-section {
+    padding: 90px 0;
+  }
+
+  .flow-copy {
+    width: calc(100% - 36px);
+    text-align: left;
+  }
+
+  .flow-copy h2 {
+    font-size: clamp(2.7rem, 15vw, 4.4rem);
+  }
+
   .hero-actions,
   .primary-button,
   .secondary-button {
@@ -799,5 +1103,11 @@ a {
     transition-duration: 0.01ms !important;
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
+  }
+
+  .project-strip,
+  .tech-strip,
+  .motion-stage {
+    transform: none !important;
   }
 }
