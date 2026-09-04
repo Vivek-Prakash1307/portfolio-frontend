@@ -235,7 +235,7 @@ function App() {
       if (!response.ok) throw new Error(data.error || 'Unable to send message.');
 
       setFormData({ name: '', email: '', message: '' });
-      setSubmitStatus('Message sent. I will get back to you soon.');
+      setSubmitStatus(data.message || 'Message accepted. It is being delivered now.');
     } catch (error) {
       setSubmitStatus(`Could not send through the form. Email me directly at ${portfolio.email}.`);
     } finally {

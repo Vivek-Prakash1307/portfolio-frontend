@@ -565,10 +565,12 @@ a {
 
 .contact-links {
   margin-top: 28px;
+  min-width: 0;
 }
 
 .contact-links a {
   display: inline-flex;
+  max-width: 100%;
   min-height: 42px;
   align-items: center;
   gap: 10px;
@@ -577,6 +579,12 @@ a {
   border-radius: 999px;
   color: var(--text);
   background: rgba(255, 255, 255, 0.045);
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.contact-links a .icon {
+  flex: 0 0 auto;
 }
 
 .contact-form {
