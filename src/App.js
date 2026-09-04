@@ -560,17 +560,26 @@ function App() {
               </p>
 
               <div className="contact-links">
-                <a href={`mailto:${portfolio.email}`}>
+                <a className="contact-card email-card" href={`mailto:${portfolio.email}`}>
                   <Icon name="mail" />
-                  {portfolio.email}
+                  <span>
+                    <small>Email</small>
+                    <strong>{portfolio.email}</strong>
+                  </span>
                 </a>
-                <a href={portfolio.links.github} target="_blank" rel="noopener noreferrer">
+                <a className="contact-card" href={portfolio.links.github} target="_blank" rel="noopener noreferrer">
                   <Icon name="github" />
-                  GitHub
+                  <span>
+                    <small>GitHub</small>
+                    <strong>View profile</strong>
+                  </span>
                 </a>
-                <a href={portfolio.links.linkedin} target="_blank" rel="noopener noreferrer">
+                <a className="contact-card" href={portfolio.links.linkedin} target="_blank" rel="noopener noreferrer">
                   <Icon name="linkedin" />
-                  LinkedIn
+                  <span>
+                    <small>LinkedIn</small>
+                    <strong>Connect</strong>
+                  </span>
                 </a>
               </div>
             </div>
