@@ -1,1037 +1,529 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
+import './App.css';
+
+const portfolio = {
+  name: 'Vivek Prakash',
+  role: 'Backend-Focused Full Stack Developer',
+  location: 'Bengaluru, India',
+  email: 'alivevivek8@gmail.com',
+  phone: '+91 7309058513',
+  summary:
+    'I build production-minded backend systems, APIs, automation tools, and full-stack products with Go, React, databases, Docker, and cloud deployments.',
+  focus: ['Go services', 'Distributed systems', 'API platforms', 'Cloud deployments'],
+  stats: [
+    { value: '15+', label: 'production-style projects' },
+    { value: '500+', label: 'companies processed in data pipelines' },
+    { value: 'Go', label: 'primary backend language' },
+    { value: '2026', label: 'B.Tech CSE graduate' },
+  ],
+  links: {
+    github: 'https://github.com/Vivek-Prakash1307',
+    linkedin: 'https://linkedin.com/in/vivek-prakash-00230a300',
+    leetcode: 'https://leetcode.com/u/alivevivek8',
+    geeksforgeeks: 'https://geeksforgeeks.org/user/alivevng22/',
+  },
+  education: {
+    degree: 'B.Tech in Computer Science',
+    institution: 'Dayananda Sagar University, Bengaluru',
+    years: '2022-2026',
+    cgpa: '8.59/10',
+  },
+};
+
+const featuredProjects = [
+  {
+    title: 'Automated Financial Data Extraction and Analysis System',
+    eyebrow: 'Concurrent data platform',
+    description:
+      'A Go platform that processes stock market data for 500+ companies with concurrent scraping, checkpoint recovery, retry handling, structured parsing, and CSV/data workflows.',
+    impact: ['High-volume extraction', 'Fault-tolerant processing', 'Checkpoint recovery'],
+    tech: ['Go', 'Goroutines', 'Web Scraping', 'HTML Parsing', 'CSV', 'Structured Logging'],
+    github:
+      'https://github.com/Vivek-Prakash1307/Automated-Financial-Data-Extraction-and-Analysis-System-',
+  },
+  {
+    title: 'Repository-Centric Kubernetes Security Analysis Framework',
+    eyebrow: 'DevSecOps system',
+    description:
+      'A security analysis framework for repository-centric Kubernetes and Helm scanning with RBAC validation, network policy checks, WebSocket operations, and posture scoring.',
+    impact: ['Repository scanning', 'Security posture scoring', 'Helm chart analysis'],
+    tech: ['Go', 'Kubernetes', 'Helm', 'WebSockets', 'Docker', 'GitHub APIs'],
+    github: 'https://github.com/Aegios-k8s/major-project',
+  },
+  {
+    title: 'Email Intelligence Platform',
+    eyebrow: 'Production-ready verification',
+    description:
+      'A full-stack email verification system with concurrent domain checks, DNS MX lookup, SMTP validation, REST APIs, PostgreSQL, Docker, and cloud deployment.',
+    impact: ['Concurrent checks', 'DNS validation', 'Cloud deployment'],
+    tech: ['Go', 'Gin', 'React', 'PostgreSQL', 'Docker', 'Render', 'Vercel'],
+    github: 'https://github.com/Vivek-Prakash1307/email-intelligence-platform',
+  },
+];
+
+const moreProjects = [
+  {
+    title: 'HTTP Load Balancer',
+    description:
+      'Custom Go reverse proxy with round-robin distribution, health checks, and fault-tolerant request routing.',
+    tech: ['Go', 'net/http', 'Reverse Proxy', 'Concurrency'],
+    github: 'https://github.com/Vivek-Prakash1307/Load_Balancer',
+  },
+  {
+    title: 'Chunked File Uploader',
+    description:
+      'React and TypeScript uploader with resumable chunks, retry flows, IndexedDB persistence, state-machine logic, and tests.',
+    tech: ['React', 'TypeScript', 'IndexedDB', 'Vitest', 'Playwright'],
+    github: 'https://github.com/Vivek-Prakash1307/chunked-file-uploader',
+  },
+  {
+    title: 'PPT-to-PDF Converter',
+    description:
+      'Go web app for document conversion using LibreOffice, concurrent processing, large uploads, progress tracking, and Docker deployment.',
+    tech: ['Go', 'Gin', 'LibreOffice', 'Docker', 'Railway'],
+    github: 'https://github.com/Vivek-Prakash1307/PPT-TO-PDF-CONVERTER',
+  },
+  {
+    title: 'WeatherStack',
+    description:
+      'Go weather microservice with caching, health checks, API integration, Docker support, and reliable REST endpoints.',
+    tech: ['Go', 'Gin', 'Caching', 'Docker', 'REST APIs'],
+    github: 'https://github.com/Vivek-Prakash1307/weatherstack-go',
+  },
+  {
+    title: 'Web Server API',
+    description:
+      'REST API with Gin and GORM for authentication and product management backed by MySQL CRUD workflows.',
+    tech: ['Go', 'Gin', 'GORM', 'MySQL', 'Auth'],
+    github: 'https://github.com/Vivek-Prakash1307/Web-Server-API',
+  },
+  {
+    title: 'TaskFlow',
+    description:
+      'Full-stack task management app with JWT authentication, kanban-style workflows, responsive UI, and real-time CRUD operations.',
+    tech: ['React', 'Node.js', 'Express', 'MongoDB', 'JWT'],
+    github: 'https://github.com/Vivek-Prakash1307/PrimeTrade',
+  },
+];
+
+const skillGroups = [
+  {
+    title: 'Backend Engineering',
+    items: ['Go', 'Gin', 'Fiber', 'REST APIs', 'JWT Auth', 'Microservices', 'Goroutines'],
+  },
+  {
+    title: 'Systems and Infrastructure',
+    items: ['Docker', 'Linux', 'HTTP', 'DNS', 'Reverse Proxies', 'Kubernetes Basics', 'CI/CD Basics'],
+  },
+  {
+    title: 'Data and Storage',
+    items: ['PostgreSQL', 'MySQL', 'MongoDB', 'CSV Pipelines', 'Caching', 'Structured Logging'],
+  },
+  {
+    title: 'Frontend Delivery',
+    items: ['React', 'TypeScript', 'JavaScript', 'Tailwind CSS', 'Accessibility', 'Playwright'],
+  },
+];
+
+const journey = [
+  {
+    year: 'Now',
+    title: 'Building production-grade systems',
+    text: 'Focused on backend-heavy full-stack projects: data processing, security analysis, verification platforms, upload systems, and deployment workflows.',
+  },
+  {
+    year: '2022-2026',
+    title: portfolio.education.degree,
+    text: `${portfolio.education.institution} - CGPA ${portfolio.education.cgpa}.`,
+  },
+  {
+    year: 'Next',
+    title: 'Seeking backend or full-stack engineering roles',
+    text: 'Looking for teams where I can contribute to scalable products, learn from strong engineers, and own meaningful systems work.',
+  },
+];
+
+function Icon({ name }) {
+  const paths = {
+    arrow: 'M5 12h14M13 5l7 7-7 7',
+    mail: 'M4 6h16v12H4z M4 7l8 6 8-6',
+    github:
+      'M12 2C6.48 2 2 6.58 2 12.26c0 4.53 2.87 8.37 6.84 9.73.5.1.68-.22.68-.49 0-.24-.01-1.04-.01-1.89-2.78.62-3.37-1.22-3.37-1.22-.45-1.18-1.11-1.49-1.11-1.49-.91-.64.07-.63.07-.63 1 .07 1.53 1.06 1.53 1.06.9 1.57 2.35 1.12 2.92.86.09-.67.35-1.12.64-1.38-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.04 1.03-2.76-.1-.26-.45-1.31.1-2.73 0 0 .84-.28 2.75 1.05A9.25 9.25 0 0 1 12 6.96c.85 0 1.71.12 2.51.35 1.91-1.33 2.75-1.05 2.75-1.05.55 1.42.2 2.47.1 2.73.64.72 1.03 1.64 1.03 2.76 0 3.94-2.35 4.8-4.58 5.06.36.32.69.94.69 1.9 0 1.38-.01 2.49-.01 2.82 0 .27.18.59.69.49A10.07 10.07 0 0 0 22 12.26C22 6.58 17.52 2 12 2z',
+    linkedin:
+      'M6.94 8.75H3.82V19h3.12V8.75zM5.38 4a1.81 1.81 0 1 0 0 3.62A1.81 1.81 0 0 0 5.38 4zM20.18 13.19c0-3.08-1.65-4.51-3.85-4.51a3.32 3.32 0 0 0-3 1.65h-.04V8.75h-2.99V19h3.12v-5.07c0-1.34.25-2.63 1.91-2.63 1.63 0 1.65 1.53 1.65 2.72V19h3.12v-5.81h.08z',
+    external: 'M7 17L17 7M8 7h9v9',
+    menu: 'M4 7h16M4 12h16M4 17h16',
+    close: 'M6 6l12 12M18 6L6 18',
+  };
+
+  return (
+    <svg aria-hidden="true" viewBox="0 0 24 24" className="icon">
+      <path d={paths[name]} />
+    </svg>
+  );
+}
 
 function App() {
   const [activeSection, setActiveSection] = useState('home');
-  const [isLoaded, setIsLoaded] = useState(false);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [menuOpen, setMenuOpen] = useState(false);
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState({ type: '', message: '' });
+  const [submitStatus, setSubmitStatus] = useState('');
 
-  const homeRef = useRef(null);
-  const aboutRef = useRef(null);
-  const journeyRef = useRef(null);
-  const skillsRef = useRef(null);
-  const projectsRef = useRef(null);
-  const contactRef = useRef(null);
-
-  const portfolioData = {
-    name: "Vivek Prakash",
-    tagline: "Golang Full Stack Developer",
-    intro: "Passionate about building innovative and efficient web solutions. Eager to learn, adapt, loyal to work and contribute by building real-world projects that combine strong fundamentals with practical implementation.",
-    about: [
-            [
-              "I'm a backend-focused full-stack engineer who enjoys building real, production-grade systems rather than just demos. My work spans backend services, system-level components, frontend applications, and deployment pipelines, with a strong emphasis on performance, reliability, and clean architecture.",
-
-              " On the backend, I primarily work with Go (Golang) and have built systems such as an Email Intelligence Platform, Weather microservices, HTTP Load Balancer, URL shorteners, Slack bots, CLI tools, and a document conversion platform (PPT-to-PDF). These projects involved concurrency with goroutines, networking concepts like DNS, HTTP, and reverse proxies, REST API design, authentication, caching, file processing, and fault tolerance, along with real cloud deployments using Docker, Linux, Render, Railway, and Vercel.",
-
-              " On the frontend, I work with React, TypeScript, JavaScript, HTML, CSS, and Tailwind CSS to build responsive, accessible, and user-focused interfaces. I’ve developed advanced frontend systems such as a chunked file uploader with resumable uploads, state-machine-driven logic, IndexedDB persistence, and comprehensive testing using Vitest, React Testing Library, Storybook, and Playwright, along with a full-stack task management (MERN) application featuring authentication and real-time CRUD workflows.",
-
-              " Across my projects, I've worked with databases including MySQL, PostgreSQL, and MongoDB, as well as testing and debugging tools, CI/CD concepts, and core system design principles. I care deeply about writing clean, explainable code, understanding how systems behave under load, and building software that remains maintainable beyond the first version.",
-
-              " I'm currently looking for opportunities where I can contribute as a backend or full-stack engineer, work on real-world systems, learn from strong engineering teams, and help build scalable, high-impact products."
-            ]
-
-          ],
-    
-    education: [
-      { degree: "B.Tech in Computer Science", institution: "Dayananda Sagar University, Bengaluru", years: "2022-2026", cgpa: "8.59/10" },
-      ],
-    
-    codingSkills: [
-      { name: "Go", level: 75 },
-      { name: "React", level: 45 },
-      { name: "JavaScript", level: 38 },
-      { name: "HTML/CSS", level: 60 },
-      { name: "MySQL", level: 65 },
-      { name: "C++", level: 85 },
-      { name: "TypeScript", level: 35 },
-      { name: "Tailwind CSS", level: 37 },
-      { name: "Gin (Go Framework)", level: 68 },
-      { name: "Fiber (Go Framework)", level: 59 },
-      { name: "Node.js", level: 25 },
-      { name: "Express.js", level: 30 },
-      { name: "MongoDB", level: 68 },
-      { name: "PostgreSQL", level: 70 },
-      { name: "Docker", level: 72 },
-      { name: "Linux", level: 75 },
-      { name: "Git & GitHub", level: 75 },
-      { name: "REST APIs", level: 72 },
-      { name: "System Design", level: 61 },
-      { name: "Data Structures & Algorithms", level: 71 },
-      { name: "Computer Networks", level: 65 },
-      { name: "Operating Systems", level: 64 },
-      { name: "JWT Authentication", level: 66 },
-      { name: "Microservices", level: 63 },
-      { name: "CI/CD Basics", level: 40 },
-      { name: "AWS (Basics)", level: 30 }
-    ],
-    professionalSkills: [
-      { name: "Problem Solving", level: 75 },
-      { name: "Debugging", level: 70 },
-      { name: "Code Optimization", level: 58 },
-      { name: "System Thinking", level: 55 },
-      { name: "Clean Code Practices", level: 60 },
-      { name: "Team Collaboration", level: 72 },
-      { name: "Communication", level: 62 },
-      { name: "Time Management", level: 55 },
-      { name: "Adaptability & Learning", level: 67 },
-      { name: "Ownership & Responsibility", level: 75 }
-    ],
-    projects: [
-      {
-        title: "Automated-Financial-Data-Extraction-and-Analysis-System",
-        description:
-        "A scalable financial data extraction and analysis platform built with Go to process stock market data for 500+ companies from multiple web sources. Features concurrent scraping workflows, checkpoint recovery, retry handling, structured parsing pipelines, and high-volume HTML-to-structured-data transformation for reliable large-scale data processing.",
-        github:
-        "https://github.com/Vivek-Prakash1307/Automated-Financial-Data-Extraction-and-Analysis-System-",
-        technologies: [
-        "Go (Golang)",
-        "Goroutines",
-        "Concurrent Processing",
-        "Web Scraping",
-        "HTML Parsing",
-        "Data Pipelines",
-        "Checkpoint Recovery",
-        "Structured Logging",
-        "CSV/Data Processing",
-        "Git",
-        ],
-        },
-
-        {
-        title: "Repository-Centric-Kubernetes-Security-Analysis-Framework",
-        description:
-        "A Kubernetes security analysis framework designed to detect infrastructure misconfigurations through repository-centric scanning and Helm chart analysis. Includes DevSecOps workflows, RBAC and network policy validation, remediation pipelines, WebSocket-based operations, and posture scoring for real-time Kubernetes security assessment.",
-        github:
-        "https://github.com/Aegios-k8s/major-project",
-        technologies: [
-        "Go (Golang)",
-        "Kubernetes",
-        "Helm Charts",
-        "DevSecOps",
-        "GitHub APIs",
-        "WebSockets",
-        "RBAC Analysis",
-        "Security Validation",
-        "Container Security",
-        "Docker",
-        "Git",
-        ],
-      },
-      {
-        title: "Email-Intelligence-Platform",
-        description:
-          "Built a production-ready full-stack email verification system with concurrent domain checks, DNS MX record lookups, REST APIs, and cloud deployment. Focused on reliability, performance optimization, and clean backend architecture.",
-        github: "https://github.com/Vivek-Prakash1307/email-intelligence-platform",
-        technologies: [
-          "Go (Golang)",
-          "Gin",
-          "Goroutines",
-          "REST APIs",
-          "DNS MX Lookup",
-          "SMTP Validation",
-          "React",
-          "HTML",
-          "CSS",
-          "Tailwind CSS",
-          "PostgreSQL",
-          "Docker",
-          "Linux",
-          "Render",
-          "Vercel",
-        ],
-      },
-      {
-        title: "Go-Stock-Scrapper",
-        description:
-          "A web scraping tool built with Go and Colly to fetch live stock market data from Yahoo Finance. Extracts company name, stock price, and percentage change, and stores results in CSV format for analysis.",
-        github: "https://github.com/Vivek-Prakash1307/Stock-Scrapper",
-        technologies: [
-          "Go (Golang)",
-          "Colly",
-          "HTTP Requests",
-          "HTML Parsing",
-          "CSV File Handling",
-          "Git",
-        ],
-      },
-      {
-        title: "Web Server API",
-        description:
-          "Developed RESTful API endpoints using Gin and GORM for user authentication and product management. Integrated MySQL database with complete CRUD operations and clean API design.",
-        github: "https://github.com/Vivek-Prakash1307/Web-Server-API",
-        technologies: [
-          "Go (Golang)",
-          "Gin",
-          "GORM",
-          "MySQL",
-          "REST APIs",
-          "Authentication",
-        ],
-      },
-      {
-        title: "WeatherStack",
-        description:
-          "Built a high-performance Go-based weather microservice using an external weather API with caching, health checks, and RESTful endpoints. Focused on scalability, error handling, and microservice architecture.",
-        github: "https://github.com/Vivek-Prakash1307/weatherstack-go",
-        technologies: [
-          "Go (Golang)",
-          "Gin",
-          "REST APIs",
-          "External API Integration",
-          "Caching",
-          "Docker",
-          "Linux",
-          "Postman",
-        ],
-      },
-      {
-        title: "HTTP Load Balancer",
-        description:
-          "Implemented a custom HTTP load balancer using a round-robin algorithm with health checks and reverse proxying. Improved fault tolerance and request distribution for backend services.",
-        github: "https://github.com/Vivek-Prakash1307/Load_Balancer",
-        technologies: [
-          "Go (Golang)",
-          "net/http",
-          "Reverse Proxy",
-          "Round-Robin Algorithm",
-          "Goroutines",
-          "Concurrency",
-        ],
-      },
-      {
-        title: "Go URL Shortener",
-        description:
-          "A lightweight URL shortening service built in Go that generates short links and redirects users to the original URLs. Designed for simplicity, fast lookup, and small-scale deployments.",
-        github: "https://github.com/Vivek-Prakash1307/URL_SHORTENER",
-        technologies: [
-          "Go (Golang)",
-          "REST APIs",
-          "In-Memory Storage",
-          "HTTP Redirects",
-        ],
-      },
-      {
-        title: "Slack Bot",
-        description:
-          "Built a Go-based Slack bot that listens to user commands, parses parameters, and calculates age from the provided year of birth. Includes secure environment configuration, concurrency, and graceful error handling.",
-        github: "https://github.com/Vivek-Prakash1307/Slack-bot",
-        technologies: [
-          "Go (Golang)",
-          "Slack API",
-          "Slacker Framework",
-          "dotenv",
-          "Goroutines",
-          "Context API",
-        ],
-      },
-      {
-        title: "PPT-to-PDF Converter",
-        description:
-          "Built a production-grade Go web application to convert multiple document formats to PDF using LibreOffice. Supports concurrent processing, large file uploads, real-time progress tracking, and Docker-based cloud deployment.",
-        github: "https://github.com/Vivek-Prakash1307/PPT-TO-PDF-CONVERTER",
-        technologies: [
-          "Go (Golang)",
-          "Gin",
-          "LibreOffice",
-          "Docker",
-          "Railway",
-          "Linux",
-          "REST APIs",
-          "Concurrent Processing",
-          "File Handling",
-        ],
-      },
-      {
-        title: "Chunked File Uploader",
-        description:
-          "A production-ready React + TypeScript application implementing chunked file uploads with retry mechanisms, resumable uploads, IndexedDB persistence, accessibility support, and comprehensive testing.",
-        github: "https://github.com/Vivek-Prakash1307/chunked-file-uploader",
-        technologies: [
-          "React",
-          "TypeScript",
-          "Vite",
-          "IndexedDB",
-          "Web Crypto API",
-          "Chunked Uploads",
-          "State Machine",
-          "Storybook",
-          "Vitest",
-          "Playwright",
-        ],
-      },
-      {
-        title: "TaskFlow – Task Management App",
-        description:
-          "A full-stack task management application with JWT authentication and kanban-style workflow. Includes responsive UI, real-time CRUD operations, and secure backend APIs.",
-        github: "https://github.com/Vivek-Prakash1307/PrimeTrade",
-        technologies: [
-          "React",
-          "Node.js",
-          "Express",
-          "MongoDB",
-          "JWT",
-          "Tailwind CSS",
-          "REST APIs",
-          "Vite",
-        ],
-      },
-      {
-        title: "CLI Task Manager",
-        description:
-          "A command-line task management application built in Go with interactive commands for adding, listing, and completing tasks. Focused on simplicity, speed, and clean terminal-based workflows.",
-        github: "https://github.com/Vivek-Prakash1307/ToDo-List",
-        technologies: [
-          "Go (Golang)",
-          "CLI",
-          "Terminal I/O",
-          "bufio",
-          "Go Modules",
-        ],
-}
-
-    ],
-    contact: {
-      email: "alivevivek8@gmail.com",
-      phone: "+91 7309058513",
-      github: "github.com/Vivek-Prakash1307",
-      linkedin: "linkedin.com/in/vivek-prakash-00230a300",
-      leetcode: "leetcode.com/u/alivevivek8",
-      geeksforgeeks:"geeksforgeeks.org/user/alivevng22/",
-    }
-  };
-
-  useEffect(() => {
-    setIsLoaded(true);
-    
-    const handleMouseMove = (e) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
-    };
-
-    const navObserver = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveSection(entry.target.id);
-          }
-        });
-      },
-      { threshold: 0.3 }
-    );
-
-    const animateObserver = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('animate-in');
-          }
-        });
-      },
-      { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
-    );
-
-    const sections = [homeRef, aboutRef, journeyRef, skillsRef, projectsRef, contactRef];
-    sections.forEach(ref => {
-      if (ref.current) {
-        navObserver.observe(ref.current);
-        animateObserver.observe(ref.current);
-      }
-    });
-
-    document.querySelectorAll('.scroll-animate').forEach(el => {
-      animateObserver.observe(el);
-    });
-
-    window.addEventListener('mousemove', handleMouseMove);
-
-    return () => {
-      sections.forEach(ref => {
-        if (ref.current) {
-          navObserver.unobserve(ref.current);
-          animateObserver.unobserve(ref.current);
-        }
-      });
-      window.removeEventListener('mousemove', handleMouseMove);
-    };
-  }, []);
-
-  const scrollToSection = (id) => {
-    document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
-  };
-
-  // Handle form input changes
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
-  };
-
-  // Handle form submission
-  
-const handleSubmit = async (e) => {
-  e.preventDefault();
-  setIsSubmitting(true);
-  setSubmitStatus({ type: '', message: '' });
-
-  const API_URL = process.env.REACT_APP_API_URL || "http://localhost:8080";
-  console.log("🌍 API_URL in build:", API_URL);
-
-  try {
-    const response = await fetch(`${API_URL}/api/contact`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(formData),
-    });
-
-    const data = await response.json();
-
-    if (response.ok) {
-      setSubmitStatus({
-        type: 'success',
-        message: 'Message sent successfully! I\'ll get back to you soon. 🚀'
-      });
-      setFormData({ name: '', email: '', message: '' }); // Reset form
-    } else {
-      setSubmitStatus({
-        type: 'error',
-        message: data.error || 'Something went wrong. Please try again.'
-      });
-    }
-  } catch (error) {
-    console.error('Error sending message:', error);
-    setSubmitStatus({
-      type: 'error',
-      message: 'Failed to send message. Please check your connection or try emailing me directly.'
-    });
-  } finally {
-    setIsSubmitting(false);
-    setTimeout(() => {
-      setSubmitStatus({ type: '', message: '' });
-    }, 5000);
-  }
-};
-
-
-  const FloatingParticles = () => {
-    return (
-      <div className="fixed inset-0 pointer-events-none overflow-hidden">
-        {[...Array(50)].map((_, i) => (
-          <div
-            key={i}
-            className="absolute w-1 h-1 bg-gradient-to-r from-yellow-400 to-blue-600 rounded-full opacity-30"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 10}s`,
-              animation: `float ${5 + Math.random() * 10}s infinite linear`,
-            }}
-          />
-        ))}
-      </div>
-    );
-  };
-
-  const MouseTracker = () => (
-    <div
-      className="fixed w-8 h-8 bg-gradient-to-r from-amber-400 to-orange-600 rounded-full pointer-events-none opacity-20 blur-sm transition-all duration-900 ease-out z-50"
-      style={{
-        left: mousePosition.x - 16,
-        top: mousePosition.y - 16,
-        transform: 'translate3d(0, 0, 0)',
-      }}
-    />
+  const sections = useMemo(
+    () => ['home', 'about', 'work', 'skills', 'journey', 'contact'],
+    []
   );
 
-  return (// here need to color change-------------------------------------------------------/
-    <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-gray-500 text-white relative">
-      <FloatingParticles />
-      <MouseTracker />
-      
-      {/* Navigation */}
-      <nav className="fixed w-full z-40 backdrop-blur-xl bg-slate-900/80 border-b border-white/10">
-        <div className="container mx-auto px-6 py-4 flex justify-between items-center">
-          <div className="text-2xl font-bold bg-gradient-to-r from-orange-400 to-green-400 bg-clip-text text-transparent">
-            {portfolioData.name.split(' ')[0]}
-          </div>
-          <div className="flex items-center gap-8">
-          <div className="hidden md:flex space-x-1">
-            {['home', 'about', 'journey', 'skills', 'projects', 'contact'].map((section) => (
-              <button
-                key={section}
-                onClick={() => scrollToSection(section)}
-                className={`px-6 py-2 rounded-full text-sm font-medium capitalize transition-all duration-300 ${
-                  activeSection === section
-                    ? 'bg-gradient-to-r from-orange-400 to-pink-400 text-slate-900 shadow-lg shadow-emerald-400/25'
-                    : 'text-white/70 hover:text-white hover:bg-white/10'
-                }`}
-              >
-                {section}
-              </button>
-            ))}
-            
-          </div>
-          <a
-              href="/resume.pdf"
-              download="resume.pdf"
-              className="group relative px-6 py-3 bg-gradient-to-r from-purple-500 to-pink-500 text-white font-bold rounded-full overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-purple-500/50"
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) setActiveSection(entry.target.id);
+        });
+      },
+      { threshold: 0.35 }
+    );
+
+    const animatedObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) entry.target.classList.add('is-visible');
+        });
+      },
+      { threshold: 0.12 }
+    );
+
+    sections.forEach((section) => {
+      const node = document.getElementById(section);
+      if (node) observer.observe(node);
+    });
+
+    document.querySelectorAll('.reveal').forEach((node) => animatedObserver.observe(node));
+
+    return () => {
+      observer.disconnect();
+      animatedObserver.disconnect();
+    };
+  }, [sections]);
+
+  const scrollToSection = (id) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+    setMenuOpen(false);
+  };
+
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setFormData((current) => ({ ...current, [name]: value }));
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus('');
+
+    const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:8080';
+
+    try {
+      const response = await fetch(`${apiUrl}/api/contact`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+      const data = await response.json();
+
+      if (!response.ok) throw new Error(data.error || 'Unable to send message.');
+
+      setFormData({ name: '', email: '', message: '' });
+      setSubmitStatus('Message sent. I will get back to you soon.');
+    } catch (error) {
+      setSubmitStatus(`Could not send through the form. Email me directly at ${portfolio.email}.`);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  return (
+    <div className="site-shell">
+      <header className="site-header">
+        <button type="button" className="brand" onClick={() => scrollToSection('home')}>
+          <span className="brand-mark">VP</span>
+          <span>
+            <strong>{portfolio.name}</strong>
+            <small>Systems-minded builder</small>
+          </span>
+        </button>
+
+        <nav className={menuOpen ? 'nav-links is-open' : 'nav-links'} aria-label="Primary navigation">
+          {sections.map((section) => (
+            <button
+              key={section}
+              type="button"
+              onClick={() => scrollToSection(section)}
+              className={activeSection === section ? 'nav-link active' : 'nav-link'}
             >
-              <span className="relative z-10 flex items-center gap-2">
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                </svg>
-                Resume
-              </span>
-              <div className="absolute inset-0 bg-gradient-to-r from-pink-500 to-purple-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-            </a>
-            </div>
+              {section === 'work' ? 'projects' : section}
+            </button>
+          ))}
+        </nav>
+
+        <div className="header-actions">
+          <a className="resume-link" href="/resume.pdf" download="Vivek_Prakash_Resume.pdf">
+            Resume
+          </a>
+          <button
+            className="menu-toggle"
+            type="button"
+            onClick={() => setMenuOpen((current) => !current)}
+            aria-label="Toggle navigation"
+            aria-expanded={menuOpen}
+          >
+            <Icon name={menuOpen ? 'close' : 'menu'} />
+          </button>
         </div>
-      </nav>
+      </header>
 
+      <main>
+        <section id="home" className="hero-section">
+          <img src="/assets/systems-hero.png" alt="" className="hero-image" />
+          <div className="hero-overlay" />
+          <div className="hero-content reveal is-visible">
+            <p className="eyebrow">{portfolio.location}</p>
+            <h1>{portfolio.name}</h1>
+            <p className="hero-role">{portfolio.role}</p>
+            <p className="hero-summary">{portfolio.summary}</p>
 
-      {/* Hero Section */}
-      <section id="home" ref={homeRef} className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-black/50 via-gray-900/50 to-yellow-900/30"></div>
-        
-        {/* Animated Background Elements */}
-        <div className="absolute inset-0">
-          <div className="absolute top-1/4 left-1/4 w-72 h-72 bg-gradient-to-r from-orange-200/20 to-cyan-400/20 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-gradient-to-r from-purple-400/20 to-pink-400/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
-        </div>
-
-        <div className="relative z-10 text-center max-w-6xl mx-auto px-6">
-          <div className={`transition-all duration-1000 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}>
-            <div className="mb-8">
-              <div className="w-48 h-48 mx-auto rounded-full bg-gradient-to-r from-purple-400 to-amber-400 p-1 mb-8 shadow-2xl shadow-emerald-400/25">
-                <div className="w-full h-full rounded-full bg-slate-800 flex items-center justify-center text-6xl font-bold text-white">
-                  VP
-                </div>
-              </div>
+            <div className="hero-focus" aria-label="Engineering focus areas">
+              {portfolio.focus.map((item) => (
+                <span key={item}>{item}</span>
+              ))}
             </div>
-            
-            <h1 className="text-6xl md:text-8xl font-black mb-6">
-              <span className="bg-gradient-to-r from-orange-600 via-white to-green-600 bg-clip-text text-transparent animate-gradient">
-                {portfolioData.name}
-              </span>
-            </h1>
-            
-            <p className="text-2xl md:text-3xl text-yellow-500 mb-4 font-medium">{portfolioData.tagline}</p> {/*full-stack*/}
-            <p className="text-xl text-white mb-12 max-w-2xl mx-auto">{portfolioData.intro}</p>
-            
-            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-              <button
-                onClick={() => scrollToSection('projects')}
-                className="group relative px-8 py-4 bg-gradient-to-r border-2 from-sky-400 to-amber-400 text-slate-900 font-bold rounded-full overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-emerald-400/50"
-              >
-                <span className="relative z-10">View My Work</span>
-                <div className="absolute inset-0 bg-gradient-to-r border-2 from-green-400 to-sky-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+
+            <div className="hero-actions">
+              <button type="button" className="primary-button" onClick={() => scrollToSection('work')}>
+                View strongest work
+                <Icon name="arrow" />
               </button>
-              
-              <button
-                onClick={() => scrollToSection('contact')}
-                className="group relative px-8 py-4 bg-gradient-to-r border-2 border-green-400 text-yellow-400 font-bold rounded-full overflow-hidden transition-all duration-300 hover:scale-105 hover:bg-emerald-400 hover:text-slate-900"
-              >
-                <span className="relative z-10">Let's Connect</span>
-                 <div className="absolute inset-0 bg-gradient-to-r from-green-400 to-sky-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              </button>
-              <a
-                href="/resume.pdf"
-                download="Vivek_Prakash_Resume.pdf"
-                className="group relative px-8 py-4 bg-gradient-to-r border-2 from-purple-500 to-pink-500 text-white font-bold rounded-full overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/50"
-              >
-                <span className="relative z-10 flex items-center gap-2">
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                  </svg>
-                  Download Resume
-                </span>
-                <div className="absolute inset-0 bg-gradient-to-r border-2 from-green-500 to-purple-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <a className="secondary-button" href={`mailto:${portfolio.email}`}>
+                <Icon name="mail" />
+                Email me
               </a>
             </div>
+          </div>
 
-            <div className="flex justify-center space-x-8 mt-12">
+          <div className="hero-panel reveal is-visible">
+            {portfolio.stats.map((stat) => (
+              <div key={stat.label}>
+                <strong>{stat.value}</strong>
+                <span>{stat.label}</span>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section id="about" className="section about-section">
+          <div className="section-heading reveal">
+            <p className="eyebrow">About</p>
+            <h2>Backend depth with full-stack delivery.</h2>
+          </div>
+
+          <div className="about-grid">
+            <article className="about-copy reveal">
+              <p>
+                I enjoy building real systems instead of thin demos: backend services, APIs, data
+                pipelines, document tools, upload workflows, deployment setups, and frontend surfaces
+                that make those systems usable.
+              </p>
+              <p>
+                My strongest area is Go. I have worked with goroutines, HTTP servers, DNS lookups,
+                reverse proxies, authentication, caching, file processing, databases, Docker, Linux,
+                Render, Railway, and Vercel.
+              </p>
+              <p>
+                I care about clean architecture, explainable code, debugging under pressure, and
+                systems that continue to make sense after the first version ships.
+              </p>
+            </article>
+
+            <div className="principle-grid reveal">
               {[
-                { href: `https://${portfolioData.contact.github}`, icon: "M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" },
-                { href: `https://${portfolioData.contact.linkedin}`, icon: "M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" },
-                { href: `https://${portfolioData.contact.leetcode}`, icon: "M13.483 0a1.374 1.374 0 0 0-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 0 0-1.209 2.104 5.35 5.35 0 0 0-.125.513 5.527 5.527 0 0 0 .062 2.362 5.83 5.83 0 0 0 .349 1.017 5.938 5.938 0 0 0 1.271 1.818l4.277 4.193.039.038c2.248 2.165 5.852 2.133 8.063-.074l2.396-2.392c.54-.54.54-1.414.003-1.955a1.378 1.378 0 0 0-1.951-.003l-2.396 2.392a3.021 3.021 0 0 1-4.205.038l-.02-.019-4.276-4.193c-.652-.64-.972-1.469-.948-2.263a2.68 2.68 0 0 1 .066-.523 2.545 2.545 0 0 1 .619-1.164L9.13 8.114c1.058-1.134 3.204-1.27 4.43-.278l3.501 2.831c.593.48 1.461.387 1.94-.207a1.384 1.384 0 0 0-.207-1.943l-3.5-2.831c-.8-.647-1.766-1.045-2.774-1.202l2.015-2.158A1.384 1.384 0 0 0 13.483 0zm-2.866 12.815a1.38 1.38 0 0 0-1.38 1.382 1.38 1.38 0 0 0 1.38 1.382H20.79a1.38 1.38 0 0 0 1.38-1.382 1.38 1.38 0 0 0-1.38-1.382z" },
-                { href: `https://${portfolioData.contact.geeksforgeeks}`, icon: "M2.2 3.5c1.9-1.4 4.2-2.2 6.7-2.2 6.1 0 11.1 5 11.1 11.1s-5 11.1-11.1 11.1c-3.3 0-6.3-1.5-8.3-3.9l1.8-1.5c1.5 2 3.9 3.3 6.5 3.3 4.5 0 8.1-3.6 8.1-8.1s-3.6-8.1-8.1-8.1c-1.9 0-3.6.7-4.9 1.8l2.3 2.3H0v-6.9l2.2 2.1z" },
-              ].map((social, i) => (
-                <a
-                  key={i}
-                  href={social.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-gradient-to-r border-2 hover:from-orange-400 hover:to-cyan-400 hover:text-slate-900 transition-all duration-300 hover:scale-110 hover:shadow-lg"
-                >
-                  <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                    <path d={social.icon} />
-                  </svg>
-                </a>
+                ['Performance', 'Concurrency, caching, retries, and efficient backend workflows.'],
+                ['Reliability', 'Health checks, recovery paths, validation, and practical fault tolerance.'],
+                ['Clarity', 'Readable APIs, structured code, and decisions that are easy to explain.'],
+                ['Ownership', 'Taking projects from idea to deployed, documented, usable software.'],
+              ].map(([title, text]) => (
+                <article className="principle-card" key={title}>
+                  <h3>{title}</h3>
+                  <p>{text}</p>
+                </article>
               ))}
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* About Section */}
-      <section id="about" ref={aboutRef} className="py-24 px-6 bg-gradient-to-r from-purple-500 via-black to-gray-900 relative">
-        
-      <div className="bg-white/5 backdrop-blur-xl p-10 rounded-3xl border border-white/10 shadow-2xl scroll-animate hover:shadow-emerald-400/20 transition-all duration-500">
-        <h2 className="text-5xl font-black text-center mb-16 scroll-animate">
-            <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">About</span>
-          </h2>
-          {portfolioData.about && portfolioData.about.length > 0 ? (
-            portfolioData.about.map((para, index) => (
-              <p key={index} className="text-base leading-relaxed text-white/90 mb-6">
-                {para}
-              </p>
-            ))
-          ) : (
-            <p className="text-base text-white/100">About.</p>
-          )}
-          <p className="text-base leading-relaxed text-white/90">
-            My goal is to leverage my expertise to build impactful solutions that make a difference.
-          </p>
-    </div>
-      </section>
-
-      {/* Journey Section */}
-      {/* <section id="projects" ref={projectsRef} className="py-24 px-6 bg-gradient-to-br from-amber-400 via-gray-900 to-black relative">*/}
-      <section id="journey" ref={journeyRef} className="py-24 px-6 bg-gradient-to-r from-sky-500 via-black to-yellow-300 relative">
-        <div className="container mx-auto max-w-7xl">
-          <h2 className="text-5xl font-black text-center mb-16 scroll-animate">
-            <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">My Journey</span>
-          </h2>
-
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-            {/* Education */}
-            <div className="scroll-animate">
-              <h3 className="text-3xl font-bold text-emerald-400 mb-10 text-center lg:text-left">Education</h3>
-              <div className="space-y-8">
-                {portfolioData.education.map((edu, index) => (
-                  <div
-                    key={index}
-                    className="group relative bg-white/5 backdrop-blur-xl p-8 rounded-2xl border border-white/10 hover:border-emerald-400/50 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-emerald-400/20"
-                  >
-                    <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-amber-400 to-yellow-400 rounded-l-2xl transform scale-y-0 group-hover:scale-y-100 transition-transform duration-500"></div>
-                    <h4 className="text-xl font-bold text-white mb-2">{edu.degree}</h4>
-                    <p className="text-emerald-400 font-medium">{edu.institution}</p>
-                    <p className="text-white/60 text-sm">{edu.years}</p>
-                    {edu.cgpa && <p className="text-cyan-400 text-sm font-medium mt-1">CGPA: {edu.cgpa}</p>}
-                    {edu.percentage && <p className="text-cyan-400 text-sm font-medium mt-1">Percentage: {edu.percentage}</p>}
-                  </div>
-                ))}
-              </div>
-            </div>
-
-           
+        <section id="work" className="section work-section">
+          <div className="section-heading reveal">
+            <p className="eyebrow">Selected Work</p>
+            <h2>Projects that show systems thinking.</h2>
           </div>
-        </div>
-      </section>
 
-      {/* Skills Section */}
-      {/* <section id="projects" ref={projectsRef} className="py-24 px-6 bg-gradient-to-br from-amber-400 via-gray-900 to-black relative">*/}
-      <section id="skills" ref={skillsRef} className="py-24 px-6 bg-gradient-to-r from-sky-500 via-black to-pink-600 relative">
-
-        <div className="container mx-auto max-w-6xl">
-          <h2 className="text-5xl font-black text-center mb-16 scroll-animate">
-            <span className="bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">My Skills</span>
-          </h2>
-          
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-            {/* Coding Skills */}
-            <div className="scroll-animate">
-              <h3 className="text-3xl font-bold text-cyan-400 mb-10 text-center lg:text-left">Coding Skills</h3>
-              <div className="space-y-6">
-                {portfolioData.codingSkills.map((skill, index) => (
-                  <div key={index} className="group bg-white/5 backdrop-blur-xl p-6 rounded-2xl border border-white/10 hover:border-cyan-400/50 transition-all duration-300 hover:scale-105">
-                    <div className="flex justify-between items-center mb-4">
-                      <span className="text-white text-lg font-bold">{skill.name}</span>
-                      <span className="text-cyan-400 text-lg font-bold">{skill.level}%</span>
-                    </div>
-                    <div className="w-full bg-white/10 rounded-full h-3 overflow-hidden">
-                      <div
-                        className="h-full bg-gradient-to-r from-cyan-400 to-emerald-400 rounded-full transition-all duration-1000 ease-out shadow-lg shadow-cyan-400/50"
-                        style={{ 
-                          width: `${skill.level}%`,
-                          animation: `fillBar 2s ease-out ${index * 0.2}s both`
-                        }}
-                      ></div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Professional Skills */}
-            <div className="scroll-animate">
-              <h3 className="text-3xl font-bold text-purple-400 mb-10 text-center lg:text-left">Professional Skills</h3>
-              <div className="space-y-6">
-                {portfolioData.professionalSkills.map((skill, index) => (
-                  <div key={index} className="group bg-white/5 backdrop-blur-xl p-6 rounded-2xl border border-white/10 hover:border-purple-400/50 transition-all duration-300 hover:scale-105">
-                    <div className="flex justify-between items-center mb-4">
-                      <span className="text-white text-lg font-bold">{skill.name}</span>
-                      <span className="text-purple-400 text-lg font-bold">{skill.level}%</span>
-                    </div>
-                    <div className="w-full bg-white/10 rounded-full h-3 overflow-hidden">
-                      <div
-                        className="h-full bg-gradient-to-r from-purple-400 to-pink-400 rounded-full transition-all duration-1000 ease-out shadow-lg shadow-purple-400/50"
-                        style={{ 
-                          width: `${skill.level}%`,
-                          animation: `fillBar 2s ease-out ${index * 0.2}s both`
-                        }}
-                      ></div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Projects Section */}
-      <section id="projects" ref={projectsRef} className="py-24 px-6 bg-gradient-to-br from-amber-500 via-black to-green-400 relative">
-        <div className="absolute inset-0 opacity-30">
-          <div className="absolute top-20 left-20 w-40 h-40 bg-emerald-400/20 rounded-full blur-2xl animate-pulse"></div>
-          <div className="absolute bottom-20 right-20 w-60 h-60 bg-cyan-400/20 rounded-full blur-2xl animate-pulse delay-1000"></div>
-        </div>
-        
-        <div className="container mx-auto max-w-7xl relative z-10">
-          <h2 className="text-5xl font-black text-center mb-16 scroll-animate">
-            <span className="bg-gradient-to-r from-amber-200 to-yellow-500 bg-clip-text text-transparent">My Projects</span>
-          </h2>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {portfolioData.projects.map((project, index) => (
-              <div
-                key={index}
-                className="group relative bg-white/5 backdrop-blur-xl rounded-3xl border border-white/10 overflow-hidden hover:border-emerald-400/50 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-emerald-400/25 scroll-animate"
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
-                <div className="absolute inset-0 bg-gradient-to-br from-emerald-400/10 to-cyan-400/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                
-                <div className="relative p-8">
-                  <div className="flex items-center justify-between mb-4">
-                    <div className="w-12 h-12 bg-gradient-to-r from-yellow-400 to-amber-400 rounded-xl flex items-center justify-center">
-                      <svg className="w-6 h-6 text-slate-900" fill="currentColor" viewBox="0 0 20 20">
-                        <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z" />
-                      </svg>
-                    </div>
-                    <a
-                      href={project.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-white/60 hover:text-emerald-400 transition-colors duration-300 hover:scale-110 transform"
-                    >
-                      <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-                      </svg>
-                    </a>
-                  </div>
-                  
-                  <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-emerald-400 transition-colors duration-300">
-                    {project.title}
-                  </h3>
-                  
-                  <p className="text-white/80 mb-6 leading-relaxed">{project.description}</p>
-                  
-                  <div className="flex flex-wrap gap-2">
-                    {project.technologies.map((tech, i) => (
-                      <span
-                        key={i}
-                        className="px-3 py-1 bg-gradient-to-r from-emerald-400/20 to-cyan-400/20 text-emerald-400 text-xs font-bold rounded-full border border-emerald-400/30 hover:bg-emerald-400/30 transition-all duration-300"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
+          <div className="featured-grid">
+            {featuredProjects.map((project, index) => (
+              <article className="featured-card reveal" key={project.title}>
+                <div className="featured-number">0{index + 1}</div>
+                <p className="card-eyebrow">{project.eyebrow}</p>
+                <h3>{project.title}</h3>
+                <p>{project.description}</p>
+                <div className="impact-list">
+                  {project.impact.map((item) => (
+                    <span key={item}>{item}</span>
+                  ))}
                 </div>
-              </div>
+                <div className="tech-list">
+                  {project.tech.map((tech) => (
+                    <span key={tech}>{tech}</span>
+                  ))}
+                </div>
+                <a href={project.github} target="_blank" rel="noopener noreferrer" className="project-link">
+                  GitHub
+                  <Icon name="external" />
+                </a>
+              </article>
             ))}
           </div>
-        </div>
-      </section>
 
-      {/* Contact Section */}
-      <section id="contact" ref={contactRef} className="py-24 px-6 bg-gradient-to-br from-yellow-500 via-black to-white relative">
-        <div className="absolute inset-0">
-          <div className="absolute top-1/3 left-1/3 w-80 h-80 bg-gradient-to-r from-emerald-400/20 to-cyan-400/20 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-1/3 right-1/3 w-96 h-96 bg-gradient-to-r from-purple-400/20 to-pink-400/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
-        </div>
-        
-        <div className="container mx-auto max-w-4xl relative z-10">
-          <h2 className="text-5xl font-black text-center mb-8 scroll-animate">
-            <span className="bg-gradient-to-r from-purple-400 to-emerald-400 bg-clip-text text-transparent">Let's Connect!</span>
-          </h2>
-          
-          <p className="text-xl text-center text-white/80 mb-16 scroll-animate">
-            Ready to bring your ideas to life? Let's build something amazing together!
-          </p>
-
-          <div className="bg-white/5 backdrop-blur-xl p-10 rounded-3xl border border-white/10 shadow-2xl scroll-animate">
-            {/* Status Message */}
-            {submitStatus.message && (
-              <div className={`mb-6 p-4 rounded-xl border ${
-                submitStatus.type === 'success' 
-                  ? 'bg-emerald-500/10 border-emerald-500/30 text-emerald-400' 
-                  : 'bg-red-500/10 border-red-500/30 text-red-400'
-              } transition-all duration-300`}>
-                <div className="flex items-center">
-                  {submitStatus.type === 'success' ? (
-                    <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
-                    </svg>
-                  ) : (
-                    <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                  )}
-                  {submitStatus.message}
+          <div className="project-grid">
+            {moreProjects.map((project) => (
+              <article className="project-card reveal" key={project.title}>
+                <h3>{project.title}</h3>
+                <p>{project.description}</p>
+                <div className="tech-list compact">
+                  {project.tech.map((tech) => (
+                    <span key={tech}>{tech}</span>
+                  ))}
                 </div>
+                <a href={project.github} target="_blank" rel="noopener noreferrer" className="project-link">
+                  View repo
+                  <Icon name="external" />
+                </a>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section id="skills" className="section skills-section">
+          <div className="section-heading reveal">
+            <p className="eyebrow">Skills</p>
+            <h2>A practical stack for backend-heavy products.</h2>
+          </div>
+
+          <div className="skills-grid">
+            {skillGroups.map((group) => (
+              <article className="skill-card reveal" key={group.title}>
+                <h3>{group.title}</h3>
+                <div>
+                  {group.items.map((skill) => (
+                    <span key={skill}>{skill}</span>
+                  ))}
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section id="journey" className="section journey-section">
+          <div className="section-heading reveal">
+            <p className="eyebrow">Journey</p>
+            <h2>Where I have been focusing my engineering energy.</h2>
+          </div>
+
+          <div className="timeline">
+            {journey.map((item) => (
+              <article className="timeline-item reveal" key={item.title}>
+                <span>{item.year}</span>
+                <div>
+                  <h3>{item.title}</h3>
+                  <p>{item.text}</p>
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section id="contact" className="section contact-section">
+          <div className="contact-layout">
+            <div className="section-heading reveal">
+              <p className="eyebrow">Contact</p>
+              <h2>Let us build something useful.</h2>
+              <p>
+                I am open to backend and full-stack engineering opportunities, internships, and
+                project collaborations.
+              </p>
+
+              <div className="contact-links">
+                <a href={`mailto:${portfolio.email}`}>
+                  <Icon name="mail" />
+                  {portfolio.email}
+                </a>
+                <a href={portfolio.links.github} target="_blank" rel="noopener noreferrer">
+                  <Icon name="github" />
+                  GitHub
+                </a>
+                <a href={portfolio.links.linkedin} target="_blank" rel="noopener noreferrer">
+                  <Icon name="linkedin" />
+                  LinkedIn
+                </a>
               </div>
-            )}
+            </div>
 
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="group">
-                  <label className="block text-white/70 text-sm font-bold mb-2">Name *</label>
-                  <input
-                    type="text"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleInputChange}
-                    required
-                    className="w-full px-4 py-4 bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:border-transparent transition-all duration-300 group-hover:border-emerald-400/50"
-                    placeholder="Your Name"
-                  />
-                </div>
-                <div className="group">
-                  <label className="block text-white/70 text-sm font-bold mb-2">Email *</label>
-                  <input
-                    type="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleInputChange}
-                    required
-                    className="w-full px-4 py-4 bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:border-transparent transition-all duration-300 group-hover:border-emerald-400/50"
-                    placeholder="Your Email"
-                  />
-                </div>
-              </div>
-              
-              <div className="group">
-                <label className="block text-white/70 text-sm font-bold mb-2">Message *</label>
+            <form className="contact-form reveal" onSubmit={handleSubmit}>
+              <label>
+                Name
+                <input
+                  type="text"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleInputChange}
+                  placeholder="Your name"
+                  required
+                />
+              </label>
+              <label>
+                Email
+                <input
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleInputChange}
+                  placeholder="you@example.com"
+                  required
+                />
+              </label>
+              <label>
+                Message
                 <textarea
                   name="message"
                   value={formData.message}
                   onChange={handleInputChange}
+                  placeholder="Tell me what you want to build..."
+                  rows="5"
                   required
-                  rows="6"
-                  className="w-full px-4 py-4 bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:border-transparent transition-all duration-300 group-hover:border-emerald-400/50 resize-none"
-                  placeholder="Tell me about your project, collaboration ideas, or just say hello..."
-                ></textarea>
-              </div>
-              
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className={`group relative w-full px-8 py-4 font-bold rounded-xl overflow-hidden transition-all duration-300 hover:scale-105 ${
-                  isSubmitting 
-                    ? 'bg-gray-600 cursor-not-allowed' 
-                    : 'bg-gradient-to-r from-pink-400 to-purple-400 hover:shadow-2xl hover:shadow-emerald-400/50'
-                } text-slate-900`}
-              >
-                <span className="relative z-10 flex items-center justify-center">
-                  {isSubmitting ? (
-                    <>
-                      <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-slate-900" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                      </svg>
-                      Sending...
-                    </>
-                  ) : (
-                    <>
-                      Send Message
-                      <svg className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
-                      </svg>
-                    </>
-                  )}
-                </span>
-                {!isSubmitting && (
-                  <div className="absolute inset-0 bg-gradient-to-r from-orange-400 to-pink-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                )}
+                />
+              </label>
+              <button type="submit" className="primary-button" disabled={isSubmitting}>
+                {isSubmitting ? 'Sending...' : 'Send message'}
+                <Icon name="arrow" />
               </button>
+              {submitStatus && <p className="form-status">{submitStatus}</p>}
             </form>
-
-            <div className="mt-12 pt-8 border-t border-white/10">
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 text-center">
-                <div className="group">
-                  <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-r from-sky-400 to-green-400 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                    <svg className="w-8 h-8 text-slate-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                    </svg>
-                  </div>
-                  <p className="text-white/60 text-sm">Email</p>
-                  <p className="text-emerald-400 font-medium text-sm">{portfolioData.contact.email}</p>
-                </div>
-                
-                <div className="group">
-                  <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-r from-red-600 to-orange-400 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                    <svg className="w-8 h-8 text-slate-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                    </svg>
-                  </div>
-                  <p className="text-white/60 text-sm">Phone</p>
-                  <p className="text-purple-400 font-medium text-sm">{portfolioData.contact.phone}</p>
-                </div>
-                
-                <div className="group">
-                  <a href={`https://${portfolioData.contact.github}`} target="_blank" rel="noopener noreferrer">
-                    <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-r from-black to-white  rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                      <svg className="w-8 h-8 text-slate-900" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-                      </svg>
-                    </div>
-                    <p className="text-white/60 text-sm">GitHub</p>
-                    <p className="text-cyan-400 font-medium text-sm hover:underline">View Profile</p>
-                  </a>
-                </div>
-                
-                <div className="group">
-                  <a href={`https://${portfolioData.contact.linkedin}`} target="_blank" rel="noopener noreferrer">
-                    <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-r from-green-500 to-white rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                      <svg className="w-8 h-8 text-slate-900" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-                      </svg>
-                    </div>
-                    <p className="text-white/60 text-sm">LinkedIn</p>
-                    <p className="text-blue-400 font-medium text-sm hover:underline">Connect</p>
-                  </a>
-                </div>
-              </div>
-            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </main>
 
-      {/* Footer */}
-      <footer className="bg-slate-900/50 backdrop-blur-xl py-12 text-center border-t border-white/10">
-        <div className="container mx-auto px-6">
-          <div className="mb-6">
-            <div className="text-3xl font-bold bg-gradient-to-r from-yellow-400 to-amber-400 bg-clip-text text-transparent mb-2">
-              {portfolioData.name}
-            </div>
-            <p className="text-white/60">Full Stack Developer</p>
-          </div>
-          
-          <p className="text-white/50 text-sm mb-4">
-            &copy; {new Date().getFullYear()} {portfolioData.name}. All rights reserved.
-          </p>
-          <p className="text-white/40 text-xs">
-            Designed & Built with React, Tailwind CSS, and Go
-          </p>
-        </div>
+      <footer className="site-footer">
+        <p>{portfolio.name}</p>
+        <span>Built with React, Tailwind CSS, and a backend engineer's bias for clarity.</span>
       </footer>
-
-      {/* Enhanced Styles */}
-      <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
-
-        * {
-          font-family: 'Inter', sans-serif;
-        }
-
-        body {
-          overflow-x: hidden;
-        }
-
-        .scroll-animate {
-          opacity: 0;
-          transform: translateY(30px);
-          transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .scroll-animate.animate-in {
-          opacity: 1;
-          transform: translateY(0);
-        }
-
-        @keyframes float {
-          0%, 100% { transform: translateY(0px) rotate(0deg); }
-          33% { transform: translateY(-10px) rotate(120deg); }
-          66% { transform: translateY(5px) rotate(240deg); }
-        }
-
-        @keyframes fillBar {
-          from { width: 0%; }
-          to { width: var(--final-width); }
-        }
-
-        @keyframes gradient {
-          0%, 100% { background-position: 0% 50%; }
-          50% { background-position: 100% 50%; }
-        }
-
-        .animate-gradient {
-          background-size: 400% 400%;
-          animation: gradient 3s ease infinite;
-        }
-
-        @keyframes glow {
-          0%, 100% { box-shadow: 0 0 20px rgba(52, 211, 153, 0.3); }
-          50% { box-shadow: 0 0 40px rgba(52, 211, 153, 0.6); }
-        }
-
-        .hover\\:animate-glow:hover {
-          animation: glow 2s ease-in-out infinite;
-        }
-
-        /* Scrollbar Styling */
-        ::-webkit-scrollbar {
-          width: 8px;
-        }
-
-        ::-webkit-scrollbar-track {
-          background: rgba(15, 23, 42, 0.5);
-        }
-
-        ::-webkit-scrollbar-thumb {
-          background: linear-gradient(to bottom, #10b981, #06b6d4);
-          border-radius: 10px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-          background: linear-gradient(to bottom, #059669, #0891b2);
-        }
-
-        /* Enhanced button hover effects */
-        .btn-glow {
-          position: relative;
-          overflow: hidden;
-        }
-
-        .btn-glow::before {
-          content: '';
-          position: absolute;
-          top: 0;
-          left: -100%;
-          width: 100%;
-          height: 100%;
-          background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-          transition: left 0.5s;
-        }
-
-        .btn-glow:hover::before {
-          left: 100%;
-        }
-      `}</style>
     </div>
   );
 }
