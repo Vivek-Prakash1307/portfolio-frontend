@@ -1,0 +1,605 @@
+{
+  "profile": {
+    "name": "Vivek Prakash",
+    "role": "Go Backend Developer",
+    "location": "Bengaluru, India",
+    "email": "alivevivek8@gmail.com",
+    "phone": "+91 7309058513",
+    "summary": "I build production-oriented Go backend systems: REST APIs, authentication flows, PostgreSQL data models, AWS S3 file workflows, background workers, scheduled jobs, and reliability fixes for business products.",
+    "focus": [
+      "Go backend systems",
+      "APIs and business logic",
+      "Auth and permissions",
+      "Reliability engineering"
+    ],
+    "stats": [
+      {
+        "value": "Go",
+        "label": "primary backend language"
+      },
+      {
+        "value": "2",
+        "label": "professional backend roles"
+      },
+      {
+        "value": "500+",
+        "label": "companies processed in LIMDX pipelines"
+      },
+      {
+        "value": "2026",
+        "label": "B.Tech CSE graduate"
+      }
+    ],
+    "links": {
+      "github": "https://github.com/Vivek-Prakash1307",
+      "linkedin": "https://linkedin.com/in/vivek-prakash-00230a300",
+      "leetcode": "https://leetcode.com/u/alivevivek8",
+      "geeksforgeeks": "https://geeksforgeeks.org/user/alivevng22/"
+    },
+    "education": {
+      "degree": "B.Tech in Computer Science",
+      "institution": "Dayananda Sagar University, Bengaluru",
+      "years": "2022-2026",
+      "cgpa": "8.67/10"
+    },
+    "about": "I am a Go Backend Developer with professional experience building and maintaining production-oriented backend systems for business applications. My work focuses on API design, authentication and authorization, PostgreSQL data modeling, AWS S3 file workflows, background workers, scheduled jobs, validation, permission systems, and reliability fixes. I enjoy tracing problems across handlers, services, databases, AWS integrations, deployment logs, and frontend requests until the root cause is clear. I also understand the full product flow, which helps me build backend APIs that support reliable frontend experiences without overstating frontend ownership."
+  },
+  "skillGroups": [
+    {
+      "title": "Languages",
+      "items": [
+        "Go",
+        "C++",
+        "Java",
+        "JavaScript"
+      ]
+    },
+    {
+      "title": "Backend",
+      "items": [
+        "Gin",
+        "REST APIs",
+        "Microservices",
+        "Authentication",
+        "Authorization",
+        "Background Workers",
+        "Scheduled Jobs"
+      ]
+    },
+    {
+      "title": "Databases",
+      "items": [
+        "PostgreSQL",
+        "SQL",
+        "GORM",
+        "MySQL"
+      ]
+    },
+    {
+      "title": "Cloud and Infrastructure",
+      "items": [
+        "AWS S3",
+        "AWS Cognito",
+        "Docker",
+        "Render",
+        "Vercel",
+        "CI/CD Basics"
+      ]
+    },
+    {
+      "title": "Tools",
+      "items": [
+        "Git",
+        "GitHub",
+        "Postman",
+        "Linux",
+        "Structured Logging"
+      ]
+    },
+    {
+      "title": "Engineering",
+      "items": [
+        "Debugging",
+        "Troubleshooting",
+        "Root-Cause Analysis",
+        "API Validation",
+        "Database Design",
+        "Permission Systems",
+        "Third-Party Service Integration"
+      ]
+    }
+  ],
+  "techStack": [
+    {
+      "name": "Go",
+      "tone": "cyan",
+      "mark": "Go"
+    },
+    {
+      "name": "Gin",
+      "tone": "green",
+      "mark": "Gi"
+    },
+    {
+      "name": "PostgreSQL",
+      "tone": "indigo",
+      "mark": "PG"
+    },
+    {
+      "name": "GORM",
+      "tone": "lime",
+      "mark": "GM"
+    },
+    {
+      "name": "AWS S3",
+      "tone": "amber",
+      "mark": "S3"
+    },
+    {
+      "name": "AWS Cognito",
+      "tone": "blue",
+      "mark": "Co"
+    },
+    {
+      "name": "Docker",
+      "tone": "sky",
+      "mark": "Do"
+    },
+    {
+      "name": "GitHub",
+      "tone": "violet",
+      "mark": "GH"
+    },
+    {
+      "name": "Postman",
+      "tone": "red",
+      "mark": "PM"
+    },
+    {
+      "name": "SQL",
+      "tone": "teal",
+      "mark": "SQL"
+    }
+  ],
+  "journey": [
+    {
+      "year": "Jan 2026 - Present",
+      "title": "Software Engineer Intern",
+      "organization": "LIMDX PRIVATE LIMITED - Remote",
+      "text": "Working on financial data extraction and processing workflows for 500+ companies.",
+      "bullets": [
+        "Maintained backend-oriented financial data extraction workflows for company-scale datasets.",
+        "Worked with concurrent processing, retry handling, checkpoint recovery, structured parsing, and CSV/data outputs.",
+        "Improved the readability and reliability of data processing flows without changing the factual project scope already shown in the portfolio."
+      ],
+      "technologies": [
+        "Go",
+        "Goroutines",
+        "Web Scraping",
+        "HTML Parsing",
+        "CSV",
+        "Structured Logging"
+      ]
+    },
+    {
+      "year": "May 2026 - September 2026",
+      "title": "Go Backend Developer",
+      "organization": "Evtaar",
+      "text": "Contributed backend services and reliability improvements for Evtaar product features whose complete user flows included frontend and backend integration.",
+      "bullets": [
+        "Implemented backend workflows supporting bulk employee onboarding with CSV parsing, row-level validation, AWS Cognito account creation, invitation tracking, partial-success handling, background workers, and permission checks.",
+        "Refactored S3-backed file handling across existing microservices using environment-based buckets, structured object keys, stored bucket/key references, secure access URLs, and aligned upload/read/update/delete flows.",
+        "Developed backend APIs, scheduling logic, audit logging, S3 attachment handling, permissions, and social-feed synchronization for announcement and automated welcome-announcement features.",
+        "Implemented event-management backend behavior including timezone-aware scheduling, event states, notifications, participant identity, signed join tokens, pagination fixes, and permission-controlled administration.",
+        "Diagnosed logout, refresh-token, CORS, session-type, Cognito, and database-connection failures, then hardened refresh-token and business-login flows with clearer error separation and bounded retries.",
+        "Improved PostgreSQL and feed-service reliability by investigating prepared-statement/session-state failures, migrating relevant connections to pgx simple protocol, and sharing consistent connection-opening behavior.",
+        "Corrected role, tenant permission, employee lifecycle, recruitment, job, validation, and data consistency behavior across backend services while preserving product data needed for business workflows."
+      ],
+      "technologies": [
+        "Go",
+        "Gin",
+        "PostgreSQL",
+        "GORM",
+        "AWS S3",
+        "AWS Cognito",
+        "Docker",
+        "REST APIs"
+      ]
+    },
+    {
+      "year": "2022 - 2026",
+      "title": "B.Tech in Computer Science",
+      "organization": "Dayananda Sagar University, Bengaluru",
+      "text": "Computer Science and Engineering - CGPA 8.67/10."
+    }
+  ],
+  "projects": [
+    {
+      "title": "Automated Financial Data Extraction and Analysis System",
+      "eyebrow": "Concurrent data platform",
+      "description": "A Go platform that processes stock market data for 500+ companies with concurrent scraping, checkpoint recovery, retry handling, structured parsing, and CSV/data workflows.",
+      "impact": [
+        "High-volume extraction",
+        "Fault-tolerant processing",
+        "Checkpoint recovery"
+      ],
+      "tech": [
+        "Go",
+        "Goroutines",
+        "Web Scraping",
+        "HTML Parsing",
+        "CSV",
+        "Structured Logging"
+      ],
+      "github": "https://github.com/Vivek-Prakash1307/Automated-Financial-Data-Extraction-and-Analysis-System-",
+      "id": "financial-data-platform",
+      "featured": true,
+      "category": "Data pipelines",
+      "highlights": [
+        "High-volume extraction",
+        "Fault-tolerant processing",
+        "Checkpoint recovery"
+      ],
+      "architecture": [
+        "Company data sources",
+        "Concurrent extraction workers",
+        "Structured parsing and validation",
+        "Checkpoint recovery and CSV export"
+      ]
+    },
+    {
+      "title": "Repository-Centric Kubernetes Security Analysis Framework",
+      "eyebrow": "DevSecOps system",
+      "description": "A security analysis framework for repository-centric Kubernetes and Helm scanning with RBAC validation, network policy checks, WebSocket operations, and posture scoring.",
+      "impact": [
+        "Repository scanning",
+        "Security posture scoring",
+        "Helm chart analysis"
+      ],
+      "tech": [
+        "Go",
+        "Kubernetes",
+        "Helm",
+        "WebSockets",
+        "Docker",
+        "GitHub APIs"
+      ],
+      "github": "https://github.com/Aegios-k8s/major-project",
+      "id": "kubernetes-security",
+      "featured": true,
+      "category": "Infrastructure",
+      "highlights": [
+        "Repository scanning",
+        "Security posture scoring",
+        "Helm chart analysis"
+      ],
+      "architecture": [
+        "GitHub repository input",
+        "Kubernetes and Helm resource analysis",
+        "RBAC and network policy checks",
+        "Security posture scoring"
+      ]
+    },
+    {
+      "title": "Email Intelligence Platform",
+      "eyebrow": "Production-ready verification",
+      "description": "A full-stack email verification system with concurrent domain checks, DNS MX lookup, SMTP validation, REST APIs, PostgreSQL, Docker, and cloud deployment.",
+      "impact": [
+        "Concurrent checks",
+        "DNS validation",
+        "Cloud deployment"
+      ],
+      "tech": [
+        "Go",
+        "Gin",
+        "React",
+        "PostgreSQL",
+        "Docker",
+        "Render",
+        "Vercel"
+      ],
+      "github": "https://github.com/Vivek-Prakash1307/email-intelligence-platform",
+      "id": "email-intelligence",
+      "featured": true,
+      "category": "Full stack",
+      "highlights": [
+        "Concurrent checks",
+        "DNS validation",
+        "Cloud deployment"
+      ],
+      "architecture": [
+        "React verification interface",
+        "Go REST API",
+        "Concurrent DNS and SMTP checks",
+        "PostgreSQL storage"
+      ]
+    },
+    {
+      "title": "HTTP Load Balancer",
+      "description": "Custom Go reverse proxy with round-robin distribution, health checks, and fault-tolerant request routing.",
+      "tech": [
+        "Go",
+        "net/http",
+        "Reverse Proxy",
+        "Concurrency"
+      ],
+      "github": "https://github.com/Vivek-Prakash1307/Load_Balancer",
+      "id": "http-load-balancer",
+      "featured": false,
+      "category": "Infrastructure",
+      "highlights": [
+        "Go implementation",
+        "Reverse proxy forwarding",
+        "Backend health checks"
+      ],
+      "architecture": [
+        "Incoming HTTP requests",
+        "Round-robin backend selection",
+        "Reverse proxy forwarding",
+        "Backend health checks"
+      ]
+    },
+    {
+      "title": "Chunked File Uploader",
+      "description": "React and TypeScript uploader with resumable chunks, retry flows, IndexedDB persistence, state-machine logic, and tests.",
+      "tech": [
+        "React",
+        "TypeScript",
+        "IndexedDB",
+        "Vitest",
+        "Playwright"
+      ],
+      "github": "https://github.com/Vivek-Prakash1307/chunked-file-uploader",
+      "id": "chunked-file-uploader",
+      "featured": false,
+      "category": "Full stack",
+      "highlights": [
+        "React implementation",
+        "IndexedDB progress persistence",
+        "Retry and resume workflows"
+      ],
+      "architecture": [
+        "File selection and chunking",
+        "Upload state machine",
+        "IndexedDB progress persistence",
+        "Retry and resume workflows"
+      ]
+    },
+    {
+      "title": "PPT-to-PDF Converter",
+      "description": "Go web app for document conversion using LibreOffice, concurrent processing, large uploads, progress tracking, and Docker deployment.",
+      "tech": [
+        "Go",
+        "Gin",
+        "LibreOffice",
+        "Docker",
+        "Railway"
+      ],
+      "github": "https://github.com/Vivek-Prakash1307/PPT-TO-PDF-CONVERTER",
+      "id": "ppt-to-pdf",
+      "featured": false,
+      "category": "Backend services",
+      "highlights": [
+        "Go implementation",
+        "LibreOffice PDF conversion",
+        "Progress tracking and file delivery"
+      ],
+      "architecture": [
+        "Document upload",
+        "Concurrent conversion jobs",
+        "LibreOffice PDF conversion",
+        "Progress tracking and file delivery"
+      ]
+    },
+    {
+      "title": "WeatherStack",
+      "description": "Go weather microservice with caching, health checks, API integration, Docker support, and reliable REST endpoints.",
+      "tech": [
+        "Go",
+        "Gin",
+        "Caching",
+        "Docker",
+        "REST APIs"
+      ],
+      "github": "https://github.com/Vivek-Prakash1307/weatherstack-go",
+      "id": "weatherstack",
+      "featured": false,
+      "category": "Backend services",
+      "highlights": [
+        "Go implementation",
+        "External weather API integration",
+        "Cached response delivery"
+      ],
+      "architecture": [
+        "REST weather request",
+        "Cache lookup",
+        "External weather API integration",
+        "Cached response delivery"
+      ]
+    },
+    {
+      "title": "Web Server API",
+      "description": "REST API with Gin and GORM for authentication and product management backed by MySQL CRUD workflows.",
+      "tech": [
+        "Go",
+        "Gin",
+        "GORM",
+        "MySQL",
+        "Auth"
+      ],
+      "github": "https://github.com/Vivek-Prakash1307/Web-Server-API",
+      "id": "web-server-api",
+      "featured": false,
+      "category": "Backend services",
+      "highlights": [
+        "Go implementation",
+        "Gin handlers and GORM models",
+        "MySQL data storage"
+      ],
+      "architecture": [
+        "REST request",
+        "Authentication and routing",
+        "Gin handlers and GORM models",
+        "MySQL data storage"
+      ]
+    },
+    {
+      "title": "TaskFlow",
+      "description": "Full-stack task management app with JWT authentication, kanban-style workflows, responsive UI, and real-time CRUD operations.",
+      "tech": [
+        "React",
+        "Node.js",
+        "Express",
+        "MongoDB",
+        "JWT"
+      ],
+      "github": "https://github.com/Vivek-Prakash1307/PrimeTrade",
+      "id": "taskflow",
+      "featured": false,
+      "category": "Full stack",
+      "highlights": [
+        "React implementation",
+        "Express task endpoints",
+        "MongoDB persistence"
+      ],
+      "architecture": [
+        "React kanban interface",
+        "JWT authentication",
+        "Express task endpoints",
+        "MongoDB persistence"
+      ]
+    }
+  ],
+  "caseStudies": [
+    {
+      "id": "bulk-employee-onboarding",
+      "title": "Bulk Employee Onboarding System",
+      "eyebrow": "Evtaar backend case study",
+      "problem": "Businesses needed to onboard multiple employees through a structured workflow while receiving clear results for successful and failed CSV rows.",
+      "responsibility": "Implemented backend services for the onboarding flow inside Evtaar existing product and microservices.",
+      "implementation": [
+        "Built CSV parsing with flexible header normalization, row-level validation, duplicate detection, and clear per-row failure messages.",
+        "Created users through AWS Cognito and generated global user, user account, default profile, username, and employee-number records.",
+        "Linked employees to organization data using department, role, employment type, position, and joining date when sufficient employment data was available.",
+        "Added invitation emails, invitation-status tracking, resend support, database-backed batch and row tracking, and background worker processing.",
+        "Exposed APIs for upload history, processing status, and row-level details with HR Admin and authorized business-user permissions."
+      ],
+      "decisions": [
+        "Partial-success handling allowed valid rows to continue when other rows failed validation.",
+        "Optional organization linking avoided blocking profile creation when employment data was incomplete.",
+        "Batch and row records made upload processing traceable after the request returned."
+      ],
+      "result": "Businesses could complete bulk employee onboarding with transparent success and failure reporting instead of treating one invalid row as a full-batch failure.",
+      "validation": "Validated duplicate handling, partial success behavior, skipped organization linking, invitation resend behavior, and permission-controlled APIs.",
+      "technologies": [
+        "Go",
+        "Gin",
+        "PostgreSQL",
+        "GORM",
+        "AWS Cognito",
+        "Background Workers",
+        "CSV"
+      ]
+    },
+    {
+      "id": "multi-service-s3-storage",
+      "title": "Multi-Service S3 Storage Architecture",
+      "eyebrow": "Evtaar backend case study",
+      "problem": "Existing file flows used inconsistent bucket and object-path logic across services, which made upload, access, update, and cleanup behavior harder to maintain.",
+      "responsibility": "Improved S3-backed file handling across multiple existing Evtaar microservices without claiming ownership of every service from scratch.",
+      "implementation": [
+        "Replaced inconsistent or hardcoded bucket and object-path logic with environment-based development and production buckets.",
+        "Created structured object paths under system, users, and businesses using relevant entity identifiers such as user ID, profile ID, business ID, employee ID, job ID, channel ID, and post ID.",
+        "Stored bucket/key references instead of depending on permanent public S3 URLs.",
+        "Generated secure access or presigned URLs when files were viewed or downloaded.",
+        "Aligned upload, read, update, delete, and cleanup behavior for media, resumes, profile images, documents, event banners, post attachments, chat files, and related assets."
+      ],
+      "decisions": [
+        "Bucket/key storage made object ownership explicit and kept API responses compatible where required.",
+        "Module-specific contracts were prepared and validated so services could move consistently without breaking callers.",
+        "Cleanup behavior was tied to related entity or post deletion to reduce stale file references."
+      ],
+      "result": "File storage behavior became more consistent across Evtaar services while still supporting existing product responses and frontend flows.",
+      "validation": "Validated upload, view/download, update, delete, cleanup, and module-specific API contract behavior.",
+      "technologies": [
+        "Go",
+        "AWS S3",
+        "REST APIs",
+        "PostgreSQL",
+        "Microservices",
+        "Docker"
+      ]
+    },
+    {
+      "id": "announcements-events-backend",
+      "title": "Announcement and Event Management Backend",
+      "eyebrow": "Evtaar backend case study",
+      "problem": "Announcements, welcome messages, social-feed posts, and events needed backend behavior that stayed consistent across visibility, scheduling, permissions, attachments, and participant flows.",
+      "responsibility": "Developed backend workflows supporting the completed announcement, company-settings, social-feed, and event-management experiences.",
+      "implementation": [
+        "Built announcement create, list, detail, update, and soft-delete APIs with S3 attachments, audit logs, visibility controls, and permission-based access.",
+        "Synchronized announcements with linked social-feed posts when visibility changed or records were updated or deleted.",
+        "Implemented company-level welcome-announcement settings, automatic welcome announcements after onboarding, immediate and scheduled publication, editing, cancellation, retraction, and status tracking.",
+        "Implemented event create, edit, delete, list, enable, disable, pagination, total-count corrections, and linked post compatibility.",
+        "Added timezone-aware scheduling with IANA timezones, business-local to UTC conversion, stored source timezone/local time, UTC scheduler execution, and safe handling of existing scheduled records.",
+        "Supported notifications, webinar-specific address behavior, event banners in feed responses, backend-controlled participant identity, signed join tokens, participant tracking, and permission-controlled event administration."
+      ],
+      "decisions": [
+        "UTC scheduler execution kept server processing predictable while stored local time supported correct display for users.",
+        "Ongoing and completed events were protected from unsafe edit, delete, or disable operations.",
+        "Announcement status records made scheduled, published, cancelled, and failed behavior explicit."
+      ],
+      "result": "The complete product flow could handle announcements, welcome automation, feed synchronization, event scheduling, participant access, and permissions through consistent backend contracts.",
+      "validation": "Validated scheduling, visibility changes, linked feed synchronization, event states, pagination/count behavior, notifications, and permission paths.",
+      "technologies": [
+        "Go",
+        "Gin",
+        "PostgreSQL",
+        "AWS S3",
+        "Scheduled Jobs",
+        "Permissions",
+        "REST APIs"
+      ]
+    },
+    {
+      "id": "auth-database-reliability",
+      "title": "Authentication and Database Reliability",
+      "eyebrow": "Evtaar backend case study",
+      "problem": "Temporary Cognito, CORS, session-type, token-refresh, database, and PostgreSQL session-state failures could incorrectly disrupt valid user sessions or product feeds.",
+      "responsibility": "Diagnosed backend reliability issues across authentication, business login, PostgreSQL access, feed-service behavior, and deployment logs.",
+      "implementation": [
+        "Corrected credentialed CORS behavior using validated request origins and separated invalid authentication from temporary provider or backend failures.",
+        "Returned 401 only for genuinely invalid, expired, or revoked authentication while using server responses for temporary Cognito or backend failures.",
+        "Added bounded retry handling for transient Cognito failures, corrected refresh-token parameters, and hardened refresh-token enrichment paths.",
+        "Supported separation of individual and business login contexts and improved business-database connection reliability after OTP verification.",
+        "Diagnosed PostgreSQL prepared-statement and session-state failures affecting social feeds, shorts, announcements, events, and event-access APIs.",
+        "Migrated relevant connections from lib/pq to pgx simple protocol and introduced shared PostgreSQL connection-opening behavior.",
+        "Cleaned invalid event hydration behavior so incomplete event data did not produce broken placeholders."
+      ],
+      "decisions": [
+        "Authentication errors were classified by cause so temporary infrastructure failures did not look like invalid user sessions.",
+        "Bounded retries improved resilience without hiding persistent failures.",
+        "Shared database connection behavior reduced drift across tenant, feed, individual-user, and announcement access paths."
+      ],
+      "result": "Valid users experienced more reliable login and token-refresh behavior, and temporary provider or database problems were less likely to cause false logout or broken feed behavior.",
+      "validation": "Ran backend tests after the reliability changes and checked the affected authentication, refresh, business-login, feed, announcement, event, and event-access flows.",
+      "technologies": [
+        "Go",
+        "AWS Cognito",
+        "PostgreSQL",
+        "pgx",
+        "CORS",
+        "Authentication",
+        "REST APIs"
+      ]
+    }
+  ],
+  "additionalContributions": [
+    "Investigated tenant-specific, role-based, and directly assigned permissions; corrected permission-source inconsistencies and missing bulk-upload permission assignments.",
+    "Aligned announcement and event permissions with tenant business databases and permission-aware custom business roles.",
+    "Corrected employee deletion, relinking, role mapping, business-mode login blocking, middle-name preservation, full-name rebuilding, and employee lifecycle status behavior.",
+    "Improved recruitment and job APIs for draft/published handling, job statistics, posted-date filtering, stable sorting, count consistency, application-status mapping, Decision Center permissions, optional video assessment behavior, and optional salary/application validation.",
+    "Improved upload APIs and persistence flows for resumes, profile images, certifications, testimonials, assessment videos, emergency contacts, education records, and business-profile content.",
+    "Fixed website/domain validation, invalid JSON field-type messages, PATCH omitted-versus-empty behavior, employee search normalization, group creator/member consistency, transactional group deletion, business-profile response contracts, profile-image registration DTO behavior, and display-name data flow across services."
+  ]
+}

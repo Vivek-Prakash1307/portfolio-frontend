@@ -13,6 +13,9 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "content:sync": "node scripts/sync-portfolio.cjs",
+    "content:check": "node scripts/sync-portfolio.cjs --check",
+    "prebuild": "npm run content:check",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",

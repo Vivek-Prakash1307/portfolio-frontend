@@ -1,3 +1,3 @@
-# https://www.robotstxt.org/robotstxt.html
 User-agent: *
-Disallow:
+Allow: /
+Sitemap: https://portfolio-frontend-one-ruddy.vercel.app/sitemap.xml

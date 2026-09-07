@@ -1,0 +1,26 @@
+name: Frontend checks
+on: [push, pull_request]
+permissions:
+  contents: read
+concurrency:
+  group: frontend-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - run: npm run content:check
+      - run: npm test -- --watchAll=false --runInBand
+        env:
+          CI: 'true'
+      - run: npm run build
+        env:
+          CI: 'true'
+          REACT_APP_API_URL: https://portfolio-backend-9kf0.onrender.com
+      - run: docker build -t portfolio-frontend .

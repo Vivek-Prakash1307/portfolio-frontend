@@ -1,0 +1,14 @@
+.contact-form { gap: 12px; }
+.contact-form label { margin-top: 6px; }
+.form-intro { margin: 0 0 8px; color: var(--soft); }
+.field-error { margin: 0; color: #ffb5a8; font-size: .88rem; }
+.contact-form [aria-invalid='true'] { border-color: #ffb5a8; }
+.field-help { display: flex; justify-content: space-between; gap: 12px; margin: 0; color: var(--muted); font-size: .8rem; }
+.privacy-note { margin: 0 0 8px; color: var(--muted); font-size: .78rem; }
+.honeypot { position: absolute; left: -10000px; top: auto; width: 1px; height: 1px; overflow: hidden; }
+.form-status { padding: 14px 16px; border-radius: 12px; border: 1px solid var(--line); }
+.form-status p { margin: 0; }
+.form-status a { display: inline-block; margin-top: 10px; text-decoration: underline; overflow-wrap: anywhere; }
+.status-success { color: var(--accent); background: rgba(68,224,174,.06); }
+.status-error { color: #ffb5a8; background: rgba(255,181,168,.04); }
+.contact-tools { display: flex; flex-wrap: wrap; align-items: start; gap: 14px; margin-top: 22px; }
