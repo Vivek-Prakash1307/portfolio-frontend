@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="320" height="200" viewBox="0 0 320 200" role="img" aria-labelledby="title desc">
+  <title id="title">Antigravity</title>
+  <desc id="desc">Illustrative portfolio card for Antigravity</desc>
+  <rect width="320" height="200" rx="26" fill="#071015"/>
+  <rect x="1" y="1" width="318" height="198" rx="25" fill="none" stroke="#7dd3fc" stroke-opacity=".42"/>
+  <path d="M76 126c44 24 92 24 144 0M76 76c44-24 92-24 144 0" fill="none" stroke="#44e0ae" stroke-width="8" stroke-linecap="round"/>
+  <path d="M148 48v104m24-104v104" stroke="#7dd3fc" stroke-width="6" stroke-linecap="round" opacity=".85"/>
+  <circle cx="160" cy="100" r="18" fill="#f4c96b"/>
+  <text x="44" y="162" fill="#eefcf7" font-family="Inter, Arial, sans-serif" font-size="30" font-weight="900">Antigravity</text>
+  <text x="44" y="184" fill="#9db6ad" font-family="Inter, Arial, sans-serif" font-size="14">agentic IDE workflows</text>
+</svg>

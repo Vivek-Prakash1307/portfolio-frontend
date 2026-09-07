@@ -240,6 +240,70 @@ a {
   padding-top: 32px;
 }
 
+.agentic-showcase {
+  position: absolute;
+  z-index: 2;
+  right: max(24px, calc((100vw - 1180px) / 2));
+  bottom: 124px;
+  width: min(380px, 32vw);
+  padding: 22px;
+  border: 1px solid rgba(83, 226, 184, 0.28);
+  border-radius: 22px;
+  background: rgba(7, 16, 13, 0.68);
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.36);
+  backdrop-filter: blur(14px);
+}
+
+.agentic-showcase h2 {
+  margin: 0;
+  font-size: clamp(1.25rem, 2vw, 1.75rem);
+  line-height: 1.1;
+}
+
+.agentic-showcase > p:not(.eyebrow) {
+  margin: 12px 0 18px;
+  color: var(--soft);
+  font-size: 0.93rem;
+  line-height: 1.5;
+}
+
+.agentic-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.agentic-card {
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.045);
+}
+
+.agentic-card img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1.6;
+  object-fit: cover;
+}
+
+.agentic-card div {
+  padding: 10px;
+}
+
+.agentic-card h3 {
+  margin: 0;
+  font-size: 0.88rem;
+}
+
+.agentic-card p {
+  margin: 4px 0 0;
+  color: var(--muted);
+  font-size: 0.74rem;
+  line-height: 1.3;
+}
+
 .eyebrow,
 .card-eyebrow {
   margin: 0 0 14px;
@@ -1115,7 +1179,16 @@ a {
     gap: 34px;
   }
 
+  .agentic-showcase {
+    position: relative;
+    right: auto;
+    bottom: auto;
+    width: 100%;
+    margin-top: 40px;
+  }
+
   .hero-panel {
+    margin-top: 28px;
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
@@ -1275,6 +1348,18 @@ a {
   .primary-button,
   .secondary-button {
     width: 100%;
+  }
+
+  .agentic-showcase {
+    padding: 18px;
+  }
+
+  .agentic-card div {
+    padding: 8px;
+  }
+
+  .agentic-card p {
+    font-size: 0.7rem;
   }
 
   .about-copy,

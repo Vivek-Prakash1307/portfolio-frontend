@@ -8,6 +8,11 @@ test('renders the profile, all work, internship, and downloadable resume without
   expect(screen.getByRole('heading', { name: 'Vivek Prakash' })).toBeInTheDocument();
   expect(screen.getAllByText('Go Backend Developer').length).toBeGreaterThanOrEqual(2);
   expect(screen.getByText(/Backend Engineer \| Golang \(Go\) \| Gin/)).toBeInTheDocument();
+  expect(screen.getByRole('heading', { name: 'Comfortable with AI-assisted engineering tools' })).toBeInTheDocument();
+  expect(screen.getByRole('heading', { name: 'GPT-5.6 Sol' })).toBeInTheDocument();
+  expect(screen.getByRole('heading', { name: 'GPT-5.6 Terra' })).toBeInTheDocument();
+  expect(screen.getByRole('heading', { name: 'Claude' })).toBeInTheDocument();
+  expect(screen.getByRole('heading', { name: 'Antigravity' })).toBeInTheDocument();
   expect(screen.getByRole('heading', { name: 'Automated Financial Data Extraction and Analysis System' })).toBeInTheDocument();
   expect(screen.getByText('LIMDX PRIVATE LIMITED - Remote')).toBeInTheDocument();
   expect(screen.getByText('Jan 2026 - May 2026')).toBeInTheDocument();

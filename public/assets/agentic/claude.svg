@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="320" height="200" viewBox="0 0 320 200" role="img" aria-labelledby="title desc">
+  <title id="title">Claude</title>
+  <desc id="desc">Illustrative portfolio card for Claude</desc>
+  <rect width="320" height="200" rx="26" fill="#11100c"/>
+  <rect x="1" y="1" width="318" height="198" rx="25" fill="none" stroke="#f4c96b" stroke-opacity=".38"/>
+  <path d="M68 134c24-55 48-82 72-82 27 0 54 27 81 82" fill="none" stroke="#f4c96b" stroke-width="10" stroke-linecap="round"/>
+  <path d="M104 132c13-28 25-42 36-42 12 0 24 14 37 42" fill="none" stroke="#eefcf7" stroke-width="7" stroke-linecap="round" opacity=".75"/>
+  <circle cx="226" cy="66" r="28" fill="#f4c96b" opacity=".15"/>
+  <text x="50" y="76" fill="#eefcf7" font-family="Inter, Arial, sans-serif" font-size="34" font-weight="900">Claude</text>
+  <text x="50" y="154" fill="#9db6ad" font-family="Inter, Arial, sans-serif" font-size="14">analysis and writing</text>
+</svg>

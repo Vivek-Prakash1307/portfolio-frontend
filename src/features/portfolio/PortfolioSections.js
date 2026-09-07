@@ -2,6 +2,13 @@ import { useState } from 'react';
 import SectionHeading from '../../components/ui/SectionHeading';
 import Icon from '../../components/ui/Icon';
 
+const agenticTools = [
+  { name: 'GPT-5.6 Sol', image: '/assets/agentic/gpt-56-sol.svg', use: 'deep reasoning and backend planning' },
+  { name: 'GPT-5.6 Terra', image: '/assets/agentic/gpt-56-terra.svg', use: 'agentic coding and implementation support' },
+  { name: 'Claude', image: '/assets/agentic/claude.svg', use: 'analysis, writing, and review' },
+  { name: 'Antigravity', image: '/assets/agentic/antigravity.svg', use: 'agentic IDE workflows' },
+];
+
 export function Hero({ profile }) {
   return <section id="home" className="hero-section">
     <img src="/assets/systems-hero.png" alt="" className="hero-image" width="1536" height="1024" fetchPriority="high" />
@@ -14,6 +21,15 @@ export function Hero({ profile }) {
         <a className="secondary-button" href="/resume.pdf" download="Vivek_Prakash_Resume.pdf"><Icon name="download" />Download resume</a>
         <a className="hero-email" href={`mailto:${profile.email}`}>Get in touch <Icon name="external" /></a></div>
     </div>
+    <aside className="agentic-showcase" aria-labelledby="agentic-heading">
+      <p className="eyebrow">Agentic AI workflow</p>
+      <h2 id="agentic-heading">Comfortable with AI-assisted engineering tools</h2>
+      <p>I use agentic AI tools thoughtfully for backend planning, debugging, code review, implementation support, and technical writing.</p>
+      <div className="agentic-grid">{agenticTools.map((tool) => <article className="agentic-card" key={tool.name}>
+        <img src={tool.image} alt="" width="320" height="200" loading="eager" />
+        <div><h3>{tool.name}</h3><p>{tool.use}</p></div>
+      </article>)}</div>
+    </aside>
     <div className="hero-panel">{profile.stats.map((stat) => <div key={stat.label}><strong>{stat.value}</strong><span>{stat.label}</span></div>)}</div>
   </section>;
 }

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="320" height="200" viewBox="0 0 320 200" role="img" aria-labelledby="title desc">
+  <title id="title">GPT-5.6 Terra</title>
+  <desc id="desc">Illustrative portfolio card for GPT-5.6 Terra</desc>
+  <rect width="320" height="200" rx="26" fill="#071412"/>
+  <rect x="1" y="1" width="318" height="198" rx="25" fill="none" stroke="#7dd3fc" stroke-opacity=".42"/>
+  <path d="M36 142c34-52 78-74 132-63 45 9 76-2 116-43v128H36Z" fill="#44e0ae" opacity=".14"/>
+  <path d="M58 124c30-33 64-45 103-36 34 8 64 0 97-28" fill="none" stroke="#44e0ae" stroke-width="8" stroke-linecap="round"/>
+  <path d="M92 52h44a18 18 0 0 1 18 18v44a18 18 0 0 1-18 18H92a18 18 0 0 1-18-18V70a18 18 0 0 1 18-18Z" fill="#10271f" stroke="#7dd3fc" stroke-opacity=".55"/>
+  <path d="M97 112V76h33M97 94h28" stroke="#7dd3fc" stroke-width="8" stroke-linecap="round"/>
+  <text x="176" y="86" fill="#eefcf7" font-family="Inter, Arial, sans-serif" font-size="28" font-weight="800">GPT-5.6</text>
+  <text x="176" y="121" fill="#44e0ae" font-family="Inter, Arial, sans-serif" font-size="32" font-weight="900">Terra</text>
+  <text x="176" y="148" fill="#9db6ad" font-family="Inter, Arial, sans-serif" font-size="14">coding execution</text>
+</svg>
