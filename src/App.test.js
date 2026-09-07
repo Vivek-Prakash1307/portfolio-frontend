@@ -7,9 +7,12 @@ test('renders the profile, all work, internship, and downloadable resume without
   render(<App />);
   expect(screen.getByRole('heading', { name: 'Vivek Prakash' })).toBeInTheDocument();
   expect(screen.getAllByText('Go Backend Developer').length).toBeGreaterThanOrEqual(2);
+  expect(screen.getByText(/Backend Engineer \| Golang \(Go\) \| Gin/)).toBeInTheDocument();
   expect(screen.getByRole('heading', { name: 'Automated Financial Data Extraction and Analysis System' })).toBeInTheDocument();
   expect(screen.getByText('LIMDX PRIVATE LIMITED - Remote')).toBeInTheDocument();
+  expect(screen.getByText('Jan 2026 - May 2026')).toBeInTheDocument();
   expect(screen.getByText('Evtaar')).toBeInTheDocument();
+  expect(screen.getByText('Computer Science and Engineering - CGPA 8.79/10.')).toBeInTheDocument();
   expect(screen.getByRole('heading', { name: 'Bulk Employee Onboarding System' })).toBeInTheDocument();
   expect(screen.getAllByRole('link', { name: /Download resume/ })[0]).toHaveAttribute('href', '/resume.pdf');
 });

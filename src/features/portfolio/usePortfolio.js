@@ -10,7 +10,7 @@ const https = (value) => text(value) && /^https:\/\//i.test(value);
 // Treat remote content as a boundary: never replace usable bundled content with partial data.
 export function isPortfolioData(data) {
   const p = data?.profile;
-  return Boolean(p && ['name', 'role', 'location', 'email', 'summary', 'about'].every((key) => text(p[key]))
+  return Boolean(p && ['name', 'role', 'location', 'email', 'headline', 'summary', 'about'].every((key) => text(p[key]))
     && texts(p.focus) && list(p.stats, (stat) => stat && text(stat.value) && text(stat.label))
     && p.links && ['github', 'linkedin', 'leetcode', 'geeksforgeeks'].every((key) => https(p.links[key]))
     && p.education && ['degree', 'institution', 'years', 'cgpa'].every((key) => text(p.education[key]))

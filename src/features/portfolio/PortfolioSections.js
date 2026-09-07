@@ -8,7 +8,7 @@ export function Hero({ profile }) {
     <div className="hero-overlay" />
     <div className="hero-content">
       <p className="eyebrow">{profile.location} | Open to engineering opportunities</p>
-      <h1>{profile.name}</h1><p className="hero-role">{profile.role}</p><p className="hero-summary">{profile.summary}</p>
+      <h1>{profile.name}</h1><p className="hero-role">{profile.role}</p>{profile.headline && <p className="hero-headline">{profile.headline}</p>}<p className="hero-summary">{profile.summary}</p>
       <div className="hero-focus" aria-label="Engineering focus areas">{profile.focus.map((item) => <span key={item}>{item}</span>)}</div>
       <div className="hero-actions"><a className="primary-button" href="#case-studies">Review case studies <Icon name="arrow" /></a>
         <a className="secondary-button" href="/resume.pdf" download="Vivek_Prakash_Resume.pdf"><Icon name="download" />Download resume</a>

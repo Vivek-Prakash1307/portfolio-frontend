@@ -5,6 +5,7 @@
     "location": "Bengaluru, India",
     "email": "alivevivek8@gmail.com",
     "phone": "+91 7309058513",
+    "headline": "Backend Engineer | Golang (Go) | Gin | Fiber | REST APIs | PostgreSQL | MongoDB | MySQL | Debugging & Troubleshooting | Root Cause Analysis | Feature Development | Git | Docker | C++ | Java",
     "summary": "I build production-oriented Go backend systems: REST APIs, authentication flows, PostgreSQL data models, AWS S3 file workflows, background workers, scheduled jobs, and reliability fixes for business products.",
     "focus": [
       "Go backend systems",
@@ -40,7 +41,7 @@
       "degree": "B.Tech in Computer Science",
       "institution": "Dayananda Sagar University, Bengaluru",
       "years": "2022-2026",
-      "cgpa": "8.67/10"
+      "cgpa": "8.79/10"
     },
     "about": "I am a Go Backend Developer with professional experience building and maintaining production-oriented backend systems for business applications. My work focuses on API design, authentication and authorization, PostgreSQL data modeling, AWS S3 file workflows, background workers, scheduled jobs, validation, permission systems, and reliability fixes. I enjoy tracing problems across handlers, services, databases, AWS integrations, deployment logs, and frontend requests until the root cause is clear. I also understand the full product flow, which helps me build backend APIs that support reliable frontend experiences without overstating frontend ownership."
   },
@@ -163,7 +164,7 @@
   ],
   "journey": [
     {
-      "year": "Jan 2026 - Present",
+      "year": "Jan 2026 - May 2026",
       "title": "Software Engineer Intern",
       "organization": "LIMDX PRIVATE LIMITED - Remote",
       "text": "Working on financial data extraction and processing workflows for 500+ companies.",
@@ -210,7 +211,7 @@
       "year": "2022 - 2026",
       "title": "B.Tech in Computer Science",
       "organization": "Dayananda Sagar University, Bengaluru",
-      "text": "Computer Science and Engineering - CGPA 8.67/10."
+      "text": "Computer Science and Engineering - CGPA 8.79/10."
     }
   ],
   "projects": [
