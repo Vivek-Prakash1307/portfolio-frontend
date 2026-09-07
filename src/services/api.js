@@ -1,5 +1,6 @@
 const configuredApiURL = process.env.REACT_APP_API_URL;
-const API_BASE = (configuredApiURL === undefined
+const isVercelRuntime = typeof window !== 'undefined' && window.location.hostname.endsWith('.vercel.app');
+const API_BASE = (isVercelRuntime ? '' : configuredApiURL === undefined
   ? (process.env.NODE_ENV === 'development' ? 'http://localhost:8080' : '')
   : configuredApiURL).replace(/\/+$/, '');
 

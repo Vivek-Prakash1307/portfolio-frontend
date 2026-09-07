@@ -15,7 +15,7 @@ Use the existing Vercel project connected to `Vivek-Prakash1307/portfolio-fronte
 
 The committed `vercel.json` defines framework/build/output settings, security headers, resume revalidation, and an `/api/*` rewrite to the existing Render service. Production code uses same-origin `/api` by default so mobile browsers submit the contact form through Vercel, then Vercel forwards the request to Render. Do not include `/api` or `/api/v1` in `REACT_APP_API_URL`; the client appends the route. Use `https://portfolio-backend-9kf0.onrender.com` only when serving the static frontend somewhere without the Vercel rewrite.
 
-Review existing Dashboard variables: an old `REACT_APP_API_URL=http://localhost:8080` or direct Render URL will override the mobile-safe same-origin behavior and should be removed or changed to an empty value. [Environment changes apply only to new deployments](https://vercel.com/docs/environment-variables). `.env.local` is ignored and never committed. No backend secret belongs in Vercel's React build environment.
+Review existing Dashboard variables: an old `REACT_APP_API_URL=http://localhost:8080` should be removed or changed to an empty value. A direct Render URL is ignored at runtime on `*.vercel.app` domains so the deployed portfolio still uses the mobile-safe same-origin rewrite. [Environment changes apply only to new deployments](https://vercel.com/docs/environment-variables). `.env.local` is ignored and never committed. No backend secret belongs in Vercel's React build environment.
 
 ## Release order
 
