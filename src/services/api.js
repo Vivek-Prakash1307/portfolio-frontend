@@ -1,4 +1,7 @@
-const API_BASE = (process.env.REACT_APP_API_URL ?? (process.env.NODE_ENV === 'development' ? 'http://localhost:8080' : 'https://portfolio-backend-9kf0.onrender.com')).replace(/\/+$/, '');
+const configuredApiURL = process.env.REACT_APP_API_URL;
+const API_BASE = (configuredApiURL === undefined
+  ? (process.env.NODE_ENV === 'development' ? 'http://localhost:8080' : '')
+  : configuredApiURL).replace(/\/+$/, '');
 
 export class ApiError extends Error {
   constructor(message, { status = 0, code = 'network_error', fields = {}, requestId } = {}) {
@@ -52,7 +55,7 @@ export function fetchPortfolio(signal) {
 
 export async function submitContact(payload, idempotencyKey, signal) {
   const data = await request('/api/v1/contact', {
-    method: 'POST', signal,
+    method: 'POST', signal, timeout: 30000,
     headers: { 'Content-Type': 'application/json', 'Idempotency-Key': idempotencyKey },
     body: JSON.stringify(payload),
   });

@@ -22,6 +22,11 @@ export default function ContactSection({ profile }) {
   const attempt = useRef(null);
   const formRef = useRef(null);
   useEffect(() => () => requestRef.current?.abort(), []);
+  useEffect(() => {
+    if (status?.kind !== 'success') return undefined;
+    const timer = window.setTimeout(() => setStatus(null), 7000);
+    return () => window.clearTimeout(timer);
+  }, [status]);
 
   function change(event) {
     const { name, value } = event.target;

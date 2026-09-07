@@ -1,10 +1,11 @@
-import { fireEvent, render, screen, waitFor } from '@testing-library/react';
+import { act, fireEvent, render, screen, waitFor } from '@testing-library/react';
 import ContactSection from './ContactSection';
 import { submitContact } from '../../services/api';
 import snapshot from '../../data/portfolio.generated.json';
 
 jest.mock('../../services/api', () => ({ submitContact: jest.fn() }));
 beforeEach(() => submitContact.mockReset());
+afterEach(() => jest.useRealTimers());
 function fill() {
   fireEvent.change(screen.getByLabelText('Name'), { target: { value: '  Hiring Manager  ' } });
   fireEvent.change(screen.getByLabelText('Email'), { target: { value: 'HIRING@example.com' } });
@@ -32,6 +33,17 @@ test('normalizes input, prevents duplicate submissions, and acknowledges queue a
   finish({ id: 'receipt', status: 'queued', message: 'Accepted and queued for delivery.' });
   await waitFor(() => expect(screen.getByText('Accepted and queued for delivery.')).toBeInTheDocument());
   expect(screen.getByLabelText('Message')).toHaveValue('');
+});
+
+test('hides the success acknowledgement after a short delay', async () => {
+  jest.useFakeTimers();
+  submitContact.mockResolvedValue({ id: 'receipt', status: 'queued', message: 'Accepted and queued for delivery.' });
+  render(<ContactSection profile={snapshot.profile} />); fill();
+  fireEvent.click(screen.getByRole('button', { name: 'Send message' }));
+  expect(await screen.findByText('Accepted and queued for delivery.')).toBeInTheDocument();
+  act(() => { jest.advanceTimersByTime(7000); });
+  await waitFor(() => expect(screen.queryByText('Accepted and queued for delivery.')).not.toBeInTheDocument());
+  jest.useRealTimers();
 });
 
 test('preserves the message and retry key after a network error', async () => {
