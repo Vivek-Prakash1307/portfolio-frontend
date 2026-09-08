@@ -20,7 +20,7 @@ This portfolio uses a small native browser motion layer instead of an animation 
 - Project filtering and dynamic cards are rescanned with a mutation observer.
 - Desktop adds subtle parallax depth and timeline progress. Mobile and reduced-motion paths remove depth transforms.
 - There are no invented project screenshots. Project cards use masked light and color treatments because the repo has no project image assets.
-- Desktop devices with hover and a fine pointer get a single white difference-blend cursor. Controls marked with `data-cursor="expand"` expand the cursor; form fields keep native editing cursors.
+- Desktop devices with hover and a fine pointer get a canvas glow trail plus a white difference-blend cursor dot. Controls marked with `data-cursor="expand"` still expand the dot; form fields keep native editing cursors.
 
 ## Verification
 

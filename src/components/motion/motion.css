@@ -4,8 +4,18 @@
   inset: 0;
   z-index: 2147483647;
   pointer-events: none;
-  mix-blend-mode: difference;
+  overflow: hidden;
 }
+.custom-cursor-trail {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  opacity: 0;
+  mix-blend-mode: screen;
+  transition: opacity 160ms ease;
+}
+.custom-cursor-trail.is-visible { opacity: .88; }
 .custom-cursor-dot {
   position: fixed;
   top: 0;
@@ -16,6 +26,7 @@
   background: #ffffff;
   opacity: 0;
   filter: blur(0);
+  mix-blend-mode: difference;
   will-change: transform, width, height, filter, opacity;
   transition: width 300ms ease, height 300ms ease, filter 300ms ease, opacity 120ms ease;
 }

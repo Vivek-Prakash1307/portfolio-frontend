@@ -39,7 +39,8 @@ async function checkCustomCursor(page) {
   await page.mouse.move(320, 320);
   await page.waitForTimeout(180);
   assert.equal(await page.locator('.custom-cursor-overlay').evaluate((element) => getComputedStyle(element).pointerEvents), 'none');
-  assert.equal(await page.locator('.custom-cursor-overlay').evaluate((element) => getComputedStyle(element).mixBlendMode), 'difference');
+  assert.equal(await page.locator('.custom-cursor-trail').evaluate((element) => getComputedStyle(element).mixBlendMode), 'screen');
+  assert.equal(await dot.evaluate((element) => getComputedStyle(element).mixBlendMode), 'difference');
   assert(await page.evaluate(() => document.documentElement.classList.contains('custom-cursor-active')));
   assert.equal(await dot.evaluate((element) => getComputedStyle(element).width), '16px');
   await page.waitForFunction(() => Number(getComputedStyle(document.querySelector('.custom-cursor-dot')).opacity) > 0.9);
