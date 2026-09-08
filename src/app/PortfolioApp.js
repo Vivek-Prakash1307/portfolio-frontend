@@ -2,6 +2,7 @@ import { useRef, useState } from 'react';
 import '../styles/site.css';
 import '../components/motion/motion.css';
 import Intro, { shouldPlayIntro } from '../components/motion/Intro';
+import CustomCursor from '../components/motion/CustomCursor';
 import useCinematicMotion from '../components/motion/useCinematicMotion';
 import Header, { sections } from '../components/layout/Header';
 import Icon from '../components/ui/Icon';
@@ -18,7 +19,7 @@ export default function PortfolioApp() {
   const [introActive, setIntroActive] = useState(shouldPlayIntro);
   useCinematicMotion(shellRef, !introActive);
   const { active, progress } = useScrollPosition(sections);
-  return <ErrorBoundary><div className="site-shell" ref={shellRef}>
+  return <ErrorBoundary><CustomCursor /><div className="site-shell" ref={shellRef}>
     {introActive && <Intro profile={data.profile} onComplete={() => setIntroActive(false)} />}
     <Header profile={data.profile} active={active} progress={progress} />
     <main id="main-content" tabIndex={-1}>
@@ -31,6 +32,6 @@ export default function PortfolioApp() {
       <ContactSection profile={data.profile} />
     </main>
     <footer className="site-footer"><p>{data.profile.name}</p><span>Built with React and Go | {new Date().getFullYear()}</span></footer>
-    {progress > 0.15 && <a className="back-to-top" href="#home" aria-label="Back to top"><Icon name="up" /></a>}
+    {progress > 0.15 && <a className="back-to-top" href="#home" aria-label="Back to top" data-cursor="expand"><Icon name="up" /></a>}
   </div></ErrorBoundary>;
 }

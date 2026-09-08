@@ -34,6 +34,25 @@ async function prepare(context) {
   });
 }
 const settled = (page) => page.waitForTimeout(1600);
+async function checkCustomCursor(page) {
+  const dot = page.locator('.custom-cursor-dot');
+  await page.mouse.move(320, 320);
+  await page.waitForTimeout(180);
+  assert.equal(await page.locator('.custom-cursor-overlay').evaluate((element) => getComputedStyle(element).pointerEvents), 'none');
+  assert.equal(await page.locator('.custom-cursor-overlay').evaluate((element) => getComputedStyle(element).mixBlendMode), 'difference');
+  assert(await page.evaluate(() => document.documentElement.classList.contains('custom-cursor-active')));
+  assert.equal(await dot.evaluate((element) => getComputedStyle(element).width), '16px');
+  await page.waitForFunction(() => Number(getComputedStyle(document.querySelector('.custom-cursor-dot')).opacity) > 0.9);
+  await page.getByRole('button', { name: 'Begin', exact: true }).hover();
+  await page.waitForTimeout(380);
+  assert.equal(await dot.evaluate((element) => getComputedStyle(element).width), '96px');
+  assert.equal(await dot.evaluate((element) => getComputedStyle(element).filter), 'blur(15px)');
+  await page.mouse.move(20, 20);
+  await page.waitForTimeout(380);
+  assert.equal(await dot.evaluate((element) => getComputedStyle(element).width), '16px');
+  await page.evaluate(() => window.dispatchEvent(new Event('blur')));
+  await page.waitForFunction(() => Number(getComputedStyle(document.querySelector('.custom-cursor-dot')).opacity) < 0.1);
+}
 async function checkPage(page) {
   assert.deepEqual(await page.locator('main > section').evaluateAll((sections) => sections.map((section) => section.id)),
     ['home', 'journey', 'case-studies', 'work', 'flow', 'about', 'skills', 'contact']);
@@ -90,6 +109,7 @@ async function run() {
   const page = await desktop.newPage();
   await page.goto(base);
   await page.getByRole('button', { name: 'Begin', exact: true }).waitFor();
+  await checkCustomCursor(page);
   assert(await page.locator('.cinematic-intro').evaluate((dialog) => dialog.matches(':modal')));
   assert.equal(await page.evaluate(() => document.body.style.overflow), 'hidden');
   await page.screenshot({ path: path.join(artifacts, 'intro.png') });
@@ -119,10 +139,18 @@ async function run() {
   assert.equal(await page.locator('.explorer-card').count(), 9);
   await page.locator('.case-study-card summary').first().click();
   assert(await page.locator('.case-study-card details').first().getAttribute('open') !== null);
+  await page.locator('#flow').scrollIntoViewIfNeeded();
+  await settled(page);
   await page.getByRole('button', { name: 'Pause motion' }).click();
+  assert(await page.locator('#flow').evaluate((element) => element.classList.contains('motion-paused')));
   assert.equal(await page.locator('.project-strip').evaluate((element) => getComputedStyle(element).animationPlayState), 'paused');
   await page.getByRole('button', { name: 'Send message' }).click();
   assert.equal(await page.evaluate(() => document.activeElement.id), 'contact-name');
+  await page.getByLabel('Name', { exact: true }).hover();
+  assert.equal(await page.getByLabel('Name', { exact: true }).evaluate((element) => getComputedStyle(element).cursor), 'text');
+  await page.getByRole('button', { name: 'Send message' }).hover();
+  await page.waitForTimeout(380);
+  assert.equal(await page.locator('.custom-cursor-dot').evaluate((element) => getComputedStyle(element).width), '96px');
   await page.getByLabel('Name', { exact: true }).fill('Local animation check');
   await page.getByLabel('Email', { exact: true }).fill('local-check@example.com');
   await page.getByLabel('Message', { exact: true }).fill('This is a local mocked contact form verification.');
@@ -136,6 +164,7 @@ async function run() {
   await prepare(mobile);
   const phone = await mobile.newPage();
   await phone.goto(base);
+  assert.equal(await phone.evaluate(() => document.documentElement.classList.contains('custom-cursor-active')), false);
   await phone.getByRole('button', { name: 'Skip intro' }).click();
   await checkPage(phone);
   await phone.getByRole('button', { name: 'Open navigation' }).click();
@@ -159,6 +188,7 @@ async function run() {
   await phone.locator('.cinematic-intro').waitFor({ state: 'detached' });
   await phone.reload();
   assert.equal(await phone.locator('.cinematic-intro').count(), 0);
+  assert.equal(await phone.evaluate(() => document.documentElement.classList.contains('custom-cursor-active')), false);
   await phone.locator('#contact').scrollIntoViewIfNeeded();
   assert.equal(await phone.locator('[data-depth]').first().evaluate((element) => getComputedStyle(element).translate), 'none');
   // Simulate broken animation APIs: all content and actions must remain available.
@@ -175,7 +205,7 @@ async function run() {
   assert(await failed.getByRole('button', { name: 'Send message' }).isVisible());
   assert.equal(await failed.locator('.cinematic-ready').count(), 0);
   assert.deepEqual(errors, [], 'Browser errors');
-  console.log('PASS: desktop + mobile chapters, intro timing/focus/session/skip, navigation, content, filters, dialogs, disclosures, resume, mocked contact, reduced motion and animation failure.');
+  console.log('PASS: desktop + mobile chapters, intro timing/focus/session/skip, custom cursor, navigation, content, filters, dialogs, disclosures, resume, mocked contact, reduced motion and animation failure.');
   console.log(`Screenshots: ${artifacts}`);
 }
 run().catch((error) => { console.error(error); process.exitCode = 1; }).finally(async () => { await browser?.close(); server.close(); });

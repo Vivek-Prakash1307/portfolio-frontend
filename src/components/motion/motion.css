@@ -1,4 +1,39 @@
 /* Content stays visible by default. JS owns only temporary entrance effects. */
+.custom-cursor-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2147483647;
+  pointer-events: none;
+  mix-blend-mode: difference;
+}
+.custom-cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  background: #ffffff;
+  opacity: 0;
+  filter: blur(0);
+  will-change: transform, width, height, filter, opacity;
+  transition: width 300ms ease, height 300ms ease, filter 300ms ease, opacity 120ms ease;
+}
+.custom-cursor-dot.is-visible { opacity: 1; }
+.custom-cursor-dot.is-expanded {
+  width: 6rem;
+  height: 6rem;
+  filter: blur(15px);
+}
+.custom-cursor-active body { cursor: none; }
+.custom-cursor-active a,
+.custom-cursor-active button,
+.custom-cursor-active [role='button'] { cursor: none; }
+.custom-cursor-active input,
+.custom-cursor-active textarea,
+.custom-cursor-active select,
+.custom-cursor-active [contenteditable='true'] { cursor: text; }
+
 .cinematic-intro {
   position: fixed;
   inset: 0;
@@ -91,6 +126,7 @@
   .intro-skip { position: fixed; bottom: 8px; }
 }
 @media (prefers-reduced-motion: reduce) {
+  .custom-cursor-overlay { display: none; }
   .site-shell [data-depth] { translate: none !important; }
   .site-shell .timeline::after { transform: none; }
   .site-shell .motion-stage { transform: none; }

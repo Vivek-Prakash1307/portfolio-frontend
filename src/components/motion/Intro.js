@@ -91,7 +91,7 @@ export default function Intro({ profile, onComplete }) {
       <p className="eyebrow" id="intro-identity">{profile.name}</p>
       <DottedIdentity />
       <p className="intro-role">{profile.role}</p>
-      <button className="intro-begin" type="button" onClick={() => setPlaying(true)} aria-disabled={playing}>
+      <button className="intro-begin" type="button" onClick={() => setPlaying(true)} aria-disabled={playing} data-cursor="expand">
         {playing ? 'Entering portfolio' : 'Begin'}<span aria-hidden="true">-&gt;</span>
       </button>
     </div>

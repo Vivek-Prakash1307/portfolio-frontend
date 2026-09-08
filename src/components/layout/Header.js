@@ -35,7 +35,7 @@ export default function Header({ profile, active, progress }) {
         </a>)}
       </nav>
       <div className="header-actions">
-        <a className="resume-link" href="/resume.pdf" download="Vivek_Prakash_Resume.pdf">Resume <Icon name="download" /></a>
+        <a className="resume-link" href="/resume.pdf" download="Vivek_Prakash_Resume.pdf" data-cursor="expand">Resume <Icon name="download" /></a>
         <button ref={toggleRef} className="menu-toggle" type="button" onClick={() => setMenuOpen((open) => !open)}
           aria-label={menuOpen ? 'Close navigation' : 'Open navigation'} aria-expanded={menuOpen} aria-controls="primary-navigation">
           <Icon name={menuOpen ? 'close' : 'menu'} />

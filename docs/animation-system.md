@@ -5,6 +5,7 @@ This portfolio uses a small native browser motion layer instead of an animation 
 ## Files
 
 - `src/components/motion/Intro.js` controls the first-visit preloader.
+- `src/components/motion/CustomCursor.js` controls the desktop-only blended mouse cursor.
 - `src/components/motion/useCinematicMotion.js` observes sections, runs reveal animations, updates depth motion, and fails open.
 - `src/components/motion/motion.js` maps existing selectors to animation recipes.
 - `src/components/motion/motion.css` contains the intro stage, timeline progress, project masks, skill orbit details, and motion-specific responsive rules.
@@ -19,6 +20,7 @@ This portfolio uses a small native browser motion layer instead of an animation 
 - Project filtering and dynamic cards are rescanned with a mutation observer.
 - Desktop adds subtle parallax depth and timeline progress. Mobile and reduced-motion paths remove depth transforms.
 - There are no invented project screenshots. Project cards use masked light and color treatments because the repo has no project image assets.
+- Desktop devices with hover and a fine pointer get a single white difference-blend cursor. Controls marked with `data-cursor="expand"` expand the cursor; form fields keep native editing cursors.
 
 ## Verification
 

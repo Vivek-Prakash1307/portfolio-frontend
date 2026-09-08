@@ -75,7 +75,7 @@ export default function ContactSection({ profile }) {
           <a className="contact-card" href={profile.links.linkedin} target="_blank" rel="noopener noreferrer"><Icon name="external" /><span><small>LinkedIn</small><strong>Connect</strong></span></a>
         </div>
         <div className="contact-tools"><CopyButton value={profile.email} label="Copy email address" />
-          <a className="secondary-button" href="/resume.pdf" download="Vivek_Prakash_Resume.pdf"><Icon name="download" />Download resume</a></div>
+          <a className="secondary-button" href="/resume.pdf" download="Vivek_Prakash_Resume.pdf" data-cursor="expand"><Icon name="download" />Download resume</a></div>
       </div>
       <form ref={formRef} className="contact-form" onSubmit={submit} noValidate aria-label="Contact Vivek" aria-busy={submitting}>
         <p className="form-intro">Have a role or a project in mind? Tell me a little about it.</p>
@@ -95,7 +95,7 @@ export default function ContactSection({ profile }) {
         <div className="honeypot" aria-hidden="true"><label htmlFor="contact-website">Leave this field empty</label>
           <input id="contact-website" name="website" value={form.website} onChange={change} tabIndex={-1} autoComplete="off" /></div>
         <p className="privacy-note">Your name, email, and message are used only to respond to your enquiry.</p>
-        <button type="submit" className="primary-button" disabled={submitting}>{submitting ? 'Sending...' : 'Send message'}<Icon name="arrow" /></button>
+        <button type="submit" className="primary-button" disabled={submitting} data-cursor="expand">{submitting ? 'Sending...' : 'Send message'}<Icon name="arrow" /></button>
         {status && <div className={`form-status status-${status.kind}`} role={status.kind === 'error' ? 'alert' : 'status'}>
           <p>{status.message}</p>{status.kind === 'error' && <a href={`mailto:${profile.email}`}>Email {profile.email} directly</a>}
         </div>}

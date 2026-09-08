@@ -72,8 +72,8 @@ export default function ProjectExplorer({ projects }) {
         <h3>{project.title}</h3><p>{project.description}</p>
         <div className="tech-list compact">{project.tech.slice(0, 5).map((tech) => <span key={tech}>{tech}</span>)}</div>
         <div className="project-card-actions">
-          <button className="project-link" type="button" onClick={() => update({ selected: project.id }, true)} aria-label={`Explore ${project.title}`}>Explore project <Icon name="arrow" /></button>
-          <a className="project-link" href={project.github} target="_blank" rel="noopener noreferrer" aria-label={`${project.title} on GitHub`}>GitHub <Icon name="external" /></a>
+          <button className="project-link" type="button" onClick={() => update({ selected: project.id }, true)} aria-label={`Explore ${project.title}`} data-cursor="expand">Explore project <Icon name="arrow" /></button>
+          <a className="project-link" href={project.github} target="_blank" rel="noopener noreferrer" aria-label={`${project.title} on GitHub`} data-cursor="expand">GitHub <Icon name="external" /></a>
         </div>
       </article>)}</div>}
     {filters.selected && !selected && <p className="form-status" role="status">That project could not be found. <button type="button" className="text-button" onClick={() => update({ selected: '' })}>Dismiss</button></p>}
@@ -85,7 +85,7 @@ export default function ProjectExplorer({ projects }) {
       <ol className="architecture-flow">{selected.architecture.map((step, index) => <li key={step}><span aria-hidden="true">0{index + 1}</span>{step}</li>)}</ol>
       <h3>Engineering focus</h3><ul className="project-highlights">{selected.highlights.map((highlight) => <li key={highlight}>{highlight}</li>)}</ul>
       <h3>Technology stack</h3><div className="tech-list">{selected.tech.map((tech) => <span key={tech}>{tech}</span>)}</div>
-      <div className="detail-actions"><a className="primary-button" href={selected.github} target="_blank" rel="noopener noreferrer">Read the source <Icon name="external" /></a>
+      <div className="detail-actions"><a className="primary-button" href={selected.github} target="_blank" rel="noopener noreferrer" data-cursor="expand">Read the source <Icon name="external" /></a>
         <CopyButton value={window.location.href} label="Copy project link" /></div>
     </Dialog>}
   </section>;

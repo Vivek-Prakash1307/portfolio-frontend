@@ -19,9 +19,9 @@ export function Hero({ profile }) {
       <p className="eyebrow">{profile.location} | Open to engineering opportunities</p>
       <h1>{profile.name}</h1><p className="hero-role">{profile.role}</p>{profile.headline && <p className="hero-headline">{profile.headline}</p>}<p className="hero-summary">{profile.summary}</p>
       <div className="hero-focus" aria-label="Engineering focus areas">{profile.focus.map((item) => <span key={item}>{item}</span>)}</div>
-      <div className="hero-actions"><a className="primary-button" href="#case-studies">Review case studies <Icon name="arrow" /></a>
-        <a className="secondary-button" href="/resume.pdf" download="Vivek_Prakash_Resume.pdf"><Icon name="download" />Download resume</a>
-        <a className="hero-email" href={`mailto:${profile.email}`}>Get in touch <Icon name="external" /></a></div>
+      <div className="hero-actions"><a className="primary-button" href="#case-studies" data-cursor="expand">Review case studies <Icon name="arrow" /></a>
+        <a className="secondary-button" href="/resume.pdf" download="Vivek_Prakash_Resume.pdf" data-cursor="expand"><Icon name="download" />Download resume</a>
+        <a className="hero-email" href={`mailto:${profile.email}`} data-cursor="expand">Get in touch <Icon name="external" /></a></div>
     </div>
     <aside className="agentic-showcase" aria-labelledby="agentic-heading">
       <p className="eyebrow">Agentic AI workflow</p>
@@ -40,7 +40,7 @@ export function FlowWall({ projects, techStack }) {
   return <section id="flow" className={`flow-section${paused ? ' motion-paused' : ''}`} aria-label="Engineering stack gallery">
     <div className="flow-copy"><p className="eyebrow">The building blocks</p><h2>One stack. Many kinds of systems.</h2>
       <p>From concurrent data pipelines to full-stack interfaces, these are the tools behind the work.</p>
-      <button type="button" className="secondary-button motion-control" aria-pressed={paused} onClick={() => setPaused((value) => !value)}>{paused ? 'Resume motion' : 'Pause motion'}</button></div>
+      <button type="button" className="secondary-button motion-control" aria-pressed={paused} onClick={() => setPaused((value) => !value)} data-cursor="expand">{paused ? 'Resume motion' : 'Pause motion'}</button></div>
     <div className="motion-stage" aria-hidden="true" data-depth="28">
       <div className="project-strip strip-left">{[...projects, ...projects].map((project, index) => <article className="project-shot" key={`${project.id}-${index}`}>
         <div className="shot-toolbar"><span /><span /><span /></div><div className="shot-visual"><div className="shot-chart" /><div className="shot-lines"><span /><span /><span /></div></div><p>{project.title}</p>
@@ -70,8 +70,8 @@ export function Skills({ groups, profile }) {
     <SectionHeading eyebrow="Skills" title="A practical stack for backend-heavy products." />
     <div className="skills-grid">{groups.map((group) => <article className="skill-card" key={group.title}><h3>{group.title}</h3><div>{group.items.map((skill) => <span key={skill}>{skill}</span>)}</div></article>)}</div>
     <div className="coding-profiles"><p>More of my problem-solving practice</p>
-      <a className="secondary-button" href={profile.links.leetcode} target="_blank" rel="noopener noreferrer">LeetCode <Icon name="external" /></a>
-      <a className="secondary-button" href={profile.links.geeksforgeeks} target="_blank" rel="noopener noreferrer">GeeksforGeeks <Icon name="external" /></a></div>
+      <a className="secondary-button" href={profile.links.leetcode} target="_blank" rel="noopener noreferrer" data-cursor="expand">LeetCode <Icon name="external" /></a>
+      <a className="secondary-button" href={profile.links.geeksforgeeks} target="_blank" rel="noopener noreferrer" data-cursor="expand">GeeksforGeeks <Icon name="external" /></a></div>
   </section>;
 }
 export function Experience({ journey }) {
