@@ -67,6 +67,7 @@ export default function ProjectExplorer({ projects }) {
     {filtered.length === 0 ? <div className="empty-state"><h3>No projects match those filters.</h3><p>Try another technology or a broader search.</p>
       <button type="button" className="secondary-button" onClick={clear}>Show all projects</button></div> :
       <div className="explorer-grid">{filtered.map((project) => <article className={`project-card explorer-card${project.featured ? ' is-featured' : ''}`} key={project.id}>
+        <span className={`project-aperture${project.id === projects.find((item) => item.featured)?.id ? ' is-circular' : ''}`} aria-hidden="true" />
         <div className="project-meta"><span>{project.category}</span>{project.featured && <span className="featured-badge">Featured</span>}</div>
         <h3>{project.title}</h3><p>{project.description}</p>
         <div className="tech-list compact">{project.tech.slice(0, 5).map((tech) => <span key={tech}>{tech}</span>)}</div>

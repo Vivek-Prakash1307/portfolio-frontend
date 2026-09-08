@@ -20,7 +20,14 @@ export default function useScrollPosition(sectionIds) {
     schedule();
     window.addEventListener('scroll', schedule, { passive: true });
     window.addEventListener('resize', schedule);
+    // Filters, expanded case studies, fonts and images can change document height.
+    const observer = window.ResizeObserver ? new ResizeObserver(schedule) : null;
+    observer?.observe(document.body);
+    let disposed = false;
+    document.fonts?.ready.then(() => { if (!disposed) schedule(); });
     return () => {
+      disposed = true;
+      observer?.disconnect();
       window.removeEventListener('scroll', schedule);
       window.removeEventListener('resize', schedule);
       if (frame !== undefined) window.cancelAnimationFrame(frame);

@@ -11,7 +11,9 @@ const agenticTools = [
 
 export function Hero({ profile }) {
   return <section id="home" className="hero-section">
-    <img src="/assets/systems-hero.png" alt="" className="hero-image" width="1536" height="1024" fetchPriority="high" />
+    <div className="hero-visual" aria-hidden="true"><div className="hero-depth" data-depth="36">
+      <img src="/assets/systems-hero.png" alt="" className="hero-image" width="1536" height="1024" fetchPriority="high" />
+    </div></div>
     <div className="hero-overlay" />
     <div className="hero-content">
       <p className="eyebrow">{profile.location} | Open to engineering opportunities</p>
@@ -39,7 +41,7 @@ export function FlowWall({ projects, techStack }) {
     <div className="flow-copy"><p className="eyebrow">The building blocks</p><h2>One stack. Many kinds of systems.</h2>
       <p>From concurrent data pipelines to full-stack interfaces, these are the tools behind the work.</p>
       <button type="button" className="secondary-button motion-control" aria-pressed={paused} onClick={() => setPaused((value) => !value)}>{paused ? 'Resume motion' : 'Pause motion'}</button></div>
-    <div className="motion-stage" aria-hidden="true">
+    <div className="motion-stage" aria-hidden="true" data-depth="28">
       <div className="project-strip strip-left">{[...projects, ...projects].map((project, index) => <article className="project-shot" key={`${project.id}-${index}`}>
         <div className="shot-toolbar"><span /><span /><span /></div><div className="shot-visual"><div className="shot-chart" /><div className="shot-lines"><span /><span /><span /></div></div><p>{project.title}</p>
       </article>)}</div>
@@ -63,7 +65,9 @@ export function About({ profile }) {
   </section>;
 }
 export function Skills({ groups, profile }) {
-  return <section id="skills" className="section skills-section"><SectionHeading eyebrow="Skills" title="A practical stack for backend-heavy products." />
+  return <section id="skills" className="section skills-section">
+    <div className="skill-orbits" aria-hidden="true">{Array.from({ length: 7 }, (_, index) => <span key={index} />)}</div>
+    <SectionHeading eyebrow="Skills" title="A practical stack for backend-heavy products." />
     <div className="skills-grid">{groups.map((group) => <article className="skill-card" key={group.title}><h3>{group.title}</h3><div>{group.items.map((skill) => <span key={skill}>{skill}</span>)}</div></article>)}</div>
     <div className="coding-profiles"><p>More of my problem-solving practice</p>
       <a className="secondary-button" href={profile.links.leetcode} target="_blank" rel="noopener noreferrer">LeetCode <Icon name="external" /></a>

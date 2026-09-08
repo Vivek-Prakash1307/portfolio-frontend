@@ -1,4 +1,8 @@
+import { useRef, useState } from 'react';
 import '../styles/site.css';
+import '../components/motion/motion.css';
+import Intro, { shouldPlayIntro } from '../components/motion/Intro';
+import useCinematicMotion from '../components/motion/useCinematicMotion';
 import Header, { sections } from '../components/layout/Header';
 import Icon from '../components/ui/Icon';
 import ErrorBoundary from '../components/ui/ErrorBoundary';
@@ -10,8 +14,12 @@ import useScrollPosition from '../hooks/useScrollPosition';
 
 export default function PortfolioApp() {
   const data = usePortfolio();
+  const shellRef = useRef(null);
+  const [introActive, setIntroActive] = useState(shouldPlayIntro);
+  useCinematicMotion(shellRef, !introActive);
   const { active, progress } = useScrollPosition(sections);
-  return <ErrorBoundary><div className="site-shell">
+  return <ErrorBoundary><div className="site-shell" ref={shellRef}>
+    {introActive && <Intro profile={data.profile} onComplete={() => setIntroActive(false)} />}
     <Header profile={data.profile} active={active} progress={progress} />
     <main id="main-content" tabIndex={-1}>
       <Hero profile={data.profile} />
