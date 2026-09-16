@@ -1,4 +1,11 @@
-/* Content stays visible by default. JS owns only temporary entrance effects. */
+/* Only an initialized observer may hold an entrance; focus always reveals it. */
+@media (prefers-reduced-motion: no-preference) {
+  .cinematic-ready [data-reveal-pending] { opacity: 0; }
+  .cinematic-ready [data-reveal-pending]:focus-within { opacity: 1; }
+}
+@media print {
+  .cinematic-ready [data-reveal-pending] { opacity: 1 !important; }
+}
 .custom-cursor-overlay {
   position: fixed;
   inset: 0;
@@ -95,6 +102,8 @@
 }
 .site-shell .hero-visual { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
 .site-shell .hero-depth { position: absolute; inset: -24px; }
+.site-shell .flow-section { grid-template-columns: minmax(0, 1fr); }
+.site-shell .motion-stage { min-width: 0; }
 .site-shell .timeline { position: relative; padding-left: 24px; }
 .site-shell .timeline::before, .site-shell .timeline::after { content: ''; position: absolute; top: 0; bottom: 0; left: 3px; width: 1px; background: var(--line-strong); }
 .site-shell .timeline::after { background: var(--accent); transform-origin: top; transform: scaleY(var(--journey-progress, 1)); }
