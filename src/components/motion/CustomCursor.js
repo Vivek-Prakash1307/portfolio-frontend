@@ -44,6 +44,7 @@ export default function CustomCursor() {
 
     const setVisible = (value) => {
       visible = value;
+      root.classList.toggle('custom-cursor-active', value);
       cursor.classList.toggle('is-visible', value);
       canvas.classList.toggle('is-visible', value);
     };
@@ -232,7 +233,6 @@ export default function CustomCursor() {
 
     try {
       resize();
-      root.classList.add('custom-cursor-active');
       window.addEventListener('resize', resize);
       window.addEventListener('pointermove', onPointerMove, { passive: true });
       window.addEventListener('pointerover', onPointerOver, { passive: true });

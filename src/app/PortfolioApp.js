@@ -19,7 +19,7 @@ export default function PortfolioApp() {
   const [introActive, setIntroActive] = useState(shouldPlayIntro);
   useCinematicMotion(shellRef, !introActive);
   const { active, progress } = useScrollPosition(sections);
-  return <ErrorBoundary><CustomCursor /><div className="site-shell" ref={shellRef}>
+  return <ErrorBoundary>{!introActive && <CustomCursor />}<div className="site-shell" ref={shellRef}>
     {introActive && <Intro profile={data.profile} onComplete={() => setIntroActive(false)} />}
     <Header profile={data.profile} active={active} progress={progress} />
     <main id="main-content" tabIndex={-1}>

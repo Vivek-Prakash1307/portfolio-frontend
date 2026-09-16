@@ -1,5 +1,6 @@
 import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { easing } from './motion';
+import CustomCursor from './CustomCursor';
 
 export const INTRO_KEY = 'vp-cinematic-intro-seen';
 export function shouldPlayIntro() {
@@ -87,6 +88,8 @@ export default function Intro({ profile, onComplete }) {
 
   return <dialog ref={dialogRef} className={`cinematic-intro${playing ? ' is-playing' : ''}`} aria-labelledby="intro-identity"
     onCancel={(event) => { event.preventDefault(); onComplete(); }} onKeyDown={trapIntroFocus}>
+    {/* Modal dialogs paint above page overlays, so the intro cursor belongs here. */}
+    <CustomCursor />
     <div className="intro-composition">
       <p className="eyebrow" id="intro-identity">{profile.name}</p>
       <DottedIdentity />
@@ -95,6 +98,6 @@ export default function Intro({ profile, onComplete }) {
         {playing ? 'Entering portfolio' : 'Begin'}<span aria-hidden="true">-&gt;</span>
       </button>
     </div>
-    <button className="intro-skip" type="button" onClick={onComplete}>Skip intro <span aria-hidden="true">-&gt;</span></button>
+    <button className="intro-skip" type="button" onClick={onComplete} data-cursor="expand">Skip intro <span aria-hidden="true">-&gt;</span></button>
   </dialog>;
 }
