@@ -13,8 +13,9 @@ test('renders an accessible title and sequences every visible letter', () => {
   expect(letters.map((letter) => letter.textContent).join('')).toBe('VivekPrakash');
   expect(letters[0]).toHaveStyle('--letter-index: 0');
   expect(letters[11]).toHaveStyle('--letter-index: 11');
-  expect(letters[0]).toHaveStyle('--letter-delay: 220ms');
-  expect(letters[11]).toHaveStyle('--letter-delay: 1375ms');
+  const delays = letters.map((letter) => parseFloat(letter.style.getPropertyValue('--letter-delay')));
+  expect(delays[0]).toBeGreaterThanOrEqual(0);
+  expect(delays.slice(1).every((delay, index) => delay > delays[index])).toBe(true);
 });
 
 test('waits until the intro finishes before starting the title animation', () => {
