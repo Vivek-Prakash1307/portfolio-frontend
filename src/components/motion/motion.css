@@ -118,7 +118,7 @@
 }
 .laser-title.is-animating .laser-letter {
   color: transparent;
-  background: linear-gradient(180deg, #ff8aa1 3%, #DC143C 28%, #ff496c 47%, #790d24 61%, #DC143C 80%, #ff6b86 100%);
+  background: linear-gradient(180deg, #ff8aa1 3%, #DC143C 28%, #ff496c 47%, #12dada 61%, #DC143C 80%, #ff6b86 100%);
   background-clip: text;
   background-size: 100% 180%;
   -webkit-background-clip: text;
