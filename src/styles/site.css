@@ -416,7 +416,7 @@ a {
 
 /* Go */
 .hero-panel > div:nth-child(1) strong {
-  color: #44e0ae;
+  color: #de1818;
 }
 
 /* 2 */
@@ -426,7 +426,7 @@ a {
 
 /* 5000+ */
 .hero-panel > div:nth-child(3) strong {
-  color: #ff6b85;
+  color: #2cb913;
 }
 
 /* 2026 */
@@ -453,7 +453,7 @@ a {
   overflow: hidden;
   padding: 118px 0;
   background:
-    linear-gradient(180deg, var(--bg), rgba(7, 17, 15, 0.98) 22%, rgba(4, 9, 8, 0.98)),
+    linear-gradient(180deg, var(--bg), rgba(216, 225, 49, 0.98) 22%, rgba(4, 9, 8, 0.98)),
     radial-gradient(circle at 50% 50%, rgba(68, 224, 174, 0.16), transparent 36rem);
 }
 
