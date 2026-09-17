@@ -412,11 +412,31 @@ a {
 .hero-panel strong {
   font-size: clamp(1.65rem, 3vw, 2.45rem);
   line-height: 1;
+
 }
 
 .hero-panel span {
   margin-top: 10px;
   color: var(--muted);
+  /* Go */
+  .hero-panel > div:nth-child(1) strong {
+    color: #44e0ae;
+  }
+
+  /* 2 */
+  .hero-panel > div:nth-child(2) strong {
+    color: #60a5fa;
+  }
+
+  /* 5000+ */
+  .hero-panel > div:nth-child(3) strong {
+    color: #ff6b85;
+  }
+
+  /* 2026 */
+  .hero-panel > div:nth-child(4) strong {
+    color: #facc15;
+  }
 }
 
 .section {
