@@ -16,7 +16,7 @@ export default function LaserTitle({ text, enabled = true }) {
       {[...word].map((letter) => {
         const index = letterIndex;
         letterIndex += 1;
-        return <span className="laser-letter" style={{ '--letter-index': index, '--letter-delay': `${220 + index * 250}ms` }} key={`${letter}-${index}`}>
+        return <span className="laser-letter" style={{ '--letter-index': index, '--letter-delay': `${320 + index * 450}ms` }} key={`${letter}-${index}`}>
           {letter}
         </span>;
       })}
