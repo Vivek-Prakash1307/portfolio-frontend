@@ -77,9 +77,7 @@ export function Skills({ groups, profile }) {
   </section>;
 }
 export function Experience({ journey }) {
-  return <section id="journey" className="section journey-section"><SectionHeading eyebrow="Professional experience" title="Backend work in real product environments.">
-    <p>LIMDX and Evtaar are shown separately so each role keeps its correct context, scope, and contribution.</p>
-  </SectionHeading>
+  return <section id="journey" className="section journey-section"><SectionHeading eyebrow="Professional experience" title="Backend work in real product environments." />
     <div className="timeline">{journey.map((item) => <article className="timeline-item" key={item.title}><span>{item.year}</span><div><h3>{item.title}</h3>
       {item.organization && <p className="timeline-organization">{item.organization}</p>}<p>{item.text}</p>
       {item.bullets && <ul className="timeline-bullets">{item.bullets.map((bullet) => <li key={bullet}>{bullet}</li>)}</ul>}
