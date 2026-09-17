@@ -412,7 +412,9 @@ a {
 .hero-panel strong {
   font-size: clamp(1.65rem, 3vw, 2.45rem);
   line-height: 1;
-  /* Go */
+}
+
+/* Go */
 .hero-panel > div:nth-child(1) strong {
   color: #44e0ae;
 }
@@ -430,8 +432,6 @@ a {
 /* 2026 */
 .hero-panel > div:nth-child(4) strong {
   color: #facc15;
-}
-
 }
 
 .hero-panel span {
