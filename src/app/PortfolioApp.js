@@ -23,7 +23,7 @@ export default function PortfolioApp() {
     {introActive && <Intro profile={data.profile} onComplete={() => setIntroActive(false)} />}
     <Header profile={data.profile} active={active} progress={progress} />
     <main id="main-content" tabIndex={-1}>
-      <Hero profile={data.profile} animateStats={!introActive} />
+      <Hero profile={data.profile} animateStats={!introActive} animateTitle={!introActive} />
       <Experience journey={data.journey} />
       <CaseStudies studies={data.caseStudies || []} additionalContributions={data.additionalContributions || []} />
       <ProjectExplorer projects={data.projects} />

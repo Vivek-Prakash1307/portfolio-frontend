@@ -2,6 +2,7 @@ import { useState } from 'react';
 import SectionHeading from '../../components/ui/SectionHeading';
 import Icon from '../../components/ui/Icon';
 import CountUpStat from '../../components/motion/CountUpStat';
+import LaserTitle from '../../components/motion/LaserTitle';
 
 const agenticTools = [
   { name: 'GPT-5.6 Sol', image: '/assets/agentic/gpt-56-sol.svg', use: 'deep reasoning and backend planning' },
@@ -10,7 +11,7 @@ const agenticTools = [
   { name: 'Antigravity', image: '/assets/agentic/antigravity.svg', use: 'agentic IDE workflows' },
 ];
 
-export function Hero({ profile, animateStats = true }) {
+export function Hero({ profile, animateStats = true, animateTitle = true }) {
   return <section id="home" className="hero-section">
     <div className="hero-visual" aria-hidden="true"><div className="hero-depth" data-depth="36">
       <img src="/assets/systems-hero.png" alt="" className="hero-image" width="1536" height="1024" fetchPriority="high" />
@@ -18,7 +19,7 @@ export function Hero({ profile, animateStats = true }) {
     <div className="hero-overlay" />
     <div className="hero-content">
       <p className="eyebrow">{profile.location} | Open to engineering opportunities</p>
-      <h1>{profile.name}</h1><p className="hero-role">{profile.role}</p>{profile.headline && <p className="hero-headline">{profile.headline}</p>}<p className="hero-summary">{profile.summary}</p>
+      <LaserTitle text={profile.name} enabled={animateTitle} /><p className="hero-role">{profile.role}</p>{profile.headline && <p className="hero-headline">{profile.headline}</p>}<p className="hero-summary">{profile.summary}</p>
       <div className="hero-focus" aria-label="Engineering focus areas">{profile.focus.map((item) => <span key={item}>{item}</span>)}</div>
       <div className="hero-actions"><a className="primary-button" href="#case-studies" data-cursor="expand">Review case studies <Icon name="arrow" /></a>
         <a className="secondary-button" href="/resume.pdf" download="Vivek_Prakash_Resume.pdf" data-cursor="expand"><Icon name="download" />Download resume</a>

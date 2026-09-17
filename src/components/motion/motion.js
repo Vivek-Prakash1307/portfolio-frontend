@@ -32,7 +32,7 @@ export function revealFrames(kind, mobile = false) {
 
 // Animate cards as units: nested entrances compete and make text appear twice.
 export const choreography = [
-  ['.hero-content > *', 'enter'],
+  ['.hero-content > :not(.laser-title)', 'enter'],
   ['.hero-visual', 'circle'],
   ['.agentic-showcase > p, .agentic-showcase > h2', 'heading'],
   ['.agentic-card', 'lift'],
