@@ -8,6 +8,7 @@ test('renders an accessible title and sequences every visible letter', () => {
 
   expect(heading).toHaveClass('is-animating');
   expect(container.querySelectorAll('.laser-word')).toHaveLength(2);
+  expect(container.querySelectorAll('.title-embers i')).toHaveLength(10);
   expect(letters).toHaveLength(12);
   expect(letters.map((letter) => letter.textContent).join('')).toBe('VivekPrakash');
   expect(letters[0]).toHaveStyle('--letter-index: 0');
