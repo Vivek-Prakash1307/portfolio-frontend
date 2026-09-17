@@ -1,16 +1,16 @@
 :root {
   --bg: #050807;
-  --panel: rgba(67, 140, 243, 0.78);
+  --panel: rgba(41, 98, 177, 0.966);
   --panel-strong: rgba(75, 215, 187, 0.94);
   --line: rgba(179, 255, 230, 0.14);
   --line-strong: rgba(83, 226, 184, 0.34);
   --text: #bcf326;
   --muted: #A7BDB2;
   --soft: #54dc9b;
-  --accent: #67E8F9;
+  --accent: #dfb044;
   --accent-2: #a51ede;
   --amber: #f1b828;
-  --shadow: 0 24px 80px rgba(255, 28, 28, 0.784);
+  --shadow: 0 24px 80px rgba(0, 255, 72, 0.784);
 }
 
 * {
