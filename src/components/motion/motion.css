@@ -135,7 +135,7 @@
   content: '';
   opacity: 0;
   pointer-events: none;
-  animation: forge-letter-heat 900ms ease-out both;
+  animation: forge-letter-heat 2600ms ease-out both;
   animation-delay: var(--letter-delay);
 }
 .title-forge-glow {
@@ -146,7 +146,7 @@
   left: -4%;
   height: .55em;
   border-radius: 50%;
-  background: radial-gradient(ellipse, rgba(255, 44, 12, .42), rgba(153, 15, 0, .12) 42%, transparent 72%);
+  background: radial-gradient(ellipse, rgba(246, 47, 16, 0.767), rgba(230, 31, 9, 0.833) 42%, transparent 72%);
   opacity: 0;
   filter: blur(16px);
   pointer-events: none;
