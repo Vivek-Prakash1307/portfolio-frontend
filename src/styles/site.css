@@ -4,12 +4,12 @@
   --panel-strong: rgba(16, 26, 24, 0.94);
   --line: rgba(179, 255, 230, 0.14);
   --line-strong: rgba(83, 226, 184, 0.34);
-  --text: #eefcf7;
-  --muted: #9db6ad;
-  --soft: #cfe4dc;
-  --accent: #44e0ae;
-  --accent-2: #7dd3fc;
-  --amber: #f4c96b;
+  --text: #E8FFF5;
+  --muted: #A7BDB2;
+  --soft: #CDE2D8;
+  --accent: #67E8F9;
+  --accent-2: #67E8F9;
+  --amber: #E8C87A;
   --shadow: 0 24px 80px rgba(0, 0, 0, 0.38);
 }
 
@@ -416,22 +416,22 @@ a {
 
 /* Go */
 .hero-panel > div:nth-child(1) strong {
-  color: #de1818;
+  color: #67E8F9;
 }
 
 /* 2 */
 .hero-panel > div:nth-child(2) strong {
-  color: #60a5fa;
+  color: #E8FFF5;
 }
 
 /* 5000+ */
 .hero-panel > div:nth-child(3) strong {
-  color: #2cb913;
+  color: #67E8F9;
 }
 
 /* 2026 */
 .hero-panel > div:nth-child(4) strong {
-  color: #facc15;
+  color: #E8C87A;
 }
 
 .hero-panel span {
