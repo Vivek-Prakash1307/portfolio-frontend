@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import SectionHeading from '../../components/ui/SectionHeading';
 import Icon from '../../components/ui/Icon';
+import CountUpStat from '../../components/motion/CountUpStat';
 
 const agenticTools = [
   { name: 'GPT-5.6 Sol', image: '/assets/agentic/gpt-56-sol.svg', use: 'deep reasoning and backend planning' },
@@ -9,7 +10,7 @@ const agenticTools = [
   { name: 'Antigravity', image: '/assets/agentic/antigravity.svg', use: 'agentic IDE workflows' },
 ];
 
-export function Hero({ profile }) {
+export function Hero({ profile, animateStats = true }) {
   return <section id="home" className="hero-section">
     <div className="hero-visual" aria-hidden="true"><div className="hero-depth" data-depth="36">
       <img src="/assets/systems-hero.png" alt="" className="hero-image" width="1536" height="1024" fetchPriority="high" />
@@ -32,7 +33,7 @@ export function Hero({ profile }) {
         <div><h3>{tool.name}</h3><p>{tool.use}</p></div>
       </article>)}</div>
     </aside>
-    <div className="hero-panel">{profile.stats.map((stat) => <div key={stat.label}><strong>{stat.value}</strong><span>{stat.label}</span></div>)}</div>
+    <div className="hero-panel">{profile.stats.map((stat) => <div key={stat.label}><CountUpStat key={stat.value} value={stat.value} enabled={animateStats} /><span>{stat.label}</span></div>)}</div>
   </section>;
 }
 export function FlowWall({ projects, techStack }) {

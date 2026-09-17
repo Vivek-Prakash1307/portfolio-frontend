@@ -23,7 +23,7 @@
         "label": "professional backend roles"
       },
       {
-        "value": "500+",
+        "value": "5000+",
         "label": "companies processed in LIMDX pipelines"
       },
       {
@@ -167,7 +167,7 @@
       "year": "Jan 2026 - May 2026",
       "title": "Software Engineer Intern",
       "organization": "LIMDX PRIVATE LIMITED - Remote",
-      "text": "Working on financial data extraction and processing workflows for 500+ companies.",
+      "text": "Working on financial data extraction and processing workflows for 5000+ companies.",
       "bullets": [
         "Maintained backend-oriented financial data extraction workflows for company-scale datasets.",
         "Worked with concurrent processing, retry handling, checkpoint recovery, structured parsing, and CSV/data outputs.",
@@ -218,7 +218,7 @@
     {
       "title": "Automated Financial Data Extraction and Analysis System",
       "eyebrow": "Concurrent data platform",
-      "description": "A Go platform that processes stock market data for 500+ companies with concurrent scraping, checkpoint recovery, retry handling, structured parsing, and CSV/data workflows.",
+      "description": "A Go platform that processes stock market data for 5000+ companies with concurrent scraping, checkpoint recovery, retry handling, structured parsing, and CSV/data workflows.",
       "impact": [
         "High-volume extraction",
         "Fault-tolerant processing",

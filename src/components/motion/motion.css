@@ -102,6 +102,9 @@
 }
 .site-shell .hero-visual { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
 .site-shell .hero-depth { position: absolute; inset: -24px; }
+.hero-panel .stat-value { position: relative; font-variant-numeric: tabular-nums; }
+.hero-panel .stat-value > span { margin: 0; color: inherit; font: inherit; }
+.hero-panel .stat-readable { position: absolute; width: 1px; height: 1px; padding: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 .site-shell .flow-section { grid-template-columns: minmax(0, 1fr); }
 .site-shell .motion-stage { min-width: 0; }
 .site-shell .timeline { position: relative; padding-left: 24px; }
